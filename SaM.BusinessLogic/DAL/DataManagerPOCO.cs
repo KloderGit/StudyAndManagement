@@ -36,46 +36,46 @@ namespace SaM.BusinessLogic.DAL
             this.datamanager = datamanager;
         }
 
-        public ICategoryRepository<CategoryPOCO> Categories => Category ?? (Category = new POCOCategoryRepository(datamanager) );
+        public ICategoryRepository<CategoryPOCO> Categories => Category ?? (Category = new POCOCategoryRepository(datamanager.Categories) );
 
-        public IEducationalPlanRepository<EducationalPlanPOCO> EducationalPlans => EducationPlan ?? (EducationPlan = new POCOEducationalPlanRepository(datamanager) );
+        public IEducationalPlanRepository<EducationalPlanPOCO> EducationalPlans => EducationPlan ?? (EducationPlan = new POCOEducationalPlanRepository(datamanager.EducationalPlans) );
 
-        public IEducationTypeRepository<EducationTypePOCO> EducationTypes => EducationType ?? (EducationType = new POCOEducationTypeRepository(datamanager) );
+        public IEducationTypeRepository<EducationTypePOCO> EducationTypes => EducationType ?? (EducationType = new POCOEducationTypeRepository(datamanager.EducationTypes) );
 
-        public IGroupRepository<GroupPOCO> Groups => Group ?? (Group = new POCOGroupRepository(datamanager) );
+        public IGroupRepository<GroupPOCO> Groups => Group ?? (Group = new POCOGroupRepository(datamanager.Groups) );
 
-        public IEducationProgramRepository<EducationProgramPOCO> EducationPrograms => EducationProgram ?? (EducationProgram = new POCOEducationProgramRepository(datamanager) );
+        public IEducationProgramRepository<EducationProgramPOCO> EducationPrograms => EducationProgram ?? (EducationProgram = new POCOEducationProgramRepository(datamanager.EducationPrograms) );
 
-        public IExamRepository<ExamPOCO> Exams => Exam ?? (Exam = new POCOExamRepository(datamanager) );
+        public IExamRepository<ExamPOCO> Exams => Exam ?? (Exam = new POCOExamRepository(datamanager.Exams) );
 
-        public IExamCommentRepository<ExamCommentPOCO> ExamComments => ExamComment ?? (ExamComment = new POCOExamCommentsRepository(datamanager) );
+        public IExamCommentRepository<ExamCommentPOCO> ExamComments => ExamComment ?? (ExamComment = new POCOExamCommentsRepository(datamanager.ExamComments) );
 
-        public IStatementRepository<StatementPOCO> Statements => Statement ?? (Statement = new POCOStatementRepository(datamanager) );
+        public IStatementRepository<StatementPOCO> Statements => Statement ?? (Statement = new POCOStatementRepository(datamanager.Statements) );
 
-        public ISharedStatementRepository<SharedStatementPOCO> SharedStatements => SharedStatement ?? (SharedStatement = new POCOSharedStatementRepository(datamanager) );
+        public ISharedStatementRepository<SharedStatementPOCO> SharedStatements => SharedStatement ?? (SharedStatement = new POCOSharedStatementRepository(datamanager.SharedStatements) );
 
-        public ISubGroupRepository<SubGroupPOCO> SubGroups => SubGroup ?? (SubGroup = new POCOSubGroupRepository(datamanager) );
+        public ISubGroupRepository<SubGroupPOCO> SubGroups => SubGroup ?? (SubGroup = new POCOSubGroupRepository(datamanager.SubGroups) );
 
-        public ISubjectRepository<SubjectPOCO> Subjects => Subject ?? (Subject = new POCOSubjectRepository(datamanager) );
+        public ISubjectRepository<SubjectPOCO> Subjects => Subject ?? (Subject = new POCOSubjectRepository(datamanager.Subjects) );
 
-        public ICertificationRepository<CertificationPOCO> Certifications => Certification ?? (Certification = new POCOCertificationRepository(datamanager) );
+        public ICertificationRepository<CertificationPOCO> Certifications => Certification ?? (Certification = new POCOCertificationRepository(datamanager.Certifications) );
 
-        public ICertificationTypeRepository<CertificationTypePOCO> CertificationTypes => CertificationType ?? (CertificationType = new POCOCertificationTypeRepository(datamanager) );
+        public ICertificationTypeRepository<CertificationTypePOCO> CertificationTypes => CertificationType ?? (CertificationType = new POCOCertificationTypeRepository(datamanager.CertificationTypes) );
 
 
-        public IUserRepository<UserPOCO> Users => User ?? (User = new POCOUserRepository(datamanager) );
+        public IUserRepository<UserPOCO> Users => User ?? (User = new POCOUserRepository(datamanager.Users) );
 
-        public IUserCardRepository<UserCardPOCO> UserCards => UserCard ?? (UserCard = new POCOUserCardRepository(datamanager) );
+        public IUserCardRepository<UserCardPOCO> UserCards => UserCard ?? (UserCard = new POCOUserCardRepository(datamanager.UserCards) );
 
-        public IUserCommentRepository<UserCommentPOCO> UserComments => UserComment ?? (UserComment = new POCOUserCommentsRepository(datamanager) );
+        public IUserCommentRepository<UserCommentPOCO> UserComments => UserComment ?? (UserComment = new POCOUserCommentsRepository(datamanager.UserComments) );
 
-        public IUserContractRepository<UserContractPOCO> UserContracts => UserContract ?? (UserContract = new POCOUserContractRepository(datamanager) );
+        public IUserContractRepository<UserContractPOCO> UserContracts => UserContract ?? (UserContract = new POCOUserContractRepository(datamanager.UserContracts) );
 
-        public IUserLocationRepository<UserLocationPOCO> UserLocations => UserLocation ?? (UserLocation = new POCOUserLocationRepository(datamanager) );
+        public IUserLocationRepository<UserLocationPOCO> UserLocations => UserLocation ?? (UserLocation = new POCOUserLocationRepository(datamanager.UserLocations) );
 
-        public IUserPhotoRepository<UserPhotoPOCO> UserPhotos => UserPhoto ?? (UserPhoto = new POCOUserPhotoRepository(datamanager) );
+        public IUserPhotoRepository<UserPhotoPOCO> UserPhotos => UserPhoto ?? (UserPhoto = new POCOUserPhotoRepository(datamanager.UserPhotos) );
 
-        public IUserProfileRepository<UserProfilePOCO> UserProfiles => UserProfile ?? (UserProfile = new POCOUserProfileRepository(datamanager) );
+        public IUserProfileRepository<UserProfilePOCO> UserProfiles => UserProfile ?? (UserProfile = new POCOUserProfileRepository(datamanager.UserProfiles) );
 
 
         public void Save()

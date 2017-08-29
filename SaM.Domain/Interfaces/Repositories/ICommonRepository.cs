@@ -17,13 +17,6 @@ namespace SaM.Domain.Interfaces.Repositories
         void Delete(T item);
         void Save();
 
-        /// <summary>
-        /// Загрузка зависимостей для сущности. Приминает лямбды с именами свойств ex.: ( с => c.Program, c => c.Category, ... )
-        /// </summary>
-        /// <param name="properties"></param>
-        /// <returns></returns>
-        IQueryable<T> GetAllIncludeRef(params Expression<Func<T, object>>[] properties);
-
         IEnumerable<T> GetLocal();
     }
 }
