@@ -9,8 +9,11 @@ namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {
     public class POCOCategoryRepository: ICategoryRepository<CategoryPOCO>
     {
-        public POCOCategoryRepository()
+        IDataManager datamanager;
+
+        public POCOCategoryRepository(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
         public void Add(CategoryPOCO item)

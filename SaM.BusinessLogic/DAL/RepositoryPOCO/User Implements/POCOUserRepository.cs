@@ -9,8 +9,11 @@ namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {
     public class POCOUserRepository : IUserRepository<UserPOCO>
     {
-        public POCOUserRepository()
+        IDataManager datamanager;
+
+        public POCOUserRepository(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
         public void Add(UserPOCO item)

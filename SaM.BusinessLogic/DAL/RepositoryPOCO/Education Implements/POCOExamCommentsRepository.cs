@@ -9,8 +9,11 @@ namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {
     public class POCOExamCommentsRepository : IExamCommentRepository<ExamCommentPOCO>
     {
-        public POCOExamCommentsRepository()
+        IDataManager datamanager;
+
+        public POCOExamCommentsRepository(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
         public void Add(ExamCommentPOCO item)

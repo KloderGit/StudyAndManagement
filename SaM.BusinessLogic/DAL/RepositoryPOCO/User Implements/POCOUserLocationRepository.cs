@@ -9,8 +9,11 @@ namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {
     class POCOUserLocationRepository : IUserLocationRepository<UserLocationPOCO>
     {
-        public POCOUserLocationRepository()
+        IDataManager datamanager;
+
+        public POCOUserLocationRepository(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
         public void Add(UserLocationPOCO item)

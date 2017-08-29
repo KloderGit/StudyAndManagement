@@ -9,8 +9,11 @@ namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {
     public class POCOSharedStatementRepository : ISharedStatementRepository<SharedStatementPOCO>
     {
-        public POCOSharedStatementRepository()
+        IDataManager datamanager;
+
+        public POCOSharedStatementRepository(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
         public void Add(SharedStatementPOCO item)

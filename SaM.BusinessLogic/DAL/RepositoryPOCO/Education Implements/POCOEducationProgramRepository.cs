@@ -9,8 +9,11 @@ namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {
     public class POCOEducationProgramRepository : IEducationProgramRepository<EducationProgramPOCO>
     {
-        public POCOEducationProgramRepository()
+        IDataManager datamanager;
+
+        public POCOEducationProgramRepository(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
         public void Add(EducationProgramPOCO item)

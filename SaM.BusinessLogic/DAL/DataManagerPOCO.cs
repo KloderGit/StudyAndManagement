@@ -7,6 +7,8 @@ namespace SaM.BusinessLogic.DAL
 {
     public class DataManagerPOCO : IDataManagerPOCO
     {
+        IDataManager datamanager;
+
         POCOCategoryRepository Category;
         POCOEducationalPlanRepository EducationPlan;
         POCOEducationTypeRepository EducationType;
@@ -29,50 +31,51 @@ namespace SaM.BusinessLogic.DAL
         POCOUserPhotoRepository UserPhoto;
         POCOUserProfileRepository UserProfile;
 
-        public DataManagerPOCO()
+        public DataManagerPOCO(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
-        public ICategoryRepository<CategoryPOCO> Categories => Category ?? (Category = new POCOCategoryRepository());
+        public ICategoryRepository<CategoryPOCO> Categories => Category ?? (Category = new POCOCategoryRepository(datamanager) );
 
-        public IEducationalPlanRepository<EducationalPlanPOCO> EducationalPlans => EducationPlan ?? (EducationPlan = new POCOEducationalPlanRepository());
+        public IEducationalPlanRepository<EducationalPlanPOCO> EducationalPlans => EducationPlan ?? (EducationPlan = new POCOEducationalPlanRepository(datamanager) );
 
-        public IEducationTypeRepository<EducationTypePOCO> EducationTypes => EducationType ?? (EducationType = new POCOEducationTypeRepository());
+        public IEducationTypeRepository<EducationTypePOCO> EducationTypes => EducationType ?? (EducationType = new POCOEducationTypeRepository(datamanager) );
 
-        public IGroupRepository<GroupPOCO> Groups => Group ?? (Group = new POCOGroupRepository());
+        public IGroupRepository<GroupPOCO> Groups => Group ?? (Group = new POCOGroupRepository(datamanager) );
 
-        public IEducationProgramRepository<EducationProgramPOCO> EducationPrograms => EducationProgram ?? (EducationProgram = new POCOEducationProgramRepository());
+        public IEducationProgramRepository<EducationProgramPOCO> EducationPrograms => EducationProgram ?? (EducationProgram = new POCOEducationProgramRepository(datamanager) );
 
-        public IExamRepository<ExamPOCO> Exams => Exam ?? (Exam = new POCOExamRepository());
+        public IExamRepository<ExamPOCO> Exams => Exam ?? (Exam = new POCOExamRepository(datamanager) );
 
-        public IExamCommentRepository<ExamCommentPOCO> ExamComments => ExamComment ?? (ExamComment = new POCOExamCommentsRepository());
+        public IExamCommentRepository<ExamCommentPOCO> ExamComments => ExamComment ?? (ExamComment = new POCOExamCommentsRepository(datamanager) );
 
-        public IStatementRepository<StatementPOCO> Statements => Statement ?? (Statement = new POCOStatementRepository());
+        public IStatementRepository<StatementPOCO> Statements => Statement ?? (Statement = new POCOStatementRepository(datamanager) );
 
-        public ISharedStatementRepository<SharedStatementPOCO> SharedStatements => SharedStatement ?? (SharedStatement = new POCOSharedStatementRepository());
+        public ISharedStatementRepository<SharedStatementPOCO> SharedStatements => SharedStatement ?? (SharedStatement = new POCOSharedStatementRepository(datamanager) );
 
-        public ISubGroupRepository<SubGroupPOCO> SubGroups => SubGroup ?? (SubGroup = new POCOSubGroupRepository());
+        public ISubGroupRepository<SubGroupPOCO> SubGroups => SubGroup ?? (SubGroup = new POCOSubGroupRepository(datamanager) );
 
-        public ISubjectRepository<SubjectPOCO> Subjects => Subject ?? (Subject = new POCOSubjectRepository());
+        public ISubjectRepository<SubjectPOCO> Subjects => Subject ?? (Subject = new POCOSubjectRepository(datamanager) );
 
-        public ICertificationRepository<CertificationPOCO> Certifications => Certification ?? (Certification = new POCOCertificationRepository());
+        public ICertificationRepository<CertificationPOCO> Certifications => Certification ?? (Certification = new POCOCertificationRepository(datamanager) );
 
-        public ICertificationTypeRepository<CertificationTypePOCO> CertificationTypes => CertificationType ?? (CertificationType = new POCOCertificationTypeRepository());
+        public ICertificationTypeRepository<CertificationTypePOCO> CertificationTypes => CertificationType ?? (CertificationType = new POCOCertificationTypeRepository(datamanager) );
 
 
-        public IUserRepository<UserPOCO> Users => User ?? (User = new POCOUserRepository());
+        public IUserRepository<UserPOCO> Users => User ?? (User = new POCOUserRepository(datamanager) );
 
-        public IUserCardRepository<UserCardPOCO> UserCards => UserCard ?? (UserCard = new POCOUserCardRepository());
+        public IUserCardRepository<UserCardPOCO> UserCards => UserCard ?? (UserCard = new POCOUserCardRepository(datamanager) );
 
-        public IUserCommentRepository<UserCommentPOCO> UserComments => UserComment ?? (UserComment = new POCOUserCommentsRepository());
+        public IUserCommentRepository<UserCommentPOCO> UserComments => UserComment ?? (UserComment = new POCOUserCommentsRepository(datamanager) );
 
-        public IUserContractRepository<UserContractPOCO> UserContracts => UserContract ?? (UserContract = new POCOUserContractRepository());
+        public IUserContractRepository<UserContractPOCO> UserContracts => UserContract ?? (UserContract = new POCOUserContractRepository(datamanager) );
 
-        public IUserLocationRepository<UserLocationPOCO> UserLocations => UserLocation ?? (UserLocation = new POCOUserLocationRepository());
+        public IUserLocationRepository<UserLocationPOCO> UserLocations => UserLocation ?? (UserLocation = new POCOUserLocationRepository(datamanager) );
 
-        public IUserPhotoRepository<UserPhotoPOCO> UserPhotos => UserPhoto ?? (UserPhoto = new POCOUserPhotoRepository());
+        public IUserPhotoRepository<UserPhotoPOCO> UserPhotos => UserPhoto ?? (UserPhoto = new POCOUserPhotoRepository(datamanager) );
 
-        public IUserProfileRepository<UserProfilePOCO> UserProfiles => UserProfile ?? (UserProfile = new POCOUserProfileRepository());
+        public IUserProfileRepository<UserProfilePOCO> UserProfiles => UserProfile ?? (UserProfile = new POCOUserProfileRepository(datamanager) );
 
 
         public void Save()

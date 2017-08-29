@@ -9,8 +9,11 @@ namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {
     public class POCOCertificationTypeRepository : ICertificationTypeRepository<CertificationTypePOCO>
     {
-        public POCOCertificationTypeRepository()
+        IDataManager datamanager;
+
+        public POCOCertificationTypeRepository(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
         public void Add(CertificationTypePOCO item)

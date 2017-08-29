@@ -9,8 +9,11 @@ namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {
     public class POCOSubGroupRepository : ISubGroupRepository<SubGroupPOCO>
     {
-        public POCOSubGroupRepository()
+        IDataManager datamanager;
+
+        public POCOSubGroupRepository(IDataManager datamanager)
         {
+            this.datamanager = datamanager;
         }
 
         public void Add(SubGroupPOCO item)
