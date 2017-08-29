@@ -34,7 +34,7 @@ namespace SaM.BusinessLogic.DAL
 
         public IQueryable<CategoryDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return datamanager.Categories.GetAll().Select(item => new CategoryDTO { Id = item.Id, Guid = item.Guid.ToString(), Title = item.Title });
         }
 
         public IQueryable<CategoryDTO> GetAllIncludeRef(params Expression<Func<CategoryDTO, object>>[] properties)
