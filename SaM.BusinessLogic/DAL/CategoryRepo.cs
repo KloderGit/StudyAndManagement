@@ -12,9 +12,9 @@ namespace SaM.BusinessLogic.DAL
     {
         IDataManager datamanager = new DataManagerEntityFramework();
 
-        public CategoryRepo()
+        public CategoryRepo(IDataManager datamanager)
         {
-
+            this.datamanager = datamanager;
         }
 
         public void Add(CategoryDTO item)
