@@ -12,13 +12,13 @@ namespace SaM.Domain.Core.Education
     {
         public Certification()
         {
-            AssessmentTypeList = new HashSet<CertificationType>();
+            CertificationTypeList = new HashSet<CertificationType>();
         }
 
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
         public string Title { get; set; }
 
-        public virtual ICollection<CertificationType> AssessmentTypeList { get; set; }
+        public virtual ICollection<CertificationType> CertificationTypeList { get; set; }
     }
 }
