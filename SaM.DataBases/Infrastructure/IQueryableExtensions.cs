@@ -5,12 +5,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace SaM.BusinessLogic.Infrastructure
+namespace SaM.DataBases.Infrastructure
 {
     public static class IQueryableExtensions
     {
-        public static IQueryable<T> IncludeMultiple<T>(this IQueryable<T> query, params Expression<Func<T, object>>[] includes)
-    where T : class
+        public static IQueryable<T> IncludeMultiple<T>(this IQueryable<T> query, params Expression<Func<T, object>>[] includes) where T : class
         {
             if (includes != null)
             {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
-using DataBase.EntityFramework;
 using SaM.Domain.Interfaces.Repositories;
 
 namespace SaM.DataBases.EntityFramework
