@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SaM.BusinessLogic\SaM.BusinessLogic.csproj" />
+    <ProjectReference Include="..\SaM.Domain\SaM.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
