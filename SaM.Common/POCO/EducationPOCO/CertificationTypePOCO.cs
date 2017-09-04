@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SaM.BusinessLogic.POCO
+namespace SaM.Common.POCO
 {
     /// <summary>
     /// Система оценки для варианта аттестации [ Пятибальная \ Зачетная ]

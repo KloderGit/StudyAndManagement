@@ -17,7 +17,10 @@ namespace SaM.Services.Repository1C
 
         public ImplementRepositorySOAP1C()
         {
+            datamanager = new GetAllDelegate(GetAllAsync);
         }
+
+        protected abstract Task<IEnumerable<T>> GetAllAsync();
 
         public void Add(T item)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SaM.BusinessLogic.POCO
+namespace SaM.Common.POCO
 {
     public class SharedStatementPOCO
     {

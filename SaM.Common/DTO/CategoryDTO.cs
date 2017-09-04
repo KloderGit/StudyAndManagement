@@ -1,7 +1,6 @@
-﻿
-using System;
+﻿using System;
 
-namespace BusinessLogic.DTO
+namespace SaM.Common.DTO
 {
     public class CategoryDTO
     {

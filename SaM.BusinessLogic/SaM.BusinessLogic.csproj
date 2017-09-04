@@ -5,11 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SaM.Common\SaM.Common.csproj" />
     <ProjectReference Include="..\SaM.DataBases\SaM.DataBases.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
+    <ProjectReference Include="..\SaM.Services\SaM.Services.csproj" />
   </ItemGroup>
 
 </Project>

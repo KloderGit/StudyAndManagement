@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SaM.BusinessLogic.POCO
+namespace SaM.Common.POCO
 {
     /// <summary>
     /// Комментарий о пользователе. При установке отметки об отличнике и пр.

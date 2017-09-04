@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SaM.BusinessLogic.POCO
+namespace SaM.Common.POCO
 {
     public class EducationProgramPOCO
     {

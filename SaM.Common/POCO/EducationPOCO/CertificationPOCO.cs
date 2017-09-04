@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SaM.BusinessLogic.POCO
+namespace SaM.Common.POCO
 {
 
     /// <summary>

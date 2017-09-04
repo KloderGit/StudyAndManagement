@@ -1,4 +1,5 @@
-﻿using SaM.DataBases.EntityFramework;
+﻿using SaM.BusinessLogic.Pages.UpdateEntity;
+using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core.Education;
 using SaM.Domain.Interfaces.Repositories;
 using SaM.Services;
@@ -39,14 +40,19 @@ namespace TestDataAccess
 
         static void DisplayResultAsync()
         {
-            var ttt = new DataManager1C();
+            //var ttt = new DataManager1C();
 
-            var client = ttt.Categories.GetAll();
+            //var client = ttt.Categories.GetAll();
 
-            foreach (var item in client)
-            {
-                Console.WriteLine( item.ГУИД.ToString() + " | " + item.Наименование );
-            }
+            //foreach (var item in client)
+            //{
+            //    Console.WriteLine( item.ГУИД.ToString() + " | " + item.Наименование );
+            //}
+
+            var rrr = new UpdateEntity();
+
+            var ttt = rrr.GetCategory();
+
 
             Console.ReadKey();
         }
