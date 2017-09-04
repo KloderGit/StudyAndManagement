@@ -1,4 +1,5 @@
 ﻿using SaM.BusinessLogic.POCO;
+using SaM.Services.Repository1C;
 using SoapService1C;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,22 @@ namespace SaM.Services
             foreach (var item in ttt.@return)
             {
                 array.Add( new CategoryPOCO { Guid = new Guid(item.ГУИД), Title = item.Наименование } );
+            }
+
+            return array;
+        }
+
+        public List<CategoryPOCO> GetCategory1()
+        {
+            var array = new List<CategoryPOCO>();
+
+            IDataManager1C mmm = new DataManager1C();
+
+            var res = mmm.Categories.GetAll();
+
+            foreach (var item in res)
+            {
+                array.Add(new CategoryPOCO { Guid = new Guid(item.ГУИД), Title = item.Наименование });
             }
 
             return array;

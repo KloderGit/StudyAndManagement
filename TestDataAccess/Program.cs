@@ -12,8 +12,8 @@ namespace TestDataAccess
     {
         static void Main(string[] args)
         {
-            WorkEF();
-            //DisplayResultAsync();
+            //WorkEF();
+            DisplayResultAsync();
             Console.ReadLine();
         }
 
@@ -36,9 +36,9 @@ namespace TestDataAccess
         }
 
 
-        static async void DisplayResultAsync()
+        static void DisplayResultAsync()
         {
-            var client = await new Provider1C().GetCategory();
+            var client = new Provider1C().GetCategory1();
 
             foreach (var item in client)
             {
