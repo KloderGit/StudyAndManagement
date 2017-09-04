@@ -11,11 +11,12 @@ namespace SaM.Services.Repository1C
     public abstract class ImplementRepositorySOAP1C<T> : ICommonRepository<T>
             where T : class
     {
-        protected ПФ_ПорталДПОPortTypeClient datamanager;
+        public delegate Task<IEnumerable<T>> GetAllDelegate();
 
-        public ImplementRepositorySOAP1C(ПФ_ПорталДПОPortTypeClient soap)
+        public GetAllDelegate datamanager;
+
+        public ImplementRepositorySOAP1C()
         {
-            datamanager = soap;
         }
 
         public void Add(T item)
@@ -35,8 +36,8 @@ namespace SaM.Services.Repository1C
 
         public IQueryable<T> GetAll()
         {
-            var query = datamanager.ПолучитьГруппыПрограммОбученияAsync().Result;
-            return query.@return as IQueryable<T>;
+            var ttt = datamanager();
+            return ttt.Result.AsQueryable();
         }
 
         public T GetById(int id)

@@ -9,15 +9,20 @@ using System.Collections.Generic;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPCategoryRepository: ImplementRepositorySOAP1C<ГруппаПрограммыОбучения>, ICategoryRepository<ГруппаПрограммыОбучения>
+    public class SOAPCategoryRepository : ImplementRepositorySOAP1C<ГруппаПрограммыОбучения>, ICategoryRepository<ГруппаПрограммыОбучения>
     {
-        public SOAPCategoryRepository(ПФ_ПорталДПОPortTypeClient soap) : base (soap)
+        ПФ_ПорталДПОPortTypeClient service;
+
+        public SOAPCategoryRepository(ПФ_ПорталДПОPortTypeClient source)
         {
+            service = source;
+            datamanager = new GetAllDelegate(GetAllAsync);
         }
 
-        private async Task<IEnumerable<ГруппаПрограммыОбучения>> GetCategoryAsynk() {
-            var query = await datamanager.ПолучитьГруппыПрограммОбученияAsync();
+        public async Task<IEnumerable<ГруппаПрограммыОбучения>> GetAllAsync() {
+            var query = await service.ПолучитьГруппыПрограммОбученияAsync();
             return query.@return as IEnumerable<ГруппаПрограммыОбучения>;
         }
+
     }
 }

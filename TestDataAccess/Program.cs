@@ -2,6 +2,7 @@
 using SaM.Domain.Core.Education;
 using SaM.Domain.Interfaces.Repositories;
 using SaM.Services;
+using SaM.Services.Repository1C;
 using SoapService1C;
 using System;
 using System.Threading.Tasks;
@@ -38,11 +39,13 @@ namespace TestDataAccess
 
         static void DisplayResultAsync()
         {
-            var client = new Provider1C().GetCategory1();
+            var ttt = new DataManager1C();
+
+            var client = ttt.Categories.GetAll();
 
             foreach (var item in client)
             {
-                Console.WriteLine( item.Guid.ToString() + " | " + item.Title );
+                Console.WriteLine( item.ГУИД.ToString() + " | " + item.Наименование );
             }
 
             Console.ReadKey();
