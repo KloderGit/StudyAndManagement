@@ -11,9 +11,17 @@ namespace SaM.Common.Infrastructure.Mapster
     {
         public void Register(TypeAdapterConfig config)
         {
-            config.NewConfig<ГруппаПрограммыОбучения, CategoryDTO>()
+            config.NewConfig<ГруппаПрограммыОбучения, CategoryDTO>()                
                 .Map(d => d.Guid, s => s.ГУИД)
                 .Map(d => d.Title, s => s.Наименование);
+
+            config.NewConfig<ФормаКонтроля, CertificationDTO>()
+                .Map( dest => dest.Guid, src => src.ГУИД )
+                .Map( dest => dest.Title, src => src.Наименование );
+
+            config.NewConfig<ФормаОбучения, EducationTypeDTO>()
+                .Map(dest => dest.Guid, src => src.ГУИД)
+                .Map(dest => dest.Title, src => src.Наименование);
         }
     }
 }

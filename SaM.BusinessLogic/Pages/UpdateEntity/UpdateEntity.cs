@@ -15,20 +15,29 @@ namespace SaM.BusinessLogic.Pages.UpdateEntity
         public UpdateEntity()
         {
             datamanager = new DataManager1C();
-
-            TypeAdapterConfig<ГруппаПрограммыОбучения, CategoryDTO>.NewConfig()
-                .Map(d => d.Guid, s => s.ГУИД)
-                .Map(d => d.Title, s => s.Наименование);
         }
 
-        public IEnumerable<CategoryDTO> GetCategory() {
+        public IEnumerable<CategoryDTO> GetCategories() {
 
-            var query = datamanager.Categories.GetAll().ToList() as IEnumerable<ГруппаПрограммыОбучения>;
-            var result = query.Adapt<IEnumerable<CategoryDTO>>();
+            var query = datamanager.Categories.GetAll().Adapt<IEnumerable<CategoryDTO>>();
 
-            return result;
+            return query;
         }
 
+        public IEnumerable<CertificationDTO> GetCertifications()
+        {
+            var t = datamanager.Certifications.GetAll();
+            var query = t.Adapt<IEnumerable<CertificationDTO>>();
 
+            return query;
+        }
+
+        public IEnumerable<EducationTypeDTO> GetEducationTypes()
+        {
+            var t = datamanager.EducationTypes.GetAll();
+            var query = t.Adapt<IEnumerable<EducationTypeDTO>>();
+
+            return query;
+        }
     }
 }
