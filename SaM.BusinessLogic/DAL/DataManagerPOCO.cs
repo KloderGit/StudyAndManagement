@@ -1,5 +1,5 @@
 ﻿using SaM.BusinessLogic.DAL.RepositoryPOCO;
-using SaM.BusinessLogic.POCO;
+using SaM.Common.POCO;
 using SaM.Domain.Interfaces.Repositories;
 using System;
 

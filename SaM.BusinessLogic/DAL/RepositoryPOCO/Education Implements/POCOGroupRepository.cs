@@ -1,4 +1,4 @@
-﻿using SaM.BusinessLogic.POCO;
+﻿using SaM.Common.POCO;
 using SaM.Domain.Core.Education;
 using SaM.Domain.Interfaces.Repositories;
 

@@ -1,4 +1,4 @@
-﻿using SaM.BusinessLogic.POCO;
+﻿using SaM.Common.POCO;
 using SaM.Domain.Interfaces.Repositories;
 
 namespace SaM.BusinessLogic.DAL.RepositoryPOCO
