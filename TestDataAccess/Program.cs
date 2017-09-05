@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using SaM.BusinessLogic.DAL;
 using SaM.BusinessLogic.Pages.UpdateEntity;
 using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core.Education;
@@ -51,6 +52,7 @@ namespace TestDataAccess
 
             var sss = rrr.GetEducationTypes();
 
+            var ddddd = new DataManagerFromEF().GetCategories();
 
             Console.ReadKey();
         }
