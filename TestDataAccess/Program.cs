@@ -1,10 +1,10 @@
-﻿using SaM.DataBases.EntityFramework;
+﻿using Mapster;
+using SaM.BusinessLogic.Pages.UpdateEntity;
+using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core.Education;
 using SaM.Domain.Interfaces.Repositories;
-using SaM.Services;
-using SoapService1C;
 using System;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace TestDataAccess
 {
@@ -12,8 +12,12 @@ namespace TestDataAccess
     {
         static void Main(string[] args)
         {
-            WorkEF();
-            //DisplayResultAsync();
+            Assembly assem = typeof(SaM.Common.Infrastructure.Mapster.Config1CtoDTO).GetTypeInfo().Assembly;
+
+            TypeAdapterConfig.GlobalSettings.Scan(assem);
+
+            //WorkEF();
+            DisplayResultAsync();
             Console.ReadLine();
         }
 
@@ -36,14 +40,17 @@ namespace TestDataAccess
         }
 
 
-        static async void DisplayResultAsync()
+        static void DisplayResultAsync()
         {
-            var client = await new Provider1C().GetCategory();
 
-            foreach (var item in client)
-            {
-                Console.WriteLine( item.Guid.ToString() + " | " + item.Title );
-            }
+            var rrr = new UpdateEntity();
+
+            var ttt = rrr.GetCategories();
+
+            var mmm = rrr.GetCertifications();
+
+            var sss = rrr.GetEducationTypes();
+
 
             Console.ReadKey();
         }

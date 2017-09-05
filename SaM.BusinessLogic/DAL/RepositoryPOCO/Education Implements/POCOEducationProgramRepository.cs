@@ -1,6 +1,6 @@
 ﻿using SaM.Domain.Interfaces.Repositories;
-using SaM.BusinessLogic.POCO;
 using SaM.Domain.Core.Education;
+using SaM.Common.POCO;
 
 namespace SaM.BusinessLogic.DAL.RepositoryPOCO
 {

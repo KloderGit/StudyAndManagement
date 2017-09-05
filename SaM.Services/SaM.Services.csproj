@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SaM.BusinessLogic\SaM.BusinessLogic.csproj" />
+    <ProjectReference Include="..\SaM.Domain\SaM.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
