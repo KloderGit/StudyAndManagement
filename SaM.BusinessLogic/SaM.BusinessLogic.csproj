@@ -5,13 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SaM.Common\SaM.Common.csproj" />
-    <ProjectReference Include="..\SaM.DataBases\SaM.DataBases.csproj" />
-    <ProjectReference Include="..\SaM.Services\SaM.Services.csproj" />
+    <Compile Remove="DAL\**" />
+    <EmbeddedResource Remove="DAL\**" />
+    <None Remove="DAL\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\" />
+    <ProjectReference Include="..\SaM.Common\SaM.Common.csproj" />
+    <ProjectReference Include="..\SaM.DataBases\SaM.DataBases.csproj" />
+    <ProjectReference Include="..\SaM.Services\SaM.Services.csproj" />
   </ItemGroup>
 
 </Project>
