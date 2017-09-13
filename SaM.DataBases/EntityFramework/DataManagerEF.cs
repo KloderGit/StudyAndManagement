@@ -4,7 +4,7 @@ using SaM.Domain.Core.User;
 
 namespace SaM.DataBases.EntityFramework
 {
-    public class DataManagerEF : IUnitOfWork
+    public class DataManagerEF : IUnitOfWorkEF
     {
         private ApplicationContext db;
 
