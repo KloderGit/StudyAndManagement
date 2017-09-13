@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPEducationTypeRepository : ImplementRepositorySOAP1C<ФормаОбучения>, IEducationTypeRepository<ФормаОбучения>
+    public class SOAPEducationTypeRepository : ImplementRepositorySOAP1C<ФормаОбучения>, ICommonRepository<ФормаОбучения>
     {
         ПФ_ПорталДПОPortTypeClient service;
 
