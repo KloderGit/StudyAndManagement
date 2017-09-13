@@ -6,9 +6,8 @@ using SoapService1C;
 
 namespace SaM.Services.Repository1C
 {
-    public class DataManager1C : IDataManager1C
+    public class DataManager1C : IUnitOfWork1C
     {
-
         ПФ_ПорталДПОPortTypeClient soap;
 
         public DataManager1C()
@@ -18,16 +17,10 @@ namespace SaM.Services.Repository1C
 
         SOAPCategoryRepository CategoriesRepository;
         SOAPCertificationRepository CertificationsRepository;
-        SOAPEducationTypeRepository EducationTypesRepositories;
+        SOAPEducationTypeRepository EducationTypesRepositories;        
 
-
-        public ICategoryRepository<ГруппаПрограммыОбучения> Categories => CategoriesRepository ?? (CategoriesRepository = new SOAPCategoryRepository(soap));
-
-        public ICertificationRepository<ФормаКонтроля> Certifications => CertificationsRepository ?? (CertificationsRepository = new SOAPCertificationRepository(soap));
-
-        public IEducationTypeRepository<ФормаОбучения> EducationTypes => EducationTypesRepositories ?? (EducationTypesRepositories = new SOAPEducationTypeRepository(soap));
-
-
-        int t = 99;
+        public ICommonRepository<ГруппаПрограммыОбучения> Categories => CategoriesRepository ?? (CategoriesRepository = new SOAPCategoryRepository(soap));
+        public ICommonRepository<ФормаКонтроля> Certifications => CertificationsRepository ?? (CertificationsRepository = new SOAPCertificationRepository(soap));
+        public ICommonRepository<ФормаОбучения> EducationTypes => EducationTypesRepositories ?? (EducationTypesRepositories = new SOAPEducationTypeRepository(soap));
     }
 }

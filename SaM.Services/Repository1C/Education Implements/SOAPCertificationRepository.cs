@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPCertificationRepository : ImplementRepositorySOAP1C<ФормаКонтроля>, ICertificationRepository<ФормаКонтроля>
+    public class SOAPCertificationRepository : ImplementRepositorySOAP1C<ФормаКонтроля>, ICommonRepository<ФормаКонтроля>
     {
         ПФ_ПорталДПОPortTypeClient service;
 

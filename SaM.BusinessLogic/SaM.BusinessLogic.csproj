@@ -10,4 +10,8 @@
     <ProjectReference Include="..\SaM.Services\SaM.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DAL\" />
+  </ItemGroup>
+
 </Project>
