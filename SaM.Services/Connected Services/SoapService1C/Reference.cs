@@ -5092,14 +5092,18 @@ namespace SoapService1C
     /// <param name="serviceEndpoint">The endpoint to configure</param>
     /// <param name="clientCredentials">The client credentials</param>
     static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
-        
-        public ПФ_ПорталДПОPortTypeClient(EndpointConfiguration endpointConfiguration) : 
+
+        public ПФ_ПорталДПОPortTypeClient(EndpointConfiguration endpointConfiguration) :
                 base(ПФ_ПорталДПОPortTypeClient.GetBindingForEndpoint(endpointConfiguration), ПФ_ПорталДПОPortTypeClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
+
+            ChannelFactory.Credentials.UserName.UserName = "Kloder";
+            ChannelFactory.Credentials.UserName.Password = "Kaligula2";
+
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
-        
+
         public ПФ_ПорталДПОPortTypeClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
                 base(ПФ_ПорталДПОPortTypeClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
@@ -5568,7 +5572,9 @@ namespace SoapService1C
         {
             if ((endpointConfiguration == EndpointConfiguration.ПФ_ПорталДПОSoap))
             {
-                System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
+                System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding(System.ServiceModel.BasicHttpSecurityMode.TransportCredentialOnly);
+                result.Security.Transport.ClientCredentialType = System.ServiceModel.HttpClientCredentialType.Basic;
+
                 result.MaxBufferSize = int.MaxValue;
                 result.ReaderQuotas = System.Xml.XmlDictionaryReaderQuotas.Max;
                 result.MaxReceivedMessageSize = int.MaxValue;
