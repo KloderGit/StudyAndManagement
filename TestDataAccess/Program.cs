@@ -1,6 +1,12 @@
-﻿using SaM.DataBases.EntityFramework;
+﻿using AutoMapper;
+using SaM.BusinessLogic.DataAccessLayer;
+using SaM.Common.DTO;
+using SaM.Common.Infrastructure.Mapster;
+using SaM.DataBases.EntityFramework;
+using SaM.Domain.Core.Education;
 using SaM.Services.Repository1C;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace TestDataAccess
@@ -13,51 +19,51 @@ namespace TestDataAccess
 
             //TypeAdapterConfig.GlobalSettings.Scan(assem);
 
-            var sfsdf = new DataManagerEF();
+            Mappings.RegisterMappings();
 
-            var ddd = sfsdf.Categories.GetList();
+            var ttt = new DataManager();
 
-            var df = new DataManager1C();
+            var eeee = ttt.datamanagerEF.Categories.GetList().FirstOrDefault();
 
-            var kkk = df.Categories.GetList();
+            var mmm = Mapper.Map<Category, CategoryDTO>(eeee);
 
-            //WorkEF();
-            //DisplayResultAsync();
+            mmm.Title = "LKJLKJSKLDJ LKJSDDSA";
+            mmm.Id = 1000;
+
+            var wwwww = ttt.datamanagerEF.Categories.GetList().FirstOrDefault();
+
+            wwwww = Mapper.Map<CategoryDTO, Category>(mmm);
+
             Console.ReadLine();
         }
+    }
 
 
-        //static void WorkEF() {
-        //    IDataManager datamanager = new DataManagerEntityFramework();
 
-        //    var cat = datamanager.Categories.GetAll();
+    public class Mappings
+    {
+        public static void RegisterMappings()
+        {
+            var all =
+            Assembly
+               .GetEntryAssembly()
+               .GetReferencedAssemblies()
+               .Select(Assembly.Load)
+               .SelectMany(x => x.DefinedTypes)
+               .Where(type => typeof(IProfile).GetTypeInfo().IsAssignableFrom(type.AsType()));
 
-        //    var nnn = new Category { Guid = Guid.NewGuid(), Title = "The first category - Test Entity access" };
+            foreach (var ti in all)
+            {
+                var t = ti.AsType();
+                if (t.Equals(typeof(IProfile)))
+                {
+                    Mapper.Initialize(cfg =>
+                    {
+                        cfg.AddProfiles(t); // Initialise each Profile classe
+                    });
+                }
+            }
+        }
 
-        //    datamanager.Categories.Add(nnn);
-        //    datamanager.Save();
-
-        //    foreach (var item in cat)
-        //    {
-        //        Console.WriteLine(item.Guid.ToString() + " | " + item.Title);
-        //    }
-
-        //}
-
-
-        //static void DisplayResultAsync()
-        //{
-
-        //    var rrr = new UpdateEntity();
-
-        //    var ttt = rrr.GetCategories();
-
-        //    var mmm = rrr.GetCertifications();
-
-        //    var sss = rrr.GetEducationTypes();
-
-
-        //    Console.ReadKey();
-        //}
     }
 }
