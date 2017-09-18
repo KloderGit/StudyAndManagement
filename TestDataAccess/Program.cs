@@ -1,6 +1,14 @@
-﻿using SaM.DataBases.EntityFramework;
+﻿using AutoMapper;
+using Mapster;
+using SaM.BusinessLogic.DataAccessLayer;
+using SaM.Common.DTO;
+using SaM.Common.Infrastructure.Mapster;
+using SaM.DataBases.EntityFramework;
+using SaM.Domain.Core.Education;
 using SaM.Services.Repository1C;
+using SoapService1C;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace TestDataAccess
@@ -9,55 +17,36 @@ namespace TestDataAccess
     {
         static void Main(string[] args)
         {
-            //Assembly assem = typeof(SaM.Common.Infrastructure.Mapster.Config1CtoDTO).GetTypeInfo().Assembly;
 
+            // Mapster
+            //Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
             //TypeAdapterConfig.GlobalSettings.Scan(assem);
 
-            var sfsdf = new DataManagerEF();
+            //var mmm = new Category { Id = 123, Guid = Guid.NewGuid(), Title = "OOOOOOOOOOOOOO" };
+            //var pop = mmm.Adapt<CategoryDTO>();
+            //pop.Id = 45;
 
-            var ddd = sfsdf.Categories.GetList();
+            //mmm = pop.Adapt<CategoryDTO, Category>(mmm);
+            // -----------------------------
 
-            var df = new DataManager1C();
 
-            var kkk = df.Categories.GetList();
+            // Automapper
 
-            //WorkEF();
-            //DisplayResultAsync();
+            //IMapper mapper = AutoMapperConfiguration.CreateMappings();
+
+            //var ttt = new DataManager();
+            //var mmm = new Category { Id=123, Guid = Guid.NewGuid(), Title = "OOOOOOOOOOOOOO" };
+            //var sss = ttt.datamanager1C.Categories.GetList().FirstOrDefault();
+            //var ooo = mapper.Map<ГруппаПрограммыОбучения, CategoryDTO>(sss);
+            ////ooo.Id = 555;
+            //var sdf = mapper.Map<CategoryDTO, Category>(ooo, mmm);
+            //------------------------------------
+
+
+
+
             Console.ReadLine();
         }
-
-
-        //static void WorkEF() {
-        //    IDataManager datamanager = new DataManagerEntityFramework();
-
-        //    var cat = datamanager.Categories.GetAll();
-
-        //    var nnn = new Category { Guid = Guid.NewGuid(), Title = "The first category - Test Entity access" };
-
-        //    datamanager.Categories.Add(nnn);
-        //    datamanager.Save();
-
-        //    foreach (var item in cat)
-        //    {
-        //        Console.WriteLine(item.Guid.ToString() + " | " + item.Title);
-        //    }
-
-        //}
-
-
-        //static void DisplayResultAsync()
-        //{
-
-        //    var rrr = new UpdateEntity();
-
-        //    var ttt = rrr.GetCategories();
-
-        //    var mmm = rrr.GetCertifications();
-
-        //    var sss = rrr.GetEducationTypes();
-
-
-        //    Console.ReadKey();
-        //}
     }
+
 }
