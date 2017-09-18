@@ -17,23 +17,31 @@ namespace TestDataAccess
     {
         static void Main(string[] args)
         {
+
+            // Mapster
             //Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
             //TypeAdapterConfig.GlobalSettings.Scan(assem);
 
-            IMapper mapper = AutoMapperConfiguration.CreateMappings();
-
-            var ttt = new DataManager();
-
-            var mmm = new Category { Id=123, Guid = Guid.NewGuid(), Title = "OOOOOOOOOOOOOO" };
-            var sss = ttt.datamanager1C.Categories.GetList().FirstOrDefault();
-            var ooo = mapper.Map<ГруппаПрограммыОбучения, CategoryDTO>(sss);
-            mmm = mapper.Map<CategoryDTO, Category>(ooo);
-
-
+            //var mmm = new Category { Id = 123, Guid = Guid.NewGuid(), Title = "OOOOOOOOOOOOOO" };
             //var pop = mmm.Adapt<CategoryDTO>();
             //pop.Id = 45;
 
-            //mmm = pop.Adapt<Category>();
+            //mmm = pop.Adapt<CategoryDTO, Category>(mmm);
+            // -----------------------------
+
+
+            // Automapper
+
+            //IMapper mapper = AutoMapperConfiguration.CreateMappings();
+
+            //var ttt = new DataManager();
+            //var mmm = new Category { Id=123, Guid = Guid.NewGuid(), Title = "OOOOOOOOOOOOOO" };
+            //var sss = ttt.datamanager1C.Categories.GetList().FirstOrDefault();
+            //var ooo = mapper.Map<ГруппаПрограммыОбучения, CategoryDTO>(sss);
+            ////ooo.Id = 555;
+            //var sdf = mapper.Map<CategoryDTO, Category>(ooo, mmm);
+            //------------------------------------
+
 
 
 

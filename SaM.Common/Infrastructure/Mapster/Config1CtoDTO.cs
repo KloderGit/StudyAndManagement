@@ -25,9 +25,7 @@ namespace SaM.Common.Infrastructure.Mapster
                 .Map(dest => dest.Title, src => src.Наименование);
 
 
-            config.NewConfig<CategoryDTO, Category>()
-                .Map(ss => ss.Guid, dd => dd.Guid)
-                .Map(sr => sr.Title, ds => ds.Title );
+            config.NewConfig<CategoryDTO, Category>().Ignore(ss => ss.Id);
 
             config.NewConfig<Category, CategoryDTO>();
 

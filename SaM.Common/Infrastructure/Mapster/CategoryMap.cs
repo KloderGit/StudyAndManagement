@@ -13,9 +13,9 @@ namespace SaM.Common.Infrastructure.Mapster
         public CategoryMap()
         {
             CreateMap<Category, CategoryDTO>();
-            CreateMap<CategoryDTO, Category>()
-                .ForMember(de => de.Guid, sr => sr.MapFrom(s => s.Guid))
-                .ForMember(de => de.Title, sr => sr.MapFrom(s => s.Title));
+            //CreateMap<CategoryDTO, Category>().ForSourceMember(ss => ss.Id, ee => ee.Ignore());
+            CreateMap<CategoryDTO, Category>().ForMember(ss => ss.Id, ee => ee.Ignore());
+
 
 
             CreateMap<ГруппаПрограммыОбучения, CategoryDTO>()
