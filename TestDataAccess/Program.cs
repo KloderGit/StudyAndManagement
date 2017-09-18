@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Mapster;
+using SaM.BusinessLogic;
 using SaM.BusinessLogic.DataAccessLayer;
 using SaM.Common.DTO;
 using SaM.Common.Infrastructure.Mapster;
@@ -17,6 +18,20 @@ namespace TestDataAccess
     {
         static void Main(string[] args)
         {
+            var facad = new AdminFacade();
+
+            var ddd = facad.UpdateAllCategoriesFromService();
+
+
+
+
+
+
+
+
+
+
+
 
             // Mapster
             //Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
