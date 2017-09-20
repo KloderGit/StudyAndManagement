@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SaM.Domain.Interfaces.Repositories;
-using SoapService1C;
+﻿using SaM.Domain.Interfaces.Repositories;
+using SoapService1full;
 
 namespace SaM.Services.Repository1C
 {

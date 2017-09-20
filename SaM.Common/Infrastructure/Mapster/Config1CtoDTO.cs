@@ -1,10 +1,7 @@
 ﻿using Mapster;
 using SaM.Common.DTO;
 using SaM.Domain.Core.Education;
-using SoapService1C;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using SoapService1full;
 
 namespace SaM.Common.Infrastructure.Mapster
 {

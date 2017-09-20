@@ -7,244 +7,244 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SoapService1C
+namespace SoapService1full
 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost/dposervices", ConfigurationName="SoapService1C.ПФ_ПорталДПОPortType")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost/dposervices", ConfigurationName="SoapService1full.ПФ_ПорталДПОPortType")]
     public interface ПФ_ПорталДПОPortType
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьСлушателей", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьСлушателейResponse> ПолучитьСлушателейAsync(SoapService1C.ПолучитьСлушателейRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьСлушателейResponse> ПолучитьСлушателейAsync(SoapService1full.ПолучитьСлушателейRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьУспеваемость", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьУспеваемостьResponse> ПолучитьУспеваемостьAsync(SoapService1C.ПолучитьУспеваемостьRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьУспеваемостьResponse> ПолучитьУспеваемостьAsync(SoapService1full.ПолучитьУспеваемостьRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьДоговора", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьДоговораResponse> ПолучитьДоговораAsync(SoapService1C.ПолучитьДоговораRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьДоговораResponse> ПолучитьДоговораAsync(SoapService1full.ПолучитьДоговораRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьОплаты", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьОплатыResponse> ПолучитьОплатыAsync(SoapService1C.ПолучитьОплатыRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьОплатыResponse> ПолучитьОплатыAsync(SoapService1full.ПолучитьОплатыRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:СоздатьВедомость", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.СоздатьВедомостьResponse> СоздатьВедомостьAsync(SoapService1C.СоздатьВедомостьRequest request);
+        System.Threading.Tasks.Task<SoapService1full.СоздатьВедомостьResponse> СоздатьВедомостьAsync(SoapService1full.СоздатьВедомостьRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ВнестиОценки", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ВнестиОценкиResponse> ВнестиОценкиAsync(SoapService1C.ВнестиОценкиRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ВнестиОценкиResponse> ВнестиОценкиAsync(SoapService1full.ВнестиОценкиRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ОтправитьОценкиНаПортал", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ОтправитьОценкиНаПорталResponse> ОтправитьОценкиНаПорталAsync(SoapService1C.ОтправитьОценкиНаПорталRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ОтправитьОценкиНаПорталResponse> ОтправитьОценкиНаПорталAsync(SoapService1full.ОтправитьОценкиНаПорталRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ДобавитьСтудентаВВедомость", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВВедомостьResponse> ДобавитьСтудентаВВедомостьAsync(SoapService1C.ДобавитьСтудентаВВедомостьRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВВедомостьResponse> ДобавитьСтудентаВВедомостьAsync(SoapService1full.ДобавитьСтудентаВВедомостьRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьПреподавателей", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьПреподавателейResponse> ПолучитьПреподавателейAsync(SoapService1C.ПолучитьПреподавателейRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьПреподавателейResponse> ПолучитьПреподавателейAsync(SoapService1full.ПолучитьПреподавателейRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьФормыКонтроля", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьФормыКонтроляResponse> ПолучитьФормыКонтроляAsync(SoapService1C.ПолучитьФормыКонтроляRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьФормыКонтроляResponse> ПолучитьФормыКонтроляAsync(SoapService1full.ПолучитьФормыКонтроляRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьДисциплины", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьДисциплиныResponse> ПолучитьДисциплиныAsync(SoapService1C.ПолучитьДисциплиныRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьДисциплиныResponse> ПолучитьДисциплиныAsync(SoapService1full.ПолучитьДисциплиныRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьПрограммыОбучения", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьПрограммыОбученияResponse> ПолучитьПрограммыОбученияAsync(SoapService1C.ПолучитьПрограммыОбученияRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьПрограммыОбученияResponse> ПолучитьПрограммыОбученияAsync(SoapService1full.ПолучитьПрограммыОбученияRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьГруппы", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьГруппыResponse> ПолучитьГруппыAsync(SoapService1C.ПолучитьГруппыRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьГруппыResponse> ПолучитьГруппыAsync(SoapService1full.ПолучитьГруппыRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьУровниОбразования", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьУровниОбразованияResponse> ПолучитьУровниОбразованияAsync(SoapService1C.ПолучитьУровниОбразованияRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьУровниОбразованияResponse> ПолучитьУровниОбразованияAsync(SoapService1full.ПолучитьУровниОбразованияRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьБазовыеОбразования", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьБазовыеОбразованияResponse> ПолучитьБазовыеОбразованияAsync(SoapService1C.ПолучитьБазовыеОбразованияRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьБазовыеОбразованияResponse> ПолучитьБазовыеОбразованияAsync(SoapService1full.ПолучитьБазовыеОбразованияRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьОценки", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьОценкиResponse> ПолучитьОценкиAsync(SoapService1C.ПолучитьОценкиRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьОценкиResponse> ПолучитьОценкиAsync(SoapService1full.ПолучитьОценкиRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьТипыДоговоров", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьТипыДоговоровResponse> ПолучитьТипыДоговоровAsync(SoapService1C.ПолучитьТипыДоговоровRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьТипыДоговоровResponse> ПолучитьТипыДоговоровAsync(SoapService1full.ПолучитьТипыДоговоровRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьПлательщиков", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьПлательщиковResponse> ПолучитьПлательщиковAsync(SoapService1C.ПолучитьПлательщиковRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьПлательщиковResponse> ПолучитьПлательщиковAsync(SoapService1full.ПолучитьПлательщиковRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьОборудование", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьОборудованиеResponse> ПолучитьОборудованиеAsync(SoapService1C.ПолучитьОборудованиеRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьОборудованиеResponse> ПолучитьОборудованиеAsync(SoapService1full.ПолучитьОборудованиеRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьГруппыПрограммОбучения", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьГруппыПрограммОбученияResponse> ПолучитьГруппыПрограммОбученияAsync(SoapService1C.ПолучитьГруппыПрограммОбученияRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьГруппыПрограммОбученияResponse> ПолучитьГруппыПрограммОбученияAsync(SoapService1full.ПолучитьГруппыПрограммОбученияRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьВидыПрограмм", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьВидыПрограммResponse> ПолучитьВидыПрограммAsync(SoapService1C.ПолучитьВидыПрограммRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьВидыПрограммResponse> ПолучитьВидыПрограммAsync(SoapService1full.ПолучитьВидыПрограммRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьФормыОбучения", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьФормыОбученияResponse> ПолучитьФормыОбученияAsync(SoapService1C.ПолучитьФормыОбученияRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьФормыОбученияResponse> ПолучитьФормыОбученияAsync(SoapService1full.ПолучитьФормыОбученияRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьСпециальности", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьСпециальностиResponse> ПолучитьСпециальностиAsync(SoapService1C.ПолучитьСпециальностиRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьСпециальностиResponse> ПолучитьСпециальностиAsync(SoapService1full.ПолучитьСпециальностиRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьТипыМероприятий", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьТипыМероприятийResponse> ПолучитьТипыМероприятийAsync(SoapService1C.ПолучитьТипыМероприятийRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьТипыМероприятийResponse> ПолучитьТипыМероприятийAsync(SoapService1full.ПолучитьТипыМероприятийRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьКвалификации", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьКвалификацииResponse> ПолучитьКвалификацииAsync(SoapService1C.ПолучитьКвалификацииRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьКвалификацииResponse> ПолучитьКвалификацииAsync(SoapService1full.ПолучитьКвалификацииRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьВыдаваемыеДокументы", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьВыдаваемыеДокументыResponse> ПолучитьВыдаваемыеДокументыAsync(SoapService1C.ПолучитьВыдаваемыеДокументыRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьВыдаваемыеДокументыResponse> ПолучитьВыдаваемыеДокументыAsync(SoapService1full.ПолучитьВыдаваемыеДокументыRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьУспеваемостьСтудентов", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьУспеваемостьСтудентовResponse> ПолучитьУспеваемостьСтудентовAsync(SoapService1C.ПолучитьУспеваемостьСтудентовRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьУспеваемостьСтудентовResponse> ПолучитьУспеваемостьСтудентовAsync(SoapService1full.ПолучитьУспеваемостьСтудентовRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьСлушателейПоФИО", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьСлушателейПоФИОResponse> ПолучитьСлушателейПоФИОAsync(SoapService1C.ПолучитьСлушателейПоФИОRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьСлушателейПоФИОResponse> ПолучитьСлушателейПоФИОAsync(SoapService1full.ПолучитьСлушателейПоФИОRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:СоздатьАттестационнуюВедомость", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.СоздатьАттестационнуюВедомостьResponse> СоздатьАттестационнуюВедомостьAsync(SoapService1C.СоздатьАттестационнуюВедомостьRequest request);
+        System.Threading.Tasks.Task<SoapService1full.СоздатьАттестационнуюВедомостьResponse> СоздатьАттестационнуюВедомостьAsync(SoapService1full.СоздатьАттестационнуюВедомостьRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ДобавитьСтудентаВАттестационнуюВедомост" +
             "ь", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВАттестационнуюВедомостьResponse> ДобавитьСтудентаВАттестационнуюВедомостьAsync(SoapService1C.ДобавитьСтудентаВАттестационнуюВедомостьRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВАттестационнуюВедомостьResponse> ДобавитьСтудентаВАттестационнуюВедомостьAsync(SoapService1full.ДобавитьСтудентаВАттестационнуюВедомостьRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:СоздатьВедомостьПосещаемости", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.СоздатьВедомостьПосещаемостиResponse> СоздатьВедомостьПосещаемостиAsync(SoapService1C.СоздатьВедомостьПосещаемостиRequest request);
+        System.Threading.Tasks.Task<SoapService1full.СоздатьВедомостьПосещаемостиResponse> СоздатьВедомостьПосещаемостиAsync(SoapService1full.СоздатьВедомостьПосещаемостиRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ДобавитьСтудентаВВедомостьПосещаемости", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВВедомостьПосещаемостиResponse> ДобавитьСтудентаВВедомостьПосещаемостиAsync(SoapService1C.ДобавитьСтудентаВВедомостьПосещаемостиRequest request);
+        System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВВедомостьПосещаемостиResponse> ДобавитьСтудентаВВедомостьПосещаемостиAsync(SoapService1full.ДобавитьСтудентаВВедомостьПосещаемостиRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьДанныеОСлушателяхФЛ", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         System.Threading.Tasks.Task<string> ПолучитьДанныеОСлушателяхФЛAsync(string GUIDФизЛица);
@@ -252,7 +252,7 @@ namespace SoapService1C
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьДанныеПоАттестациямФЛ", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         System.Threading.Tasks.Task<string> ПолучитьДанныеПоАттестациямФЛAsync(string GUIDФизЛица);
@@ -260,10 +260,33 @@ namespace SoapService1C
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьДанныеОФЛ", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ДанныеПоФизЛицу))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         System.Threading.Tasks.Task<string> ПолучитьДанныеОФЛAsync(string GUIDФизЛица);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьИзмененныеДанныеОФЛЗаПериод", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьИзмененныеДанныеОФЛЗаПериодResponse> ПолучитьИзмененныеДанныеОФЛЗаПериодAsync(SoapService1full.ПолучитьИзмененныеДанныеОФЛЗаПериодRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьИзмененныеДанныеОПрограммахДПОЗ" +
+            "аПериод", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодResponse> ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодAsync(SoapService1full.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьДанныеОПрограмме", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ФизЛицо))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProgramEdu[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        System.Threading.Tasks.Task<string> ПолучитьДанныеОПрограммеAsync(string GUIDПрограммы);
     }
     
     /// <remarks/>
@@ -1019,8 +1042,6 @@ namespace SoapService1C
         
         private string citizenshipField;
         
-        private string loginField;
-        
         private string birthField;
         
         private string phoneField;
@@ -1037,7 +1058,7 @@ namespace SoapService1C
         
         private string educationField;
         
-        private string codeField;
+        private ДанныеПоКарте[] cardListAllField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -1153,20 +1174,6 @@ namespace SoapService1C
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=8)]
-        public string login
-        {
-            get
-            {
-                return this.loginField;
-            }
-            set
-            {
-                this.loginField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
         public string birth
         {
             get
@@ -1180,7 +1187,7 @@ namespace SoapService1C
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
         public string phone
         {
             get
@@ -1194,7 +1201,7 @@ namespace SoapService1C
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
         public string email
         {
             get
@@ -1208,7 +1215,7 @@ namespace SoapService1C
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
         public string skype
         {
             get
@@ -1222,7 +1229,7 @@ namespace SoapService1C
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public string city
         {
             get
@@ -1236,7 +1243,7 @@ namespace SoapService1C
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
         public string adress
         {
             get
@@ -1250,7 +1257,7 @@ namespace SoapService1C
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
         public string post
         {
             get
@@ -1264,7 +1271,7 @@ namespace SoapService1C
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
         public string education
         {
             get
@@ -1278,7 +1285,64 @@ namespace SoapService1C
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+        [System.Xml.Serialization.XmlArrayAttribute(Order=16)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("card", IsNullable=false)]
+        public ДанныеПоКарте[] cardListAll
+        {
+            get
+            {
+                return this.cardListAllField;
+            }
+            set
+            {
+                this.cardListAllField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class ДанныеПоКарте
+    {
+        
+        private bool activeField;
+        
+        private string loginField;
+        
+        private string codeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool active
+        {
+            get
+            {
+                return this.activeField;
+            }
+            set
+            {
+                this.activeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string login
+        {
+            get
+            {
+                return this.loginField;
+            }
+            set
+            {
+                this.loginField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string code
         {
             get
@@ -1592,6 +1656,488 @@ namespace SoapService1C
             set
             {
                 this.subGroupField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class category
+    {
+        
+        private string gUIDField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string GUID
+        {
+            get
+            {
+                return this.gUIDField;
+            }
+            set
+            {
+                this.gUIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class teacher
+    {
+        
+        private string gUIDField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string GUID
+        {
+            get
+            {
+                return this.gUIDField;
+            }
+            set
+            {
+                this.gUIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class subject
+    {
+        
+        private string gUIDsubjectField;
+        
+        private string subjectNameField;
+        
+        private Attestation attestationField;
+        
+        private string durationField;
+        
+        private teacher teacherField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string GUIDsubject
+        {
+            get
+            {
+                return this.gUIDsubjectField;
+            }
+            set
+            {
+                this.gUIDsubjectField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string subjectName
+        {
+            get
+            {
+                return this.subjectNameField;
+            }
+            set
+            {
+                this.subjectNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Attestation Attestation
+        {
+            get
+            {
+                return this.attestationField;
+            }
+            set
+            {
+                this.attestationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string duration
+        {
+            get
+            {
+                return this.durationField;
+            }
+            set
+            {
+                this.durationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public teacher teacher
+        {
+            get
+            {
+                return this.teacherField;
+            }
+            set
+            {
+                this.teacherField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class Attestation
+    {
+        
+        private formControl formControlField;
+        
+        private ViewAttestation[] spisokVariantAttestationField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public formControl formControl
+        {
+            get
+            {
+                return this.formControlField;
+            }
+            set
+            {
+                this.formControlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public ViewAttestation[] SpisokVariantAttestation
+        {
+            get
+            {
+                return this.spisokVariantAttestationField;
+            }
+            set
+            {
+                this.spisokVariantAttestationField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class formControl
+    {
+        
+        private string gUIDFormControlField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string GUIDFormControl
+        {
+            get
+            {
+                return this.gUIDFormControlField;
+            }
+            set
+            {
+                this.gUIDFormControlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class ViewAttestation
+    {
+        
+        private string gUIDViewAttestationField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string GUIDViewAttestation
+        {
+            get
+            {
+                return this.gUIDViewAttestationField;
+            }
+            set
+            {
+                this.gUIDViewAttestationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class formEdu
+    {
+        
+        private string gUIDFormEducationField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string GUIDFormEducation
+        {
+            get
+            {
+                return this.gUIDFormEducationField;
+            }
+            set
+            {
+                this.gUIDFormEducationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/dposervices")]
+    public partial class ProgramEdu
+    {
+        
+        private string xML_IDField;
+        
+        private string nameField;
+        
+        private string typeProgramField;
+        
+        private string viewProgramField;
+        
+        private formEdu formEducationField;
+        
+        private subject[] listOfSubjectsField;
+        
+        private string activeField;
+        
+        private System.DateTime acceptDateField;
+        
+        private category categoryField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string XML_ID
+        {
+            get
+            {
+                return this.xML_IDField;
+            }
+            set
+            {
+                this.xML_IDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string typeProgram
+        {
+            get
+            {
+                return this.typeProgramField;
+            }
+            set
+            {
+                this.typeProgramField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string viewProgram
+        {
+            get
+            {
+                return this.viewProgramField;
+            }
+            set
+            {
+                this.viewProgramField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public formEdu formEducation
+        {
+            get
+            {
+                return this.formEducationField;
+            }
+            set
+            {
+                this.formEducationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=5)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public subject[] listOfSubjects
+        {
+            get
+            {
+                return this.listOfSubjectsField;
+            }
+            set
+            {
+                this.listOfSubjectsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string active
+        {
+            get
+            {
+                return this.activeField;
+            }
+            set
+            {
+                this.activeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=7)]
+        public System.DateTime acceptDate
+        {
+            get
+            {
+                return this.acceptDateField;
+            }
+            set
+            {
+                this.acceptDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public category category
+        {
+            get
+            {
+                return this.categoryField;
+            }
+            set
+            {
+                this.categoryField = value;
             }
         }
     }
@@ -3815,13 +4361,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.СтрокаСпискаСлушателей[] @return;
+        public SoapService1full.СтрокаСпискаСлушателей[] @return;
         
         public ПолучитьСлушателейResponse()
         {
         }
         
-        public ПолучитьСлушателейResponse(SoapService1C.СтрокаСпискаСлушателей[] @return)
+        public ПолучитьСлушателейResponse(SoapService1full.СтрокаСпискаСлушателей[] @return)
         {
             this.@return = @return;
         }
@@ -3858,13 +4404,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.СтрокаСпискаУспеваемости[] @return;
+        public SoapService1full.СтрокаСпискаУспеваемости[] @return;
         
         public ПолучитьУспеваемостьResponse()
         {
         }
         
-        public ПолучитьУспеваемостьResponse(SoapService1C.СтрокаСпискаУспеваемости[] @return)
+        public ПолучитьУспеваемостьResponse(SoapService1full.СтрокаСпискаУспеваемости[] @return)
         {
             this.@return = @return;
         }
@@ -3892,13 +4438,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.СтрокаСпискаДоговоров[] @return;
+        public SoapService1full.СтрокаСпискаДоговоров[] @return;
         
         public ПолучитьДоговораResponse()
         {
         }
         
-        public ПолучитьДоговораResponse(SoapService1C.СтрокаСпискаДоговоров[] @return)
+        public ПолучитьДоговораResponse(SoapService1full.СтрокаСпискаДоговоров[] @return)
         {
             this.@return = @return;
         }
@@ -3926,13 +4472,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.СтрокаСпискаОплат[] @return;
+        public SoapService1full.СтрокаСпискаОплат[] @return;
         
         public ПолучитьОплатыResponse()
         {
         }
         
-        public ПолучитьОплатыResponse(SoapService1C.СтрокаСпискаОплат[] @return)
+        public ПолучитьОплатыResponse(SoapService1full.СтрокаСпискаОплат[] @return)
         {
             this.@return = @return;
         }
@@ -4006,7 +4552,7 @@ namespace SoapService1C
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.СтрокаТЧВедомости[] ОценкиВедомости;
+        public SoapService1full.СтрокаТЧВедомости[] ОценкиВедомости;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=1)]
         public string ГУИДВедомости;
@@ -4015,7 +4561,7 @@ namespace SoapService1C
         {
         }
         
-        public ВнестиОценкиRequest(SoapService1C.СтрокаТЧВедомости[] ОценкиВедомости, string ГУИДВедомости)
+        public ВнестиОценкиRequest(SoapService1full.СтрокаТЧВедомости[] ОценкиВедомости, string ГУИДВедомости)
         {
             this.ОценкиВедомости = ОценкиВедомости;
             this.ГУИДВедомости = ГУИДВедомости;
@@ -4078,13 +4624,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.СтрокаТЧВедомости[] @return;
+        public SoapService1full.СтрокаТЧВедомости[] @return;
         
         public ОтправитьОценкиНаПорталResponse()
         {
         }
         
-        public ОтправитьОценкиНаПорталResponse(SoapService1C.СтрокаТЧВедомости[] @return)
+        public ОтправитьОценкиНаПорталResponse(SoapService1full.СтрокаТЧВедомости[] @return)
         {
             this.@return = @return;
         }
@@ -4157,13 +4703,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.Преподаватель[] @return;
+        public SoapService1full.Преподаватель[] @return;
         
         public ПолучитьПреподавателейResponse()
         {
         }
         
-        public ПолучитьПреподавателейResponse(SoapService1C.Преподаватель[] @return)
+        public ПолучитьПреподавателейResponse(SoapService1full.Преподаватель[] @return)
         {
             this.@return = @return;
         }
@@ -4191,13 +4737,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.ФормаКонтроля[] @return;
+        public SoapService1full.ФормаКонтроля[] @return;
         
         public ПолучитьФормыКонтроляResponse()
         {
         }
         
-        public ПолучитьФормыКонтроляResponse(SoapService1C.ФормаКонтроля[] @return)
+        public ПолучитьФормыКонтроляResponse(SoapService1full.ФормаКонтроля[] @return)
         {
             this.@return = @return;
         }
@@ -4225,13 +4771,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.Дисциплина[] @return;
+        public SoapService1full.Дисциплина[] @return;
         
         public ПолучитьДисциплиныResponse()
         {
         }
         
-        public ПолучитьДисциплиныResponse(SoapService1C.Дисциплина[] @return)
+        public ПолучитьДисциплиныResponse(SoapService1full.Дисциплина[] @return)
         {
             this.@return = @return;
         }
@@ -4259,13 +4805,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.СтрокаСпискаПрограммОбучения[] @return;
+        public SoapService1full.СтрокаСпискаПрограммОбучения[] @return;
         
         public ПолучитьПрограммыОбученияResponse()
         {
         }
         
-        public ПолучитьПрограммыОбученияResponse(SoapService1C.СтрокаСпискаПрограммОбучения[] @return)
+        public ПолучитьПрограммыОбученияResponse(SoapService1full.СтрокаСпискаПрограммОбучения[] @return)
         {
             this.@return = @return;
         }
@@ -4293,13 +4839,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.Группа[] @return;
+        public SoapService1full.Группа[] @return;
         
         public ПолучитьГруппыResponse()
         {
         }
         
-        public ПолучитьГруппыResponse(SoapService1C.Группа[] @return)
+        public ПолучитьГруппыResponse(SoapService1full.Группа[] @return)
         {
             this.@return = @return;
         }
@@ -4327,13 +4873,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.УровеньОбразования[] @return;
+        public SoapService1full.УровеньОбразования[] @return;
         
         public ПолучитьУровниОбразованияResponse()
         {
         }
         
-        public ПолучитьУровниОбразованияResponse(SoapService1C.УровеньОбразования[] @return)
+        public ПолучитьУровниОбразованияResponse(SoapService1full.УровеньОбразования[] @return)
         {
             this.@return = @return;
         }
@@ -4361,13 +4907,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.БазовоеОбразование[] @return;
+        public SoapService1full.БазовоеОбразование[] @return;
         
         public ПолучитьБазовыеОбразованияResponse()
         {
         }
         
-        public ПолучитьБазовыеОбразованияResponse(SoapService1C.БазовоеОбразование[] @return)
+        public ПолучитьБазовыеОбразованияResponse(SoapService1full.БазовоеОбразование[] @return)
         {
             this.@return = @return;
         }
@@ -4395,13 +4941,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.Оценка[] @return;
+        public SoapService1full.Оценка[] @return;
         
         public ПолучитьОценкиResponse()
         {
         }
         
-        public ПолучитьОценкиResponse(SoapService1C.Оценка[] @return)
+        public ПолучитьОценкиResponse(SoapService1full.Оценка[] @return)
         {
             this.@return = @return;
         }
@@ -4429,13 +4975,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.ТипДоговора[] @return;
+        public SoapService1full.ТипДоговора[] @return;
         
         public ПолучитьТипыДоговоровResponse()
         {
         }
         
-        public ПолучитьТипыДоговоровResponse(SoapService1C.ТипДоговора[] @return)
+        public ПолучитьТипыДоговоровResponse(SoapService1full.ТипДоговора[] @return)
         {
             this.@return = @return;
         }
@@ -4463,13 +5009,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.Плательщик[] @return;
+        public SoapService1full.Плательщик[] @return;
         
         public ПолучитьПлательщиковResponse()
         {
         }
         
-        public ПолучитьПлательщиковResponse(SoapService1C.Плательщик[] @return)
+        public ПолучитьПлательщиковResponse(SoapService1full.Плательщик[] @return)
         {
             this.@return = @return;
         }
@@ -4497,13 +5043,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.Оборудование[] @return;
+        public SoapService1full.Оборудование[] @return;
         
         public ПолучитьОборудованиеResponse()
         {
         }
         
-        public ПолучитьОборудованиеResponse(SoapService1C.Оборудование[] @return)
+        public ПолучитьОборудованиеResponse(SoapService1full.Оборудование[] @return)
         {
             this.@return = @return;
         }
@@ -4531,13 +5077,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.ГруппаПрограммыОбучения[] @return;
+        public SoapService1full.ГруппаПрограммыОбучения[] @return;
         
         public ПолучитьГруппыПрограммОбученияResponse()
         {
         }
         
-        public ПолучитьГруппыПрограммОбученияResponse(SoapService1C.ГруппаПрограммыОбучения[] @return)
+        public ПолучитьГруппыПрограммОбученияResponse(SoapService1full.ГруппаПрограммыОбучения[] @return)
         {
             this.@return = @return;
         }
@@ -4565,13 +5111,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.ВидПрограммы[] @return;
+        public SoapService1full.ВидПрограммы[] @return;
         
         public ПолучитьВидыПрограммResponse()
         {
         }
         
-        public ПолучитьВидыПрограммResponse(SoapService1C.ВидПрограммы[] @return)
+        public ПолучитьВидыПрограммResponse(SoapService1full.ВидПрограммы[] @return)
         {
             this.@return = @return;
         }
@@ -4599,13 +5145,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.ФормаОбучения[] @return;
+        public SoapService1full.ФормаОбучения[] @return;
         
         public ПолучитьФормыОбученияResponse()
         {
         }
         
-        public ПолучитьФормыОбученияResponse(SoapService1C.ФормаОбучения[] @return)
+        public ПолучитьФормыОбученияResponse(SoapService1full.ФормаОбучения[] @return)
         {
             this.@return = @return;
         }
@@ -4633,13 +5179,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.Специальность[] @return;
+        public SoapService1full.Специальность[] @return;
         
         public ПолучитьСпециальностиResponse()
         {
         }
         
-        public ПолучитьСпециальностиResponse(SoapService1C.Специальность[] @return)
+        public ПолучитьСпециальностиResponse(SoapService1full.Специальность[] @return)
         {
             this.@return = @return;
         }
@@ -4667,13 +5213,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.ТипМероприятия[] @return;
+        public SoapService1full.ТипМероприятия[] @return;
         
         public ПолучитьТипыМероприятийResponse()
         {
         }
         
-        public ПолучитьТипыМероприятийResponse(SoapService1C.ТипМероприятия[] @return)
+        public ПолучитьТипыМероприятийResponse(SoapService1full.ТипМероприятия[] @return)
         {
             this.@return = @return;
         }
@@ -4701,13 +5247,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.ПрисваиваемаяКвалификация[] @return;
+        public SoapService1full.ПрисваиваемаяКвалификация[] @return;
         
         public ПолучитьКвалификацииResponse()
         {
         }
         
-        public ПолучитьКвалификацииResponse(SoapService1C.ПрисваиваемаяКвалификация[] @return)
+        public ПолучитьКвалификацииResponse(SoapService1full.ПрисваиваемаяКвалификация[] @return)
         {
             this.@return = @return;
         }
@@ -4735,13 +5281,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.ВыдаваемыйДокумент[] @return;
+        public SoapService1full.ВыдаваемыйДокумент[] @return;
         
         public ПолучитьВыдаваемыеДокументыResponse()
         {
         }
         
-        public ПолучитьВыдаваемыеДокументыResponse(SoapService1C.ВыдаваемыйДокумент[] @return)
+        public ПолучитьВыдаваемыеДокументыResponse(SoapService1full.ВыдаваемыйДокумент[] @return)
         {
             this.@return = @return;
         }
@@ -4778,13 +5324,13 @@ namespace SoapService1C
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
-        public SoapService1C.СтрокаСпискаУспеваемости[] @return;
+        public SoapService1full.СтрокаСпискаУспеваемости[] @return;
         
         public ПолучитьУспеваемостьСтудентовResponse()
         {
         }
         
-        public ПолучитьУспеваемостьСтудентовResponse(SoapService1C.СтрокаСпискаУспеваемости[] @return)
+        public ПолучитьУспеваемостьСтудентовResponse(SoapService1full.СтрокаСпискаУспеваемости[] @return)
         {
             this.@return = @return;
         }
@@ -4825,13 +5371,13 @@ namespace SoapService1C
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        public SoapService1C.НайденныйСлушатель[] @return;
+        public SoapService1full.НайденныйСлушатель[] @return;
         
         public ПолучитьСлушателейПоФИОResponse()
         {
         }
         
-        public ПолучитьСлушателейПоФИОResponse(SoapService1C.НайденныйСлушатель[] @return)
+        public ПолучитьСлушателейПоФИОResponse(SoapService1full.НайденныйСлушатель[] @return)
         {
             this.@return = @return;
         }
@@ -5076,14 +5622,106 @@ namespace SoapService1C
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
-    public interface ПФ_ПорталДПОPortTypeChannel : SoapService1C.ПФ_ПорталДПОPortType, System.ServiceModel.IClientChannel
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ПолучитьИзмененныеДанныеОФЛЗаПериод", WrapperNamespace="http://localhost/dposervices", IsWrapped=true)]
+    public partial class ПолучитьИзмененныеДанныеОФЛЗаПериодRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime ДатаОт;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime ДатаДо;
+        
+        public ПолучитьИзмененныеДанныеОФЛЗаПериодRequest()
+        {
+        }
+        
+        public ПолучитьИзмененныеДанныеОФЛЗаПериодRequest(System.DateTime ДатаОт, System.DateTime ДатаДо)
+        {
+            this.ДатаОт = ДатаОт;
+            this.ДатаДо = ДатаДо;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ПолучитьИзмененныеДанныеОФЛЗаПериодResponse", WrapperNamespace="http://localhost/dposervices", IsWrapped=true)]
+    public partial class ПолучитьИзмененныеДанныеОФЛЗаПериодResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
+        public string @return;
+        
+        public ПолучитьИзмененныеДанныеОФЛЗаПериодResponse()
+        {
+        }
+        
+        public ПолучитьИзмененныеДанныеОФЛЗаПериодResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериод", WrapperNamespace="http://localhost/dposervices", IsWrapped=true)]
+    public partial class ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime ДатаОт;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime ДатаДо;
+        
+        public ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодRequest()
+        {
+        }
+        
+        public ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодRequest(System.DateTime ДатаОт, System.DateTime ДатаДо)
+        {
+            this.ДатаОт = ДатаОт;
+            this.ДатаДо = ДатаДо;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодResponse", WrapperNamespace="http://localhost/dposervices", IsWrapped=true)]
+    public partial class ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
+        public string @return;
+        
+        public ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодResponse()
+        {
+        }
+        
+        public ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    public interface ПФ_ПорталДПОPortTypeChannel : SoapService1full.ПФ_ПорталДПОPortType, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
-    public partial class ПФ_ПорталДПОPortTypeClient : System.ServiceModel.ClientBase<SoapService1C.ПФ_ПорталДПОPortType>, SoapService1C.ПФ_ПорталДПОPortType
+    public partial class ПФ_ПорталДПОPortTypeClient : System.ServiceModel.ClientBase<SoapService1full.ПФ_ПорталДПОPortType>, SoapService1full.ПФ_ПорталДПОPortType
     {
         
     /// <summary>
@@ -5092,8 +5730,8 @@ namespace SoapService1C
     /// <param name="serviceEndpoint">The endpoint to configure</param>
     /// <param name="clientCredentials">The client credentials</param>
     static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
-
-        public ПФ_ПорталДПОPortTypeClient(EndpointConfiguration endpointConfiguration) :
+        
+        public ПФ_ПорталДПОPortTypeClient(EndpointConfiguration endpointConfiguration) : 
                 base(ПФ_ПорталДПОPortTypeClient.GetBindingForEndpoint(endpointConfiguration), ПФ_ПорталДПОPortTypeClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
@@ -5103,7 +5741,7 @@ namespace SoapService1C
 
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
-
+        
         public ПФ_ПорталДПОPortTypeClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
                 base(ПФ_ПорталДПОPortTypeClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
@@ -5124,366 +5762,366 @@ namespace SoapService1C
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьСлушателейResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьСлушателейAsync(SoapService1C.ПолучитьСлушателейRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьСлушателейResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьСлушателейAsync(SoapService1full.ПолучитьСлушателейRequest request)
         {
             return base.Channel.ПолучитьСлушателейAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьСлушателейResponse> ПолучитьСлушателейAsync(System.Nullable<System.DateTime> НаДату)
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьСлушателейResponse> ПолучитьСлушателейAsync(System.Nullable<System.DateTime> НаДату)
         {
-            SoapService1C.ПолучитьСлушателейRequest inValue = new SoapService1C.ПолучитьСлушателейRequest();
+            SoapService1full.ПолучитьСлушателейRequest inValue = new SoapService1full.ПолучитьСлушателейRequest();
             inValue.НаДату = НаДату;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьСлушателейAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьСлушателейAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьУспеваемостьResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьУспеваемостьAsync(SoapService1C.ПолучитьУспеваемостьRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьУспеваемостьResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьУспеваемостьAsync(SoapService1full.ПолучитьУспеваемостьRequest request)
         {
             return base.Channel.ПолучитьУспеваемостьAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьУспеваемостьResponse> ПолучитьУспеваемостьAsync(System.Nullable<System.DateTime> НаДату)
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьУспеваемостьResponse> ПолучитьУспеваемостьAsync(System.Nullable<System.DateTime> НаДату)
         {
-            SoapService1C.ПолучитьУспеваемостьRequest inValue = new SoapService1C.ПолучитьУспеваемостьRequest();
+            SoapService1full.ПолучитьУспеваемостьRequest inValue = new SoapService1full.ПолучитьУспеваемостьRequest();
             inValue.НаДату = НаДату;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьУспеваемостьAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьУспеваемостьAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьДоговораResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьДоговораAsync(SoapService1C.ПолучитьДоговораRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьДоговораResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьДоговораAsync(SoapService1full.ПолучитьДоговораRequest request)
         {
             return base.Channel.ПолучитьДоговораAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьДоговораResponse> ПолучитьДоговораAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьДоговораResponse> ПолучитьДоговораAsync()
         {
-            SoapService1C.ПолучитьДоговораRequest inValue = new SoapService1C.ПолучитьДоговораRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьДоговораAsync(inValue);
+            SoapService1full.ПолучитьДоговораRequest inValue = new SoapService1full.ПолучитьДоговораRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьДоговораAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьОплатыResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьОплатыAsync(SoapService1C.ПолучитьОплатыRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьОплатыResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьОплатыAsync(SoapService1full.ПолучитьОплатыRequest request)
         {
             return base.Channel.ПолучитьОплатыAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьОплатыResponse> ПолучитьОплатыAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьОплатыResponse> ПолучитьОплатыAsync()
         {
-            SoapService1C.ПолучитьОплатыRequest inValue = new SoapService1C.ПолучитьОплатыRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьОплатыAsync(inValue);
+            SoapService1full.ПолучитьОплатыRequest inValue = new SoapService1full.ПолучитьОплатыRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьОплатыAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.СоздатьВедомостьResponse> SoapService1C.ПФ_ПорталДПОPortType.СоздатьВедомостьAsync(SoapService1C.СоздатьВедомостьRequest request)
+        System.Threading.Tasks.Task<SoapService1full.СоздатьВедомостьResponse> SoapService1full.ПФ_ПорталДПОPortType.СоздатьВедомостьAsync(SoapService1full.СоздатьВедомостьRequest request)
         {
             return base.Channel.СоздатьВедомостьAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.СоздатьВедомостьResponse> СоздатьВедомостьAsync(string ГУИДПреподавателя, string ГУИДПрограммыОбучения, string ГУИДФормыКонтроля, string ГУИДДисциплины, System.DateTime ДатаСдачи)
+        public System.Threading.Tasks.Task<SoapService1full.СоздатьВедомостьResponse> СоздатьВедомостьAsync(string ГУИДПреподавателя, string ГУИДПрограммыОбучения, string ГУИДФормыКонтроля, string ГУИДДисциплины, System.DateTime ДатаСдачи)
         {
-            SoapService1C.СоздатьВедомостьRequest inValue = new SoapService1C.СоздатьВедомостьRequest();
+            SoapService1full.СоздатьВедомостьRequest inValue = new SoapService1full.СоздатьВедомостьRequest();
             inValue.ГУИДПреподавателя = ГУИДПреподавателя;
             inValue.ГУИДПрограммыОбучения = ГУИДПрограммыОбучения;
             inValue.ГУИДФормыКонтроля = ГУИДФормыКонтроля;
             inValue.ГУИДДисциплины = ГУИДДисциплины;
             inValue.ДатаСдачи = ДатаСдачи;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).СоздатьВедомостьAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).СоздатьВедомостьAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ВнестиОценкиResponse> SoapService1C.ПФ_ПорталДПОPortType.ВнестиОценкиAsync(SoapService1C.ВнестиОценкиRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ВнестиОценкиResponse> SoapService1full.ПФ_ПорталДПОPortType.ВнестиОценкиAsync(SoapService1full.ВнестиОценкиRequest request)
         {
             return base.Channel.ВнестиОценкиAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ВнестиОценкиResponse> ВнестиОценкиAsync(SoapService1C.СтрокаТЧВедомости[] ОценкиВедомости, string ГУИДВедомости)
+        public System.Threading.Tasks.Task<SoapService1full.ВнестиОценкиResponse> ВнестиОценкиAsync(SoapService1full.СтрокаТЧВедомости[] ОценкиВедомости, string ГУИДВедомости)
         {
-            SoapService1C.ВнестиОценкиRequest inValue = new SoapService1C.ВнестиОценкиRequest();
+            SoapService1full.ВнестиОценкиRequest inValue = new SoapService1full.ВнестиОценкиRequest();
             inValue.ОценкиВедомости = ОценкиВедомости;
             inValue.ГУИДВедомости = ГУИДВедомости;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ВнестиОценкиAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ВнестиОценкиAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ОтправитьОценкиНаПорталResponse> SoapService1C.ПФ_ПорталДПОPortType.ОтправитьОценкиНаПорталAsync(SoapService1C.ОтправитьОценкиНаПорталRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ОтправитьОценкиНаПорталResponse> SoapService1full.ПФ_ПорталДПОPortType.ОтправитьОценкиНаПорталAsync(SoapService1full.ОтправитьОценкиНаПорталRequest request)
         {
             return base.Channel.ОтправитьОценкиНаПорталAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ОтправитьОценкиНаПорталResponse> ОтправитьОценкиНаПорталAsync(string ГУИДВедомости, string ГУИДСлушателя)
+        public System.Threading.Tasks.Task<SoapService1full.ОтправитьОценкиНаПорталResponse> ОтправитьОценкиНаПорталAsync(string ГУИДВедомости, string ГУИДСлушателя)
         {
-            SoapService1C.ОтправитьОценкиНаПорталRequest inValue = new SoapService1C.ОтправитьОценкиНаПорталRequest();
+            SoapService1full.ОтправитьОценкиНаПорталRequest inValue = new SoapService1full.ОтправитьОценкиНаПорталRequest();
             inValue.ГУИДВедомости = ГУИДВедомости;
             inValue.ГУИДСлушателя = ГУИДСлушателя;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ОтправитьОценкиНаПорталAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ОтправитьОценкиНаПорталAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВВедомостьResponse> SoapService1C.ПФ_ПорталДПОPortType.ДобавитьСтудентаВВедомостьAsync(SoapService1C.ДобавитьСтудентаВВедомостьRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВВедомостьResponse> SoapService1full.ПФ_ПорталДПОPortType.ДобавитьСтудентаВВедомостьAsync(SoapService1full.ДобавитьСтудентаВВедомостьRequest request)
         {
             return base.Channel.ДобавитьСтудентаВВедомостьAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВВедомостьResponse> ДобавитьСтудентаВВедомостьAsync(string ГУИДСлушателя, string ГУИДВедомости)
+        public System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВВедомостьResponse> ДобавитьСтудентаВВедомостьAsync(string ГУИДСлушателя, string ГУИДВедомости)
         {
-            SoapService1C.ДобавитьСтудентаВВедомостьRequest inValue = new SoapService1C.ДобавитьСтудентаВВедомостьRequest();
+            SoapService1full.ДобавитьСтудентаВВедомостьRequest inValue = new SoapService1full.ДобавитьСтудентаВВедомостьRequest();
             inValue.ГУИДСлушателя = ГУИДСлушателя;
             inValue.ГУИДВедомости = ГУИДВедомости;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ДобавитьСтудентаВВедомостьAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ДобавитьСтудентаВВедомостьAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьПреподавателейResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьПреподавателейAsync(SoapService1C.ПолучитьПреподавателейRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьПреподавателейResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьПреподавателейAsync(SoapService1full.ПолучитьПреподавателейRequest request)
         {
             return base.Channel.ПолучитьПреподавателейAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьПреподавателейResponse> ПолучитьПреподавателейAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьПреподавателейResponse> ПолучитьПреподавателейAsync()
         {
-            SoapService1C.ПолучитьПреподавателейRequest inValue = new SoapService1C.ПолучитьПреподавателейRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьПреподавателейAsync(inValue);
+            SoapService1full.ПолучитьПреподавателейRequest inValue = new SoapService1full.ПолучитьПреподавателейRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьПреподавателейAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьФормыКонтроляResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьФормыКонтроляAsync(SoapService1C.ПолучитьФормыКонтроляRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьФормыКонтроляResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьФормыКонтроляAsync(SoapService1full.ПолучитьФормыКонтроляRequest request)
         {
             return base.Channel.ПолучитьФормыКонтроляAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьФормыКонтроляResponse> ПолучитьФормыКонтроляAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьФормыКонтроляResponse> ПолучитьФормыКонтроляAsync()
         {
-            SoapService1C.ПолучитьФормыКонтроляRequest inValue = new SoapService1C.ПолучитьФормыКонтроляRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьФормыКонтроляAsync(inValue);
+            SoapService1full.ПолучитьФормыКонтроляRequest inValue = new SoapService1full.ПолучитьФормыКонтроляRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьФормыКонтроляAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьДисциплиныResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьДисциплиныAsync(SoapService1C.ПолучитьДисциплиныRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьДисциплиныResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьДисциплиныAsync(SoapService1full.ПолучитьДисциплиныRequest request)
         {
             return base.Channel.ПолучитьДисциплиныAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьДисциплиныResponse> ПолучитьДисциплиныAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьДисциплиныResponse> ПолучитьДисциплиныAsync()
         {
-            SoapService1C.ПолучитьДисциплиныRequest inValue = new SoapService1C.ПолучитьДисциплиныRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьДисциплиныAsync(inValue);
+            SoapService1full.ПолучитьДисциплиныRequest inValue = new SoapService1full.ПолучитьДисциплиныRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьДисциплиныAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьПрограммыОбученияResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьПрограммыОбученияAsync(SoapService1C.ПолучитьПрограммыОбученияRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьПрограммыОбученияResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьПрограммыОбученияAsync(SoapService1full.ПолучитьПрограммыОбученияRequest request)
         {
             return base.Channel.ПолучитьПрограммыОбученияAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьПрограммыОбученияResponse> ПолучитьПрограммыОбученияAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьПрограммыОбученияResponse> ПолучитьПрограммыОбученияAsync()
         {
-            SoapService1C.ПолучитьПрограммыОбученияRequest inValue = new SoapService1C.ПолучитьПрограммыОбученияRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьПрограммыОбученияAsync(inValue);
+            SoapService1full.ПолучитьПрограммыОбученияRequest inValue = new SoapService1full.ПолучитьПрограммыОбученияRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьПрограммыОбученияAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьГруппыResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьГруппыAsync(SoapService1C.ПолучитьГруппыRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьГруппыResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьГруппыAsync(SoapService1full.ПолучитьГруппыRequest request)
         {
             return base.Channel.ПолучитьГруппыAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьГруппыResponse> ПолучитьГруппыAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьГруппыResponse> ПолучитьГруппыAsync()
         {
-            SoapService1C.ПолучитьГруппыRequest inValue = new SoapService1C.ПолучитьГруппыRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьГруппыAsync(inValue);
+            SoapService1full.ПолучитьГруппыRequest inValue = new SoapService1full.ПолучитьГруппыRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьГруппыAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьУровниОбразованияResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьУровниОбразованияAsync(SoapService1C.ПолучитьУровниОбразованияRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьУровниОбразованияResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьУровниОбразованияAsync(SoapService1full.ПолучитьУровниОбразованияRequest request)
         {
             return base.Channel.ПолучитьУровниОбразованияAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьУровниОбразованияResponse> ПолучитьУровниОбразованияAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьУровниОбразованияResponse> ПолучитьУровниОбразованияAsync()
         {
-            SoapService1C.ПолучитьУровниОбразованияRequest inValue = new SoapService1C.ПолучитьУровниОбразованияRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьУровниОбразованияAsync(inValue);
+            SoapService1full.ПолучитьУровниОбразованияRequest inValue = new SoapService1full.ПолучитьУровниОбразованияRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьУровниОбразованияAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьБазовыеОбразованияResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьБазовыеОбразованияAsync(SoapService1C.ПолучитьБазовыеОбразованияRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьБазовыеОбразованияResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьБазовыеОбразованияAsync(SoapService1full.ПолучитьБазовыеОбразованияRequest request)
         {
             return base.Channel.ПолучитьБазовыеОбразованияAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьБазовыеОбразованияResponse> ПолучитьБазовыеОбразованияAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьБазовыеОбразованияResponse> ПолучитьБазовыеОбразованияAsync()
         {
-            SoapService1C.ПолучитьБазовыеОбразованияRequest inValue = new SoapService1C.ПолучитьБазовыеОбразованияRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьБазовыеОбразованияAsync(inValue);
+            SoapService1full.ПолучитьБазовыеОбразованияRequest inValue = new SoapService1full.ПолучитьБазовыеОбразованияRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьБазовыеОбразованияAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьОценкиResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьОценкиAsync(SoapService1C.ПолучитьОценкиRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьОценкиResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьОценкиAsync(SoapService1full.ПолучитьОценкиRequest request)
         {
             return base.Channel.ПолучитьОценкиAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьОценкиResponse> ПолучитьОценкиAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьОценкиResponse> ПолучитьОценкиAsync()
         {
-            SoapService1C.ПолучитьОценкиRequest inValue = new SoapService1C.ПолучитьОценкиRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьОценкиAsync(inValue);
+            SoapService1full.ПолучитьОценкиRequest inValue = new SoapService1full.ПолучитьОценкиRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьОценкиAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьТипыДоговоровResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьТипыДоговоровAsync(SoapService1C.ПолучитьТипыДоговоровRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьТипыДоговоровResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьТипыДоговоровAsync(SoapService1full.ПолучитьТипыДоговоровRequest request)
         {
             return base.Channel.ПолучитьТипыДоговоровAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьТипыДоговоровResponse> ПолучитьТипыДоговоровAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьТипыДоговоровResponse> ПолучитьТипыДоговоровAsync()
         {
-            SoapService1C.ПолучитьТипыДоговоровRequest inValue = new SoapService1C.ПолучитьТипыДоговоровRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьТипыДоговоровAsync(inValue);
+            SoapService1full.ПолучитьТипыДоговоровRequest inValue = new SoapService1full.ПолучитьТипыДоговоровRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьТипыДоговоровAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьПлательщиковResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьПлательщиковAsync(SoapService1C.ПолучитьПлательщиковRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьПлательщиковResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьПлательщиковAsync(SoapService1full.ПолучитьПлательщиковRequest request)
         {
             return base.Channel.ПолучитьПлательщиковAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьПлательщиковResponse> ПолучитьПлательщиковAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьПлательщиковResponse> ПолучитьПлательщиковAsync()
         {
-            SoapService1C.ПолучитьПлательщиковRequest inValue = new SoapService1C.ПолучитьПлательщиковRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьПлательщиковAsync(inValue);
+            SoapService1full.ПолучитьПлательщиковRequest inValue = new SoapService1full.ПолучитьПлательщиковRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьПлательщиковAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьОборудованиеResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьОборудованиеAsync(SoapService1C.ПолучитьОборудованиеRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьОборудованиеResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьОборудованиеAsync(SoapService1full.ПолучитьОборудованиеRequest request)
         {
             return base.Channel.ПолучитьОборудованиеAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьОборудованиеResponse> ПолучитьОборудованиеAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьОборудованиеResponse> ПолучитьОборудованиеAsync()
         {
-            SoapService1C.ПолучитьОборудованиеRequest inValue = new SoapService1C.ПолучитьОборудованиеRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьОборудованиеAsync(inValue);
+            SoapService1full.ПолучитьОборудованиеRequest inValue = new SoapService1full.ПолучитьОборудованиеRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьОборудованиеAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьГруппыПрограммОбученияResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьГруппыПрограммОбученияAsync(SoapService1C.ПолучитьГруппыПрограммОбученияRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьГруппыПрограммОбученияResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьГруппыПрограммОбученияAsync(SoapService1full.ПолучитьГруппыПрограммОбученияRequest request)
         {
             return base.Channel.ПолучитьГруппыПрограммОбученияAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьГруппыПрограммОбученияResponse> ПолучитьГруппыПрограммОбученияAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьГруппыПрограммОбученияResponse> ПолучитьГруппыПрограммОбученияAsync()
         {
-            SoapService1C.ПолучитьГруппыПрограммОбученияRequest inValue = new SoapService1C.ПолучитьГруппыПрограммОбученияRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьГруппыПрограммОбученияAsync(inValue);
+            SoapService1full.ПолучитьГруппыПрограммОбученияRequest inValue = new SoapService1full.ПолучитьГруппыПрограммОбученияRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьГруппыПрограммОбученияAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьВидыПрограммResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьВидыПрограммAsync(SoapService1C.ПолучитьВидыПрограммRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьВидыПрограммResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьВидыПрограммAsync(SoapService1full.ПолучитьВидыПрограммRequest request)
         {
             return base.Channel.ПолучитьВидыПрограммAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьВидыПрограммResponse> ПолучитьВидыПрограммAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьВидыПрограммResponse> ПолучитьВидыПрограммAsync()
         {
-            SoapService1C.ПолучитьВидыПрограммRequest inValue = new SoapService1C.ПолучитьВидыПрограммRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьВидыПрограммAsync(inValue);
+            SoapService1full.ПолучитьВидыПрограммRequest inValue = new SoapService1full.ПолучитьВидыПрограммRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьВидыПрограммAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьФормыОбученияResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьФормыОбученияAsync(SoapService1C.ПолучитьФормыОбученияRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьФормыОбученияResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьФормыОбученияAsync(SoapService1full.ПолучитьФормыОбученияRequest request)
         {
             return base.Channel.ПолучитьФормыОбученияAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьФормыОбученияResponse> ПолучитьФормыОбученияAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьФормыОбученияResponse> ПолучитьФормыОбученияAsync()
         {
-            SoapService1C.ПолучитьФормыОбученияRequest inValue = new SoapService1C.ПолучитьФормыОбученияRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьФормыОбученияAsync(inValue);
+            SoapService1full.ПолучитьФормыОбученияRequest inValue = new SoapService1full.ПолучитьФормыОбученияRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьФормыОбученияAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьСпециальностиResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьСпециальностиAsync(SoapService1C.ПолучитьСпециальностиRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьСпециальностиResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьСпециальностиAsync(SoapService1full.ПолучитьСпециальностиRequest request)
         {
             return base.Channel.ПолучитьСпециальностиAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьСпециальностиResponse> ПолучитьСпециальностиAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьСпециальностиResponse> ПолучитьСпециальностиAsync()
         {
-            SoapService1C.ПолучитьСпециальностиRequest inValue = new SoapService1C.ПолучитьСпециальностиRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьСпециальностиAsync(inValue);
+            SoapService1full.ПолучитьСпециальностиRequest inValue = new SoapService1full.ПолучитьСпециальностиRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьСпециальностиAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьТипыМероприятийResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьТипыМероприятийAsync(SoapService1C.ПолучитьТипыМероприятийRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьТипыМероприятийResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьТипыМероприятийAsync(SoapService1full.ПолучитьТипыМероприятийRequest request)
         {
             return base.Channel.ПолучитьТипыМероприятийAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьТипыМероприятийResponse> ПолучитьТипыМероприятийAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьТипыМероприятийResponse> ПолучитьТипыМероприятийAsync()
         {
-            SoapService1C.ПолучитьТипыМероприятийRequest inValue = new SoapService1C.ПолучитьТипыМероприятийRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьТипыМероприятийAsync(inValue);
+            SoapService1full.ПолучитьТипыМероприятийRequest inValue = new SoapService1full.ПолучитьТипыМероприятийRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьТипыМероприятийAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьКвалификацииResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьКвалификацииAsync(SoapService1C.ПолучитьКвалификацииRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьКвалификацииResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьКвалификацииAsync(SoapService1full.ПолучитьКвалификацииRequest request)
         {
             return base.Channel.ПолучитьКвалификацииAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьКвалификацииResponse> ПолучитьКвалификацииAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьКвалификацииResponse> ПолучитьКвалификацииAsync()
         {
-            SoapService1C.ПолучитьКвалификацииRequest inValue = new SoapService1C.ПолучитьКвалификацииRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьКвалификацииAsync(inValue);
+            SoapService1full.ПолучитьКвалификацииRequest inValue = new SoapService1full.ПолучитьКвалификацииRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьКвалификацииAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьВыдаваемыеДокументыResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьВыдаваемыеДокументыAsync(SoapService1C.ПолучитьВыдаваемыеДокументыRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьВыдаваемыеДокументыResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьВыдаваемыеДокументыAsync(SoapService1full.ПолучитьВыдаваемыеДокументыRequest request)
         {
             return base.Channel.ПолучитьВыдаваемыеДокументыAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьВыдаваемыеДокументыResponse> ПолучитьВыдаваемыеДокументыAsync()
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьВыдаваемыеДокументыResponse> ПолучитьВыдаваемыеДокументыAsync()
         {
-            SoapService1C.ПолучитьВыдаваемыеДокументыRequest inValue = new SoapService1C.ПолучитьВыдаваемыеДокументыRequest();
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьВыдаваемыеДокументыAsync(inValue);
+            SoapService1full.ПолучитьВыдаваемыеДокументыRequest inValue = new SoapService1full.ПолучитьВыдаваемыеДокументыRequest();
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьВыдаваемыеДокументыAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьУспеваемостьСтудентовResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьУспеваемостьСтудентовAsync(SoapService1C.ПолучитьУспеваемостьСтудентовRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьУспеваемостьСтудентовResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьУспеваемостьСтудентовAsync(SoapService1full.ПолучитьУспеваемостьСтудентовRequest request)
         {
             return base.Channel.ПолучитьУспеваемостьСтудентовAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьУспеваемостьСтудентовResponse> ПолучитьУспеваемостьСтудентовAsync(string ГУИДСлушателя)
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьУспеваемостьСтудентовResponse> ПолучитьУспеваемостьСтудентовAsync(string ГУИДСлушателя)
         {
-            SoapService1C.ПолучитьУспеваемостьСтудентовRequest inValue = new SoapService1C.ПолучитьУспеваемостьСтудентовRequest();
+            SoapService1full.ПолучитьУспеваемостьСтудентовRequest inValue = new SoapService1full.ПолучитьУспеваемостьСтудентовRequest();
             inValue.ГУИДСлушателя = ГУИДСлушателя;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьУспеваемостьСтудентовAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьУспеваемостьСтудентовAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ПолучитьСлушателейПоФИОResponse> SoapService1C.ПФ_ПорталДПОPortType.ПолучитьСлушателейПоФИОAsync(SoapService1C.ПолучитьСлушателейПоФИОRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьСлушателейПоФИОResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьСлушателейПоФИОAsync(SoapService1full.ПолучитьСлушателейПоФИОRequest request)
         {
             return base.Channel.ПолучитьСлушателейПоФИОAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ПолучитьСлушателейПоФИОResponse> ПолучитьСлушателейПоФИОAsync(string ФИО, string НомерДиплома)
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьСлушателейПоФИОResponse> ПолучитьСлушателейПоФИОAsync(string ФИО, string НомерДиплома)
         {
-            SoapService1C.ПолучитьСлушателейПоФИОRequest inValue = new SoapService1C.ПолучитьСлушателейПоФИОRequest();
+            SoapService1full.ПолучитьСлушателейПоФИОRequest inValue = new SoapService1full.ПолучитьСлушателейПоФИОRequest();
             inValue.ФИО = ФИО;
             inValue.НомерДиплома = НомерДиплома;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ПолучитьСлушателейПоФИОAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьСлушателейПоФИОAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.СоздатьАттестационнуюВедомостьResponse> SoapService1C.ПФ_ПорталДПОPortType.СоздатьАттестационнуюВедомостьAsync(SoapService1C.СоздатьАттестационнуюВедомостьRequest request)
+        System.Threading.Tasks.Task<SoapService1full.СоздатьАттестационнуюВедомостьResponse> SoapService1full.ПФ_ПорталДПОPortType.СоздатьАттестационнуюВедомостьAsync(SoapService1full.СоздатьАттестационнуюВедомостьRequest request)
         {
             return base.Channel.СоздатьАттестационнуюВедомостьAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.СоздатьАттестационнуюВедомостьResponse> СоздатьАттестационнуюВедомостьAsync(string GUIDTeacher, string GUIDProgram, string GUIDFormControl, string GUIDSubject, string GUIDGroup, System.DateTime Data, string Number)
+        public System.Threading.Tasks.Task<SoapService1full.СоздатьАттестационнуюВедомостьResponse> СоздатьАттестационнуюВедомостьAsync(string GUIDTeacher, string GUIDProgram, string GUIDFormControl, string GUIDSubject, string GUIDGroup, System.DateTime Data, string Number)
         {
-            SoapService1C.СоздатьАттестационнуюВедомостьRequest inValue = new SoapService1C.СоздатьАттестационнуюВедомостьRequest();
+            SoapService1full.СоздатьАттестационнуюВедомостьRequest inValue = new SoapService1full.СоздатьАттестационнуюВедомостьRequest();
             inValue.GUIDTeacher = GUIDTeacher;
             inValue.GUIDProgram = GUIDProgram;
             inValue.GUIDFormControl = GUIDFormControl;
@@ -5491,56 +6129,56 @@ namespace SoapService1C
             inValue.GUIDGroup = GUIDGroup;
             inValue.Data = Data;
             inValue.Number = Number;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).СоздатьАттестационнуюВедомостьAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).СоздатьАттестационнуюВедомостьAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВАттестационнуюВедомостьResponse> SoapService1C.ПФ_ПорталДПОPortType.ДобавитьСтудентаВАттестационнуюВедомостьAsync(SoapService1C.ДобавитьСтудентаВАттестационнуюВедомостьRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВАттестационнуюВедомостьResponse> SoapService1full.ПФ_ПорталДПОPortType.ДобавитьСтудентаВАттестационнуюВедомостьAsync(SoapService1full.ДобавитьСтудентаВАттестационнуюВедомостьRequest request)
         {
             return base.Channel.ДобавитьСтудентаВАттестационнуюВедомостьAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВАттестационнуюВедомостьResponse> ДобавитьСтудентаВАттестационнуюВедомостьAsync(string GUIDAV, string GUIDStudent, string GUIDRate, System.Nullable<bool> excellent, string comment)
+        public System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВАттестационнуюВедомостьResponse> ДобавитьСтудентаВАттестационнуюВедомостьAsync(string GUIDAV, string GUIDStudent, string GUIDRate, System.Nullable<bool> excellent, string comment)
         {
-            SoapService1C.ДобавитьСтудентаВАттестационнуюВедомостьRequest inValue = new SoapService1C.ДобавитьСтудентаВАттестационнуюВедомостьRequest();
+            SoapService1full.ДобавитьСтудентаВАттестационнуюВедомостьRequest inValue = new SoapService1full.ДобавитьСтудентаВАттестационнуюВедомостьRequest();
             inValue.GUIDAV = GUIDAV;
             inValue.GUIDStudent = GUIDStudent;
             inValue.GUIDRate = GUIDRate;
             inValue.excellent = excellent;
             inValue.comment = comment;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ДобавитьСтудентаВАттестационнуюВедомостьAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ДобавитьСтудентаВАттестационнуюВедомостьAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.СоздатьВедомостьПосещаемостиResponse> SoapService1C.ПФ_ПорталДПОPortType.СоздатьВедомостьПосещаемостиAsync(SoapService1C.СоздатьВедомостьПосещаемостиRequest request)
+        System.Threading.Tasks.Task<SoapService1full.СоздатьВедомостьПосещаемостиResponse> SoapService1full.ПФ_ПорталДПОPortType.СоздатьВедомостьПосещаемостиAsync(SoapService1full.СоздатьВедомостьПосещаемостиRequest request)
         {
             return base.Channel.СоздатьВедомостьПосещаемостиAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.СоздатьВедомостьПосещаемостиResponse> СоздатьВедомостьПосещаемостиAsync(string GUIDProgram, string GUIDSubject, string GUIDGroup, string GUIDSubGroup, System.DateTime Data)
+        public System.Threading.Tasks.Task<SoapService1full.СоздатьВедомостьПосещаемостиResponse> СоздатьВедомостьПосещаемостиAsync(string GUIDProgram, string GUIDSubject, string GUIDGroup, string GUIDSubGroup, System.DateTime Data)
         {
-            SoapService1C.СоздатьВедомостьПосещаемостиRequest inValue = new SoapService1C.СоздатьВедомостьПосещаемостиRequest();
+            SoapService1full.СоздатьВедомостьПосещаемостиRequest inValue = new SoapService1full.СоздатьВедомостьПосещаемостиRequest();
             inValue.GUIDProgram = GUIDProgram;
             inValue.GUIDSubject = GUIDSubject;
             inValue.GUIDGroup = GUIDGroup;
             inValue.GUIDSubGroup = GUIDSubGroup;
             inValue.Data = Data;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).СоздатьВедомостьПосещаемостиAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).СоздатьВедомостьПосещаемостиAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВВедомостьПосещаемостиResponse> SoapService1C.ПФ_ПорталДПОPortType.ДобавитьСтудентаВВедомостьПосещаемостиAsync(SoapService1C.ДобавитьСтудентаВВедомостьПосещаемостиRequest request)
+        System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВВедомостьПосещаемостиResponse> SoapService1full.ПФ_ПорталДПОPortType.ДобавитьСтудентаВВедомостьПосещаемостиAsync(SoapService1full.ДобавитьСтудентаВВедомостьПосещаемостиRequest request)
         {
             return base.Channel.ДобавитьСтудентаВВедомостьПосещаемостиAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoapService1C.ДобавитьСтудентаВВедомостьПосещаемостиResponse> ДобавитьСтудентаВВедомостьПосещаемостиAsync(string GUIDVP, string GUIDStudent, System.Nullable<bool> Visit)
+        public System.Threading.Tasks.Task<SoapService1full.ДобавитьСтудентаВВедомостьПосещаемостиResponse> ДобавитьСтудентаВВедомостьПосещаемостиAsync(string GUIDVP, string GUIDStudent, System.Nullable<bool> Visit)
         {
-            SoapService1C.ДобавитьСтудентаВВедомостьПосещаемостиRequest inValue = new SoapService1C.ДобавитьСтудентаВВедомостьПосещаемостиRequest();
+            SoapService1full.ДобавитьСтудентаВВедомостьПосещаемостиRequest inValue = new SoapService1full.ДобавитьСтудентаВВедомостьПосещаемостиRequest();
             inValue.GUIDVP = GUIDVP;
             inValue.GUIDStudent = GUIDStudent;
             inValue.Visit = Visit;
-            return ((SoapService1C.ПФ_ПорталДПОPortType)(this)).ДобавитьСтудентаВВедомостьПосещаемостиAsync(inValue);
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ДобавитьСтудентаВВедомостьПосещаемостиAsync(inValue);
         }
         
         public System.Threading.Tasks.Task<string> ПолучитьДанныеОСлушателяхФЛAsync(string GUIDФизЛица)
@@ -5556,6 +6194,39 @@ namespace SoapService1C
         public System.Threading.Tasks.Task<string> ПолучитьДанныеОФЛAsync(string GUIDФизЛица)
         {
             return base.Channel.ПолучитьДанныеОФЛAsync(GUIDФизЛица);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьИзмененныеДанныеОФЛЗаПериодResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьИзмененныеДанныеОФЛЗаПериодAsync(SoapService1full.ПолучитьИзмененныеДанныеОФЛЗаПериодRequest request)
+        {
+            return base.Channel.ПолучитьИзмененныеДанныеОФЛЗаПериодAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьИзмененныеДанныеОФЛЗаПериодResponse> ПолучитьИзмененныеДанныеОФЛЗаПериодAsync(System.DateTime ДатаОт, System.DateTime ДатаДо)
+        {
+            SoapService1full.ПолучитьИзмененныеДанныеОФЛЗаПериодRequest inValue = new SoapService1full.ПолучитьИзмененныеДанныеОФЛЗаПериодRequest();
+            inValue.ДатаОт = ДатаОт;
+            inValue.ДатаДо = ДатаДо;
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьИзмененныеДанныеОФЛЗаПериодAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодAsync(SoapService1full.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодRequest request)
+        {
+            return base.Channel.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодResponse> ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодAsync(System.DateTime ДатаОт, System.DateTime ДатаДо)
+        {
+            SoapService1full.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодRequest inValue = new SoapService1full.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодRequest();
+            inValue.ДатаОт = ДатаОт;
+            inValue.ДатаДо = ДатаДо;
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодAsync(inValue);
+        }
+        
+        public System.Threading.Tasks.Task<string> ПолучитьДанныеОПрограммеAsync(string GUIDПрограммы)
+        {
+            return base.Channel.ПолучитьДанныеОПрограммеAsync(GUIDПрограммы);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

@@ -1,16 +1,5 @@
-﻿using AutoMapper;
-using Mapster;
-using SaM.BusinessLogic;
-using SaM.BusinessLogic.DataAccessLayer;
-using SaM.Common.DTO;
-using SaM.Common.Infrastructure.Mapster;
-using SaM.DataBases.EntityFramework;
-using SaM.Domain.Core.Education;
-using SaM.Services.Repository1C;
-using SoapService1C;
+﻿using SaM.BusinessLogic;
 using System;
-using System.Linq;
-using System.Reflection;
 
 namespace TestDataAccess
 {
@@ -20,11 +9,11 @@ namespace TestDataAccess
         {
             var facad = new AdminFacade();
 
-            //var ddd = facad.UpdateAllCategoriesFromService();
+            var ddd = facad.UpdateAllCategoriesFromService();
 
             //var ttt = facad.UpdateAllCertificationsFromService();
 
-            var mmm = facad.UpdateAllEducatinTypeFromService();
+            //var mmm = facad.UpdateAllEducatinTypeFromService();
 
 
 

@@ -1,5 +1,5 @@
 ﻿using SaM.Domain.Interfaces.Repositories;
-using SoapService1C;
+using SoapService1full;
 
 namespace SaM.Services.Repository1C
 {
