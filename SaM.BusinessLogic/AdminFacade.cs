@@ -76,5 +76,59 @@ namespace SaM.BusinessLogic
             return database.Categories.GetList().Adapt<IEnumerable<CategoryDTO>>();
         }
 
+        public IEnumerable<CertificationDTO> UpdateAllCertificationsFromService()
+        {
+
+            var serviceItems = service.Certifications.GetList().Adapt<IEnumerable<CertificationDTO>>();
+
+            IQueryable<Certification> query = database.Certifications.GetList();
+
+            foreach (var item in serviceItems)
+            {
+                var databaseItem = query.FirstOrDefault(itm => itm.Guid.ToString() == item.Guid);
+
+                if (databaseItem != null)
+                {
+                    databaseItem = item.Adapt<CertificationDTO, Certification>(databaseItem);
+                    database.Certifications.Update(databaseItem);
+                }
+                else
+                {
+                    database.Certifications.Add(item.Adapt<CertificationDTO, Certification>());
+                }
+            }
+
+            database.Save();
+
+            return database.Certifications.GetList().Adapt<IEnumerable<CertificationDTO>>();
+        }
+
+        public IEnumerable<EducationTypeDTO> UpdateAllEducatinTypeFromService()
+        {
+
+            var serviceItems = service.EducationTypes.GetList().Adapt<IEnumerable<EducationTypeDTO>>();
+
+            IQueryable<EducationType> query = database.EducationTypes.GetList();
+
+            foreach (var item in serviceItems)
+            {
+                var databaseItem = query.FirstOrDefault(itm => itm.Guid.ToString() == item.Guid);
+
+                if (databaseItem != null)
+                {
+                    databaseItem = item.Adapt<EducationTypeDTO, EducationType>(databaseItem);
+                    database.EducationTypes.Update(databaseItem);
+                }
+                else
+                {
+                    database.EducationTypes.Add(item.Adapt<EducationTypeDTO, EducationType>());
+                }
+            }
+
+            database.Save();
+
+            return database.EducationTypes.GetList().Adapt<IEnumerable<EducationTypeDTO>>();
+        }
+
     }
 }

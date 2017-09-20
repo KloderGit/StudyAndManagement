@@ -20,11 +20,11 @@ namespace TestDataAccess
         {
             var facad = new AdminFacade();
 
-            var ddd = facad.UpdateAllCategoriesFromService();
+            //var ddd = facad.UpdateAllCategoriesFromService();
 
+            //var ttt = facad.UpdateAllCertificationsFromService();
 
-
-
+            var mmm = facad.UpdateAllEducatinTypeFromService();
 
 
 
