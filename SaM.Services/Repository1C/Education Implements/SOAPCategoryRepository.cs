@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using SoapService1full;
+using System;
 
 namespace SaM.Services.Repository1C
 {
@@ -18,6 +19,5 @@ namespace SaM.Services.Repository1C
             var query = await service.ПолучитьГруппыПрограммОбученияAsync();
             return query.@return as IEnumerable<ГруппаПрограммыОбучения>;
         }
-
     }
 }
