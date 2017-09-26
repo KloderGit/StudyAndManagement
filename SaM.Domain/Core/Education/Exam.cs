@@ -22,5 +22,7 @@ namespace SaM.Domain.Core.Education
         public virtual Statement Statement { get; set; }
 
         public virtual ICollection<ExamComment> Comments { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

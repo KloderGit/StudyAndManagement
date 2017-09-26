@@ -20,5 +20,7 @@ namespace SaM.Domain.Core.Education
         public string Title { get; set; }
 
         public virtual ICollection<CertificationType> CertificationTypeList { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

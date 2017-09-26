@@ -31,5 +31,7 @@ namespace SaM.Domain.Core.User
         public virtual ICollection<UserComment> UserComments { get; set; }
         public virtual ICollection<Exam> Exams { get; set; }
         public virtual ICollection<ExamComment> ExamComments { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

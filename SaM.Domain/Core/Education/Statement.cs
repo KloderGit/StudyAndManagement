@@ -31,5 +31,7 @@ namespace SaM.Domain.Core.Education
         public virtual Group Group { get; set; }
 
         public virtual ICollection<Exam> Exams { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

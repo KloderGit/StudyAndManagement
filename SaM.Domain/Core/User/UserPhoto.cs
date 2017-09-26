@@ -11,5 +11,7 @@ namespace SaM.Domain.Core.User
 
         public Int32 UserId { get; set; }
         public virtual User User { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

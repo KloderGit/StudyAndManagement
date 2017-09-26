@@ -19,6 +19,7 @@ namespace SaM.Domain.Core.Education
         public virtual EducationProgram Program { get; set; }
 
         public virtual ICollection<SubGroup> SubGroupList { get; set; }
-        
+
+        public DateTime? Updated { get; set; }
     }
 }

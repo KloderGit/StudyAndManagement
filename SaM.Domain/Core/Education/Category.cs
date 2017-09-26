@@ -19,5 +19,7 @@ namespace SaM.Domain.Core.Education
         public string Title { get; set; }
 
         public virtual ICollection<EducationProgram> Programs { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

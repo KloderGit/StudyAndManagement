@@ -25,5 +25,7 @@ namespace SaM.Domain.Core.User
 
         public Int32? SubGroupId { get; set; }
         public virtual SubGroup SubGroup { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

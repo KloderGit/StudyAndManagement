@@ -16,5 +16,7 @@ namespace SaM.Domain.Core.Education
 
         public Int32 AssessmentId { get; set; }
         public virtual Certification Assessment { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

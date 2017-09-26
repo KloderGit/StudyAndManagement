@@ -13,5 +13,7 @@ namespace SaM.Domain.Core.Education
 
         public Int32 StatementId { get; set; }
         public virtual Statement Statement { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }
