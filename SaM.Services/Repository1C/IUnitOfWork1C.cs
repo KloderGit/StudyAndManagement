@@ -1,5 +1,5 @@
 ﻿using SaM.Domain.Interfaces.Repositories;
-using SoapService1C;
+using SoapService1full;
 
 namespace SaM.Services.Repository1C
 {
@@ -8,5 +8,7 @@ namespace SaM.Services.Repository1C
         ICommonRepository<ГруппаПрограммыОбучения> Categories { get; }
         ICommonRepository<ФормаКонтроля> Certifications { get; }
         ICommonRepository<ФормаОбучения> EducationTypes { get; }
+
+        ICommonRepository<T> Repository<T>();
     }
 }

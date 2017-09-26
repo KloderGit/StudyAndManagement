@@ -38,6 +38,7 @@ namespace SaM.DataBases.EntityFramework
 
         public virtual void Update(T item)
         {
+            db.Entry(item).State = EntityState.Modified;
             table.Update(item);
         }
 

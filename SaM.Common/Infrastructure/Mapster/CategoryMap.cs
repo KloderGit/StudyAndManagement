@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using SaM.Common.DTO;
 using SaM.Domain.Core.Education;
-using SoapService1C;
+using SoapService1full;
 using System;
 using System.Collections.Generic;
 using System.Text;

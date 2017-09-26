@@ -1,10 +1,7 @@
 ﻿using Mapster;
 using SaM.Common.DTO;
 using SaM.Domain.Core.Education;
-using SoapService1C;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using SoapService1full;
 
 namespace SaM.Common.Infrastructure.Mapster
 {
@@ -26,9 +23,13 @@ namespace SaM.Common.Infrastructure.Mapster
 
 
             config.NewConfig<CategoryDTO, Category>().Ignore(ss => ss.Id);
-
             config.NewConfig<Category, CategoryDTO>();
 
+            config.NewConfig<CertificationDTO, Certification>().Ignore(ss => ss.Id);
+            config.NewConfig<Certification, CertificationDTO>();
+
+            config.NewConfig<EducationTypeDTO, EducationType>().Ignore(ss => ss.Id);
+            config.NewConfig<EducationType, EducationTypeDTO>();
 
         }
     }
