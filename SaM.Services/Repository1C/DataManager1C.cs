@@ -10,6 +10,7 @@ namespace SaM.Services.Repository1C
         public DataManager1C()
         {
             soap = new ПФ_ПорталДПОPortTypeClient(ПФ_ПорталДПОPortTypeClient.EndpointConfiguration.ПФ_ПорталДПОSoap);
+            var ddd = this.GetType();
         }
 
         SOAPCategoryRepository CategoriesRepository;
@@ -19,5 +20,6 @@ namespace SaM.Services.Repository1C
         public ICommonRepository<ГруппаПрограммыОбучения> Categories => CategoriesRepository ?? (CategoriesRepository = new SOAPCategoryRepository(soap));
         public ICommonRepository<ФормаКонтроля> Certifications => CertificationsRepository ?? (CertificationsRepository = new SOAPCertificationRepository(soap));
         public ICommonRepository<ФормаОбучения> EducationTypes => EducationTypesRepositories ?? (EducationTypesRepositories = new SOAPEducationTypeRepository(soap));
+
     }
 }
