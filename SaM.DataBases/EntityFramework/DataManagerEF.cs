@@ -1,6 +1,7 @@
 ﻿using SaM.Domain.Interfaces.Repositories;
 using SaM.Domain.Core.Education;
 using SaM.Domain.Core.User;
+using System.Reflection;
 
 namespace SaM.DataBases.EntityFramework
 {
@@ -56,6 +57,23 @@ namespace SaM.DataBases.EntityFramework
         public IRepository<UserLocation> UserLocations => UserLocation ?? (UserLocation = new CommonImplementEFRepository<UserLocation>(db));
         public IRepository<UserPhoto> UserPhotos => UserPhoto ?? (UserPhoto = new CommonImplementEFRepository<UserPhoto>(db));
         public IRepository<UserProfile> UserProfiles => UserProfile ?? (UserProfile = new CommonImplementEFRepository<UserProfile>(db));
+
+        public IRepository<T> Repository<T>()
+        {
+            var properties = typeof(DataManagerEF).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            IRepository<T> result = null;
+
+            foreach (var property in properties)
+            {
+                if (property.PropertyType == typeof(IRepository<T>))
+                {
+                    result = property.GetValue(this) as IRepository<T>;
+                }
+            }
+
+            return result;
+        }
 
         public void Save()
         {

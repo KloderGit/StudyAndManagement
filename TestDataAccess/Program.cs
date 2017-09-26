@@ -1,4 +1,8 @@
 ﻿using SaM.BusinessLogic.AdminFacade;
+using SaM.BusinessLogic.AdminFacade.UpdateEntity;
+using SaM.Common.DTO;
+using SaM.Domain.Core.Education;
+using SaM.Services.Repository1C;
 using SoapService1full;
 using System;
 using System.Linq;
@@ -13,67 +17,8 @@ namespace TestDataAccess
         static void Main(string[] args)
         {
 
-
-            try
-            {
-                //var rddd = Ddd().Result;
-
-                var mmmm = new AdminFacade();
-                mmmm.UpdateCategory();
-
-            }
-            catch ( Exception e) {
-                Console.WriteLine(e);
-            }
-            
-
-            XDocument xdoc = XDocument.Load("testData.xml");
-
-            //var ttt = xdoc.Element(@"return");
-            var sss = xdoc.Element("Envelope");
-
-            //foreach (XElement phoneElement in xdoc.Element("return").Elements("ProgramEdu"))
-            //{
-            //    XAttribute nameAttribute = phoneElement.Attribute("XML_ID");
-            //    XElement companyElement = phoneElement.Element("name");
-            //    XElement priceElement = phoneElement.Element("typeProgram");
-
-            //    if (nameAttribute != null && companyElement != null && priceElement != null)
-            //    {
-            //        Console.WriteLine("Смартфон: {0}", nameAttribute.Value);
-            //        Console.WriteLine("Компания: {0}", companyElement.Value);
-            //        Console.WriteLine("Цена: {0}", priceElement.Value);
-            //    }
-            //}
-
-            //return collection;
-
-
-            // Mapster
-            //Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
-            //TypeAdapterConfig.GlobalSettings.Scan(assem);
-
-            //var mmm = new Category { Id = 123, Guid = Guid.NewGuid(), Title = "OOOOOOOOOOOOOO" };
-            //var pop = mmm.Adapt<CategoryDTO>();
-            //pop.Id = 45;
-
-            //mmm = pop.Adapt<CategoryDTO, Category>(mmm);
-            // -----------------------------
-
-
-            // Automapper
-
-            //IMapper mapper = AutoMapperConfiguration.CreateMappings();
-
-            //var ttt = new DataManager();
-            //var mmm = new Category { Id=123, Guid = Guid.NewGuid(), Title = "OOOOOOOOOOOOOO" };
-            //var sss = ttt.datamanager1C.Categories.GetList().FirstOrDefault();
-            //var ooo = mapper.Map<ГруппаПрограммыОбучения, CategoryDTO>(sss);
-            ////ooo.Id = 555;
-            //var sdf = mapper.Map<CategoryDTO, Category>(ooo, mmm);
-            //------------------------------------
-
-
+            var sfsf = new AdminFacade();
+                sfsf.UpdateCategory();
 
 
             Console.ReadLine();

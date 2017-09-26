@@ -28,6 +28,8 @@ namespace SaM.DataBases.EntityFramework
         IRepository<UserPhoto> UserPhotos { get; }
         IRepository<UserProfile> UserProfiles { get; }
 
+        IRepository<T> Repository<T>();
+
         void Save();
     }
 }
