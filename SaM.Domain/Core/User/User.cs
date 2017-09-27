@@ -5,7 +5,7 @@ using SaM.Domain.Interfaces;
 
 namespace SaM.Domain.Core.User
 {
-    public class User : IDBObject
+    public class User : IDBObject, ISharedField
     {
         public User()
         {

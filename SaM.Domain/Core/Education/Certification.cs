@@ -9,7 +9,7 @@ namespace SaM.Domain.Core.Education
     /// <summary>
     /// Вид Проверки \ Аттестации - [ Экзамен \ Тест \ Зачет ]
     /// </summary>
-    public class Certification : IDBObject
+    public class Certification : IDBObject, ISharedField
     {
         public Certification()
         {

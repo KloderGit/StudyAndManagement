@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.Education
 {
-    public class EducationProgram : IDBObject
+    public class EducationProgram : IDBObject, ISharedField
     {
         public EducationProgram()
         {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SaM.Domain.Core.Education
 {
-    public class Statement : IDBObject
+    public class Statement : IDBObject, ISharedField
     {
         public Statement()
         {

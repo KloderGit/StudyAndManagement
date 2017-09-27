@@ -8,7 +8,7 @@ namespace SaM.Domain.Core.Education
     /// <summary>
     /// Раздел -  Учебный центр \ Школа управления | Программы \ Семинары
     /// </summary>
-    public class Category : IDBObject
+    public class Category : IDBObject, ISharedField
     {
         public Category()
         {

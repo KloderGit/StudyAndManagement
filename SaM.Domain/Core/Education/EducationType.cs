@@ -8,7 +8,7 @@ namespace SaM.Domain.Core.Education
     /// <summary>
     /// Очное \ Заочное
     /// </summary>
-    public class EducationType : IDBObject
+    public class EducationType : IDBObject, ISharedField
     {
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }

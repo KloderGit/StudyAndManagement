@@ -9,7 +9,7 @@ namespace SaM.Domain.Core.Education
     /// Система оценки для варианта аттестации [ Пятибальная \ Зачетная ]
     /// </summary>
 
-    public class CertificationType : IDBObject
+    public class CertificationType : IDBObject, ISharedField
     {
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
