@@ -11,16 +11,18 @@ namespace SaM.Domain.Core.Education
         }
 
         public Int32 Id { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-        public Int32 Grade { get; set; }
+        public DateTime? Start { get; set; }
+        public DateTime? End { get; set; }
+        public Int32? Grade { get; set; }
 
-        public Int32? UserId { get; set; }
-        public virtual Core.User.User User { get; set; }
+        public Int32? StudentId { get; set; }
+        public virtual Core.User.User Student { get; set; }
 
         public Int32 StatementId { get; set; }
         public virtual Statement Statement { get; set; }
 
         public virtual ICollection<ExamComment> Comments { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

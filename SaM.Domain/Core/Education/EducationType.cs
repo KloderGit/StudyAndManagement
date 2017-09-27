@@ -12,5 +12,7 @@ namespace SaM.Domain.Core.Education
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
         public string Title { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

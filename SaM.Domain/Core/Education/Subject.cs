@@ -14,11 +14,9 @@ namespace SaM.Domain.Core.Education
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
         public string Title { get; set; }
-        public Int32? Duration { get; set; }
-
-        public Int32? CertificationId { get; set; }
-        public virtual Certification Certification { get; set; }
 
         public virtual ICollection<EducationalPlan> EducationalPlanList { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

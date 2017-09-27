@@ -8,8 +8,8 @@ using SaM.DataBases.EntityFramework;
 namespace SaM.DataBases.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20170830113106_InitDB")]
-    partial class InitDB
+    [Migration("20170927073512_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
@@ -39,6 +41,8 @@ namespace SaM.DataBases.Migrations
                     b.Property<Guid>("Guid");
 
                     b.Property<string>("Title");
+
+                    b.Property<DateTime?>("Updated");
 
                     b.HasKey("Id");
 
@@ -56,6 +60,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AssessmentId");
@@ -68,17 +74,47 @@ namespace SaM.DataBases.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("CertificationId");
+
+                    b.Property<int?>("Duration");
+
                     b.Property<int>("EducationProgramId");
 
                     b.Property<int>("SubjectId");
 
+                    b.Property<int?>("TeacherId");
+
+                    b.Property<DateTime?>("Updated");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CertificationId");
 
                     b.HasIndex("EducationProgramId");
 
                     b.HasIndex("SubjectId");
 
+                    b.HasIndex("TeacherId");
+
                     b.ToTable("EducationalPlans");
+                });
+
+            modelBuilder.Entity("SaM.Domain.Core.Education.EducationPlanEvents", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("EducationalPlanId");
+
+                    b.Property<int>("EventId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EducationalPlanId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("EducationPlanEvents");
                 });
 
             modelBuilder.Entity("SaM.Domain.Core.Education.EducationProgram", b =>
@@ -102,6 +138,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -120,9 +158,27 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.HasKey("Id");
 
                     b.ToTable("EducationTypes");
+                });
+
+            modelBuilder.Entity("SaM.Domain.Core.Education.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int?>("StudentsCount");
+
+                    b.Property<DateTime?>("Updated");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("SaM.Domain.Core.Education.Exam", b =>
@@ -130,21 +186,23 @@ namespace SaM.DataBases.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("End");
+                    b.Property<DateTime?>("End");
 
-                    b.Property<int>("Grade");
+                    b.Property<int?>("Grade");
 
-                    b.Property<DateTime>("Start");
+                    b.Property<DateTime?>("Start");
 
                     b.Property<int>("StatementId");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int?>("StudentId");
+
+                    b.Property<DateTime?>("Updated");
 
                     b.HasKey("Id");
 
                     b.HasIndex("StatementId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Exams");
                 });
@@ -157,6 +215,8 @@ namespace SaM.DataBases.Migrations
                     b.Property<int>("ExamId");
 
                     b.Property<string>("Text");
+
+                    b.Property<DateTime?>("Updated");
 
                     b.Property<int>("UserId");
 
@@ -180,6 +240,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProgramId");
@@ -187,50 +249,30 @@ namespace SaM.DataBases.Migrations
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("SaM.Domain.Core.Education.SharedStatement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("EducationProgramId");
-
-                    b.Property<int>("StatementId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EducationProgramId");
-
-                    b.HasIndex("StatementId");
-
-                    b.ToTable("SharedStatements");
-                });
-
             modelBuilder.Entity("SaM.Domain.Core.Education.Statement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CertificationId");
-
                     b.Property<DateTime>("Date");
+
+                    b.Property<int>("EducationalPlanId");
 
                     b.Property<int?>("GroupId");
 
                     b.Property<Guid>("Guid");
 
-                    b.Property<int>("SubjectId");
-
                     b.Property<string>("Title");
+
+                    b.Property<DateTime?>("Updated");
 
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CertificationId");
+                    b.HasIndex("EducationalPlanId");
 
                     b.HasIndex("GroupId");
-
-                    b.HasIndex("SubjectId");
 
                     b.HasIndex("UserId");
 
@@ -248,6 +290,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GroupId");
@@ -260,17 +304,13 @@ namespace SaM.DataBases.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CertificationId");
-
-                    b.Property<int?>("Duration");
-
                     b.Property<Guid>("Guid");
 
                     b.Property<string>("Title");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime?>("Updated");
 
-                    b.HasIndex("CertificationId");
+                    b.HasKey("Id");
 
                     b.ToTable("Subjects");
                 });
@@ -290,6 +330,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("ParentMidleName");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -306,6 +348,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("PassCode");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
@@ -321,6 +365,8 @@ namespace SaM.DataBases.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Text");
+
+                    b.Property<DateTime?>("Updated");
 
                     b.Property<int>("UserId");
 
@@ -356,6 +402,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<int?>("SubGroupId");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
@@ -384,6 +432,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("Post");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
@@ -398,6 +448,8 @@ namespace SaM.DataBases.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("Updated");
 
                     b.Property<string>("Url");
 
@@ -426,6 +478,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<string>("Skype");
 
+                    b.Property<DateTime?>("Updated");
+
                     b.Property<int>("UserId");
 
                     b.Property<string>("WWW");
@@ -448,6 +502,10 @@ namespace SaM.DataBases.Migrations
 
             modelBuilder.Entity("SaM.Domain.Core.Education.EducationalPlan", b =>
                 {
+                    b.HasOne("SaM.Domain.Core.Education.Certification", "Certification")
+                        .WithMany()
+                        .HasForeignKey("CertificationId");
+
                     b.HasOne("SaM.Domain.Core.Education.EducationProgram", "EducationProgram")
                         .WithMany("EducationalPlanList")
                         .HasForeignKey("EducationProgramId")
@@ -456,6 +514,23 @@ namespace SaM.DataBases.Migrations
                     b.HasOne("SaM.Domain.Core.Education.Subject", "Subject")
                         .WithMany("EducationalPlanList")
                         .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SaM.Domain.Core.User.User", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherId");
+                });
+
+            modelBuilder.Entity("SaM.Domain.Core.Education.EducationPlanEvents", b =>
+                {
+                    b.HasOne("SaM.Domain.Core.Education.EducationalPlan", "EducationalPlan")
+                        .WithMany("EventList")
+                        .HasForeignKey("EducationalPlanId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SaM.Domain.Core.Education.Event", "Event")
+                        .WithMany("EducationPlanList")
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -477,9 +552,9 @@ namespace SaM.DataBases.Migrations
                         .HasForeignKey("StatementId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SaM.Domain.Core.User.User", "User")
+                    b.HasOne("SaM.Domain.Core.User.User", "Student")
                         .WithMany("Exams")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("SaM.Domain.Core.Education.ExamComment", b =>
@@ -503,34 +578,16 @@ namespace SaM.DataBases.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SaM.Domain.Core.Education.SharedStatement", b =>
-                {
-                    b.HasOne("SaM.Domain.Core.Education.EducationProgram", "EducationProgram")
-                        .WithMany()
-                        .HasForeignKey("EducationProgramId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SaM.Domain.Core.Education.Statement", "Statement")
-                        .WithMany("Programs")
-                        .HasForeignKey("StatementId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("SaM.Domain.Core.Education.Statement", b =>
                 {
-                    b.HasOne("SaM.Domain.Core.Education.Certification", "Certification")
-                        .WithMany()
-                        .HasForeignKey("CertificationId")
+                    b.HasOne("SaM.Domain.Core.Education.EducationalPlan", "EducationalPlan")
+                        .WithMany("Statements")
+                        .HasForeignKey("EducationalPlanId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SaM.Domain.Core.Education.Group", "Group")
                         .WithMany()
                         .HasForeignKey("GroupId");
-
-                    b.HasOne("SaM.Domain.Core.Education.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SaM.Domain.Core.User.User", "User")
                         .WithMany()
@@ -544,13 +601,6 @@ namespace SaM.DataBases.Migrations
                         .WithMany("SubGroupList")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SaM.Domain.Core.Education.Subject", b =>
-                {
-                    b.HasOne("SaM.Domain.Core.Education.Certification", "Certification")
-                        .WithMany()
-                        .HasForeignKey("CertificationId");
                 });
 
             modelBuilder.Entity("SaM.Domain.Core.User.UserCard", b =>

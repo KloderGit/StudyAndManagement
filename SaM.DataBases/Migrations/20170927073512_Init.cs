@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SaM.DataBases.Migrations
 {
-    public partial class InitDB : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,8 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,7 +31,8 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -44,11 +46,42 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EducationTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Events",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(nullable: false),
+                    StudentsCount = table.Column<int>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Events", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subjects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Guid = table.Column<Guid>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subjects", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,7 +94,8 @@ namespace SaM.DataBases.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     Guid = table.Column<Guid>(nullable: false),
                     LastName = table.Column<string>(nullable: true),
-                    ParentMidleName = table.Column<string>(nullable: true)
+                    ParentMidleName = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -76,7 +110,8 @@ namespace SaM.DataBases.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AssessmentId = table.Column<int>(nullable: false),
                     Guid = table.Column<Guid>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -87,28 +122,6 @@ namespace SaM.DataBases.Migrations
                         principalTable: "Certifications",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Subjects",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CertificationId = table.Column<int>(nullable: true),
-                    Duration = table.Column<int>(nullable: true),
-                    Guid = table.Column<Guid>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Subjects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Certifications_CertificationId",
-                        column: x => x.CertificationId,
-                        principalTable: "Certifications",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -124,7 +137,8 @@ namespace SaM.DataBases.Migrations
                     Guid = table.Column<Guid>(nullable: false),
                     ProgramType = table.Column<string>(nullable: true),
                     StudyType = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -152,6 +166,7 @@ namespace SaM.DataBases.Migrations
                     Guid = table.Column<Guid>(nullable: false),
                     Number = table.Column<string>(nullable: true),
                     PassCode = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -172,6 +187,7 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Text = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -195,6 +211,7 @@ namespace SaM.DataBases.Migrations
                     City = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
                     Post = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -214,6 +231,7 @@ namespace SaM.DataBases.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Updated = table.Column<DateTime>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
@@ -239,6 +257,7 @@ namespace SaM.DataBases.Migrations
                     Gender = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     Skype = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
                     WWW = table.Column<string>(nullable: true)
                 },
@@ -259,12 +278,22 @@ namespace SaM.DataBases.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CertificationId = table.Column<int>(nullable: true),
+                    Duration = table.Column<int>(nullable: true),
                     EducationProgramId = table.Column<int>(nullable: false),
-                    SubjectId = table.Column<int>(nullable: false)
+                    SubjectId = table.Column<int>(nullable: false),
+                    TeacherId = table.Column<int>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EducationalPlans", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EducationalPlans_Certifications_CertificationId",
+                        column: x => x.CertificationId,
+                        principalTable: "Certifications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_EducationalPlans_EducationPrograms_EducationProgramId",
                         column: x => x.EducationProgramId,
@@ -277,6 +306,12 @@ namespace SaM.DataBases.Migrations
                         principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EducationalPlans_Users_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -287,7 +322,8 @@ namespace SaM.DataBases.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
                     ProgramId = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -301,26 +337,52 @@ namespace SaM.DataBases.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EducationPlanEvents",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EducationalPlanId = table.Column<int>(nullable: false),
+                    EventId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EducationPlanEvents", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EducationPlanEvents_EducationalPlans_EducationalPlanId",
+                        column: x => x.EducationalPlanId,
+                        principalTable: "EducationalPlans",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EducationPlanEvents_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Statements",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CertificationId = table.Column<int>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
+                    EducationalPlanId = table.Column<int>(nullable: false),
                     GroupId = table.Column<int>(nullable: true),
                     Guid = table.Column<Guid>(nullable: false),
-                    SubjectId = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Statements", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Statements_Certifications_CertificationId",
-                        column: x => x.CertificationId,
-                        principalTable: "Certifications",
+                        name: "FK_Statements_EducationalPlans_EducationalPlanId",
+                        column: x => x.EducationalPlanId,
+                        principalTable: "EducationalPlans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -329,12 +391,6 @@ namespace SaM.DataBases.Migrations
                         principalTable: "Groups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Statements_Subjects_SubjectId",
-                        column: x => x.SubjectId,
-                        principalTable: "Subjects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Statements_Users_UserId",
                         column: x => x.UserId,
@@ -351,7 +407,8 @@ namespace SaM.DataBases.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     GroupId = table.Column<int>(nullable: false),
                     Guid = table.Column<Guid>(nullable: false),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -370,11 +427,12 @@ namespace SaM.DataBases.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    End = table.Column<DateTime>(nullable: false),
-                    Grade = table.Column<int>(nullable: false),
-                    Start = table.Column<DateTime>(nullable: false),
+                    End = table.Column<DateTime>(nullable: true),
+                    Grade = table.Column<int>(nullable: true),
+                    Start = table.Column<DateTime>(nullable: true),
                     StatementId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
+                    StudentId = table.Column<int>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -386,37 +444,11 @@ namespace SaM.DataBases.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Exams_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Exams_Users_StudentId",
+                        column: x => x.StudentId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SharedStatements",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    EducationProgramId = table.Column<int>(nullable: false),
-                    StatementId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SharedStatements", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SharedStatements_EducationPrograms_EducationProgramId",
-                        column: x => x.EducationProgramId,
-                        principalTable: "EducationPrograms",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SharedStatements_Statements_StatementId",
-                        column: x => x.StatementId,
-                        principalTable: "Statements",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -435,6 +467,7 @@ namespace SaM.DataBases.Migrations
                     Pay = table.Column<double>(nullable: true),
                     Result = table.Column<string>(nullable: true),
                     SubGroupId = table.Column<int>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -474,6 +507,7 @@ namespace SaM.DataBases.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ExamId = table.Column<int>(nullable: false),
                     Text = table.Column<string>(nullable: true),
+                    Updated = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -484,19 +518,24 @@ namespace SaM.DataBases.Migrations
                         column: x => x.ExamId,
                         principalTable: "Exams",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ExamComments_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CertificationTypes_AssessmentId",
                 table: "CertificationTypes",
                 column: "AssessmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EducationalPlans_CertificationId",
+                table: "EducationalPlans",
+                column: "CertificationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EducationalPlans_EducationProgramId",
@@ -507,6 +546,21 @@ namespace SaM.DataBases.Migrations
                 name: "IX_EducationalPlans_SubjectId",
                 table: "EducationalPlans",
                 column: "SubjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EducationalPlans_TeacherId",
+                table: "EducationalPlans",
+                column: "TeacherId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EducationPlanEvents_EducationalPlanId",
+                table: "EducationPlanEvents",
+                column: "EducationalPlanId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EducationPlanEvents_EventId",
+                table: "EducationPlanEvents",
+                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EducationPrograms_CategoryId",
@@ -524,9 +578,9 @@ namespace SaM.DataBases.Migrations
                 column: "StatementId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Exams_UserId",
+                name: "IX_Exams_StudentId",
                 table: "Exams",
-                column: "UserId");
+                column: "StudentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ExamComments_ExamId",
@@ -544,29 +598,14 @@ namespace SaM.DataBases.Migrations
                 column: "ProgramId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SharedStatements_EducationProgramId",
-                table: "SharedStatements",
-                column: "EducationProgramId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SharedStatements_StatementId",
-                table: "SharedStatements",
-                column: "StatementId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Statements_CertificationId",
+                name: "IX_Statements_EducationalPlanId",
                 table: "Statements",
-                column: "CertificationId");
+                column: "EducationalPlanId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Statements_GroupId",
                 table: "Statements",
                 column: "GroupId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Statements_SubjectId",
-                table: "Statements",
-                column: "SubjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Statements_UserId",
@@ -577,11 +616,6 @@ namespace SaM.DataBases.Migrations
                 name: "IX_SubGroups_GroupId",
                 table: "SubGroups",
                 column: "GroupId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_CertificationId",
-                table: "Subjects",
-                column: "CertificationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserCards_UserId",
@@ -638,13 +672,10 @@ namespace SaM.DataBases.Migrations
                 name: "CertificationTypes");
 
             migrationBuilder.DropTable(
-                name: "EducationalPlans");
+                name: "EducationPlanEvents");
 
             migrationBuilder.DropTable(
                 name: "ExamComments");
-
-            migrationBuilder.DropTable(
-                name: "SharedStatements");
 
             migrationBuilder.DropTable(
                 name: "UserCards");
@@ -665,6 +696,9 @@ namespace SaM.DataBases.Migrations
                 name: "UserProfiles");
 
             migrationBuilder.DropTable(
+                name: "Events");
+
+            migrationBuilder.DropTable(
                 name: "Exams");
 
             migrationBuilder.DropTable(
@@ -674,7 +708,13 @@ namespace SaM.DataBases.Migrations
                 name: "Statements");
 
             migrationBuilder.DropTable(
+                name: "EducationalPlans");
+
+            migrationBuilder.DropTable(
                 name: "Groups");
+
+            migrationBuilder.DropTable(
+                name: "Certifications");
 
             migrationBuilder.DropTable(
                 name: "Subjects");
@@ -684,9 +724,6 @@ namespace SaM.DataBases.Migrations
 
             migrationBuilder.DropTable(
                 name: "EducationPrograms");
-
-            migrationBuilder.DropTable(
-                name: "Certifications");
 
             migrationBuilder.DropTable(
                 name: "Categories");

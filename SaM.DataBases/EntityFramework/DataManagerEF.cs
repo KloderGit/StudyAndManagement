@@ -17,7 +17,7 @@ namespace SaM.DataBases.EntityFramework
         CommonImplementEFRepository<Exam> Exam;
         CommonImplementEFRepository<ExamComment> ExamComment;
         CommonImplementEFRepository<Statement> Statement;
-        CommonImplementEFRepository<SharedStatement> SharedStatement;
+        CommonImplementEFRepository<Event> SharedStatement;
         CommonImplementEFRepository<SubGroup> SubGroup;
         CommonImplementEFRepository<Subject> Subject;
         CommonImplementEFRepository<Certification> Certification;
@@ -44,7 +44,7 @@ namespace SaM.DataBases.EntityFramework
         public IRepository<Exam> Exams => Exam ?? (Exam = new CommonImplementEFRepository<Exam>(db));
         public IRepository<ExamComment> ExamComments => ExamComment ?? (ExamComment = new CommonImplementEFRepository<ExamComment>(db));
         public IRepository<Statement> Statements => Statement ?? (Statement = new CommonImplementEFRepository<Statement>(db));
-        public IRepository<SharedStatement> SharedStatements => SharedStatement ?? (SharedStatement = new CommonImplementEFRepository<SharedStatement>(db));
+        public IRepository<Event> SharedStatements => SharedStatement ?? (SharedStatement = new CommonImplementEFRepository<Event>(db));
         public IRepository<SubGroup> SubGroups => SubGroup ?? (SubGroup = new CommonImplementEFRepository<SubGroup>(db));
         public IRepository<Subject> Subjects => Subject ?? (Subject = new CommonImplementEFRepository<Subject>(db));
         public IRepository<Certification> Certifications => Certification ?? (Certification = new CommonImplementEFRepository<Certification>(db));

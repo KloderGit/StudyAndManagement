@@ -17,5 +17,7 @@ namespace SaM.Domain.Core.Education
 
         public Int32 ExamId { get; set; }
         public virtual Exam Exam { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

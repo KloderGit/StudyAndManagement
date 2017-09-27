@@ -19,7 +19,8 @@ namespace SaM.DataBases.EntityFramework
             public DbSet<Exam> Exams { get; set; }
             public DbSet<ExamComment> ExamComments { get; set; }
             public DbSet<Statement> Statements { get; set; }
-            public DbSet<SharedStatement> SharedStatements { get; set; }
+            public DbSet<Event> Events { get; set; }
+            public DbSet<EducationPlanEvents> EducationPlanEvents { get; set; }
         #endregion
 
         #region Данные о пользователе

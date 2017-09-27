@@ -12,5 +12,7 @@ namespace SaM.Domain.Core.Education
 
         public Int32 GroupId { get; set; }
         public virtual Group Group { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }

@@ -26,5 +26,7 @@ namespace SaM.Domain.Core.Education
         public virtual EducationType EducationType { get; set; }
 
         public virtual ICollection<EducationalPlan> EducationalPlanList { get; set; }
+
+        public DateTime? Updated { get; set; }
     }
 }
