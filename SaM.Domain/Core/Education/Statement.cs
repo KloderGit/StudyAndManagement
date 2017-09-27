@@ -8,7 +8,6 @@ namespace SaM.Domain.Core.Education
         public Statement()
         {
             Exams = new HashSet<Exam>();
-            Programs = new HashSet<SharedStatement>();
         }
 
         public Int32 Id { get; set; }
@@ -16,16 +15,11 @@ namespace SaM.Domain.Core.Education
         public string Title { get; set; }
         public DateTime Date { get; set; }
 
-        public virtual ICollection<SharedStatement> Programs { get; set; }
-
-        public Int32 SubjectId { get; set; }
-        public virtual Subject Subject { get; set; }
+        public Int32 EducationalPlanId { get; set; }
+        public virtual EducationalPlan EducationalPlan { get; set; }
 
         public Int32 UserId { get; set; }
         public virtual Core.User.User User { get; set; }
-
-        public Int32 CertificationId { get; set; }
-        public virtual Certification Certification { get; set; }
 
         public Int32? GroupId { get; set; }
         public virtual Group Group { get; set; }

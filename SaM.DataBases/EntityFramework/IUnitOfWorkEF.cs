@@ -14,7 +14,7 @@ namespace SaM.DataBases.EntityFramework
         IRepository<Exam> Exams { get; }
         IRepository<ExamComment> ExamComments { get; }
         IRepository<Statement> Statements { get; }
-        IRepository<SharedStatement> SharedStatements { get; }
+        IRepository<Event> SharedStatements { get; }
         IRepository<SubGroup> SubGroups { get; }
         IRepository<Subject> Subjects { get; }
         IRepository<Certification> Certifications { get; }
