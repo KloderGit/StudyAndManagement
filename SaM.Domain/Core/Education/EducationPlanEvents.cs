@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SaM.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SaM.Domain.Core.Education
 {
-    public class EducationPlanEvents
+    public class EducationPlanEvents : IDBObject
     {
         public Int32 Id { get; set; }
 
@@ -13,5 +14,8 @@ namespace SaM.Domain.Core.Education
 
         public Int32 EventId { get; set; }
         public virtual Event Event { get; set; }
+
+        private DateTime _updated = DateTime.Today;
+        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaM.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,7 +8,7 @@ namespace SaM.Domain.Core.Education
     /// <summary>
     /// Раздел -  Учебный центр \ Школа управления | Программы \ Семинары
     /// </summary>
-    public class Category
+    public class Category : IDBObject
     {
         public Category()
         {
@@ -20,6 +21,7 @@ namespace SaM.Domain.Core.Education
 
         public virtual ICollection<EducationProgram> Programs { get; set; }
 
-        public DateTime? Updated { get; set; }
+        private DateTime _updated = DateTime.Today;
+        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
     }
 }

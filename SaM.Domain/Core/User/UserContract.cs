@@ -1,9 +1,10 @@
 ﻿using System;
 using SaM.Domain.Core.Education;
+using SaM.Domain.Interfaces;
 
 namespace SaM.Domain.Core.User
 {
-    public class UserContract
+    public class UserContract : IDBObject
     {
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
@@ -26,6 +27,7 @@ namespace SaM.Domain.Core.User
         public Int32? SubGroupId { get; set; }
         public virtual SubGroup SubGroup { get; set; }
 
-        public DateTime? Updated { get; set; }
+        private DateTime _updated = DateTime.Today;
+        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
     }
 }

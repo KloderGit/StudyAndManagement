@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SaM.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace SaM.Domain.Core.Education
 {
-    public class Statement
+    public class Statement : IDBObject
     {
         public Statement()
         {
@@ -26,6 +27,7 @@ namespace SaM.Domain.Core.Education
 
         public virtual ICollection<Exam> Exams { get; set; }
 
-        public DateTime? Updated { get; set; }
+        private DateTime _updated = DateTime.Today;
+        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
     }
 }

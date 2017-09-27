@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using SaM.Domain.Core.Education;
+using SaM.Domain.Interfaces;
 
 namespace SaM.Domain.Core.User
 {
-    public class User
+    public class User : IDBObject
     {
         public User()
         {
@@ -32,6 +33,7 @@ namespace SaM.Domain.Core.User
         public virtual ICollection<Exam> Exams { get; set; }
         public virtual ICollection<ExamComment> ExamComments { get; set; }
 
-        public DateTime? Updated { get; set; }
+        private DateTime _updated = DateTime.Today;
+        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
     }
 }

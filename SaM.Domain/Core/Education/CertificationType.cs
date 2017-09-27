@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaM.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace SaM.Domain.Core.Education
     /// Система оценки для варианта аттестации [ Пятибальная \ Зачетная ]
     /// </summary>
 
-    public class CertificationType
+    public class CertificationType : IDBObject
     {
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
@@ -17,6 +18,7 @@ namespace SaM.Domain.Core.Education
         public Int32 AssessmentId { get; set; }
         public virtual Certification Assessment { get; set; }
 
-        public DateTime? Updated { get; set; }
+        private DateTime _updated = DateTime.Today;
+        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
     }
 }

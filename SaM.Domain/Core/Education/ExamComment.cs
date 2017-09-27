@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaM.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,7 +8,7 @@ namespace SaM.Domain.Core.Education
     /// <summary>
     /// Комментарий для экзамена
     /// </summary>
-    public class ExamComment
+    public class ExamComment : IDBObject
     {
         public Int32 Id { get; set; }
         public string Text { get; set; }
@@ -18,6 +19,7 @@ namespace SaM.Domain.Core.Education
         public Int32 ExamId { get; set; }
         public virtual Exam Exam { get; set; }
 
-        public DateTime? Updated { get; set; }
+        private DateTime _updated = DateTime.Today;
+        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
     }
 }
