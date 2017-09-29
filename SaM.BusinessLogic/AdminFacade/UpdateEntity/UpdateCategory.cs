@@ -125,5 +125,29 @@ namespace SaM.BusinessLogic.AdminFacade.UpdateEntity
 
             return true;
         }
+
+        public bool UpdateFromService(IEnumerable<CategoryDTO> items)
+        {
+            var databaseItems = database.Categories.GetList().Where(dbIt => items.Select(i => i.Guid).Contains(dbIt.Guid.ToString()));
+
+            foreach (var item in items)
+            {
+                var dbItem = databaseItems.Where(c => c.Guid.ToString() == item.Guid).FirstOrDefault();
+
+                if (dbItem != null)
+                {
+                    dbItem = item.Adapt<CategoryDTO, Category>(dbItem);
+                    database.Categories.Update(dbItem);
+                }
+                else
+                {
+                    database.Categories.Add(item.Adapt<CategoryDTO, Category>());
+                }
+            }
+
+            database.Save();
+
+            return true;
+        }
     }
 }

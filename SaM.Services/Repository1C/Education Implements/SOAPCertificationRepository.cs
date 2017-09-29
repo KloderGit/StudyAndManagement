@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using SoapService1full;
+using System.Linq;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPCertificationRepository : ImplementRepositorySOAP1C<ФормаКонтроля>, ICommonRepository<ФормаКонтроля>
+    public class SOAPCertificationRepository : ICommonRepository<ФормаКонтроля>
     {
         ПФ_ПорталДПОPortTypeClient service;
 
@@ -14,11 +15,22 @@ namespace SaM.Services.Repository1C
             service = source;
         }
 
-        protected override async Task<IEnumerable<ФормаКонтроля>> GetAllAsync()
+        public ФормаКонтроля GetEntity(dynamic key)
+        {
+            var itemKey = (string)key;
+            return GetList().Where(item => item.ГУИД == itemKey).FirstOrDefault();
+        }
+
+        public IQueryable<ФормаКонтроля> GetList()
+        {
+            var array = GetAllAsync();
+            return array.Result.AsQueryable();
+        }
+
+        public async Task<IEnumerable<ФормаКонтроля>> GetAllAsync()
         {
             var query = await service.ПолучитьФормыКонтроляAsync();
             return query.@return as IEnumerable<ФормаКонтроля>;
         }
-
     }
 }

@@ -16,11 +16,12 @@ namespace SaM.Services.Repository1C
         SOAPCategoryRepository CategoriesRepository;
         SOAPCertificationRepository CertificationsRepository;
         SOAPEducationTypeRepository EducationTypesRepositories;
+        SOAPEducationProgramRepository SOAPEducationProgramRepositories;
 
         public ICommonRepository<ГруппаПрограммыОбучения> Categories => CategoriesRepository ?? (CategoriesRepository = new SOAPCategoryRepository(soap));
         public ICommonRepository<ФормаКонтроля> Certifications => CertificationsRepository ?? (CertificationsRepository = new SOAPCertificationRepository(soap));
         public ICommonRepository<ФормаОбучения> EducationTypes => EducationTypesRepositories ?? (EducationTypesRepositories = new SOAPEducationTypeRepository(soap));
-
+        public SOAPEducationProgramRepository EducationPrograms => SOAPEducationProgramRepositories ?? (SOAPEducationProgramRepositories = new SOAPEducationProgramRepository(soap));
 
         public ICommonRepository<T> Repository<T>()
         {

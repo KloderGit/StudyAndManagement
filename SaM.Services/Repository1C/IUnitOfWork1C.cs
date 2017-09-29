@@ -8,6 +8,7 @@ namespace SaM.Services.Repository1C
         ICommonRepository<ГруппаПрограммыОбучения> Categories { get; }
         ICommonRepository<ФормаКонтроля> Certifications { get; }
         ICommonRepository<ФормаОбучения> EducationTypes { get; }
+        SOAPEducationProgramRepository EducationPrograms { get; }
 
         ICommonRepository<T> Repository<T>();
     }

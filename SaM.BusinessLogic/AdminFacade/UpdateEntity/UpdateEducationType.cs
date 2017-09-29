@@ -121,5 +121,29 @@ namespace SaM.BusinessLogic.AdminFacade.UpdateEntity
             return true;
         }
 
+        public bool UpdateFromService( IEnumerable<EducationTypeDTO> items )
+        {
+            var databaseItems = database.EducationTypes.GetList().Where(dbIt => items.Select(i => i.Guid).Contains(dbIt.Guid.ToString()));
+
+            foreach (var item in items)
+            {
+                var dbItem = databaseItems.Where(c => c.Guid.ToString() == item.Guid).FirstOrDefault();
+
+                if (dbItem != null)
+                {
+                    dbItem = item.Adapt<EducationTypeDTO, EducationType>(dbItem);
+                    database.EducationTypes.Update(dbItem);
+                }
+                else
+                {
+                    database.EducationTypes.Add(item.Adapt<EducationTypeDTO, EducationType>());
+                }
+            }
+
+            database.Save();
+
+            return true;
+        }
+
     }
 }

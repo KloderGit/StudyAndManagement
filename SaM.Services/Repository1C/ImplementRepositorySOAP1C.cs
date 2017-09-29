@@ -12,19 +12,23 @@ namespace SaM.Services.Repository1C
     {
 
         public delegate Task<IEnumerable<T>> GetAllDelegate();
-        public GetAllDelegate datamanager;
+        public GetAllDelegate source;
 
         protected abstract Task<IEnumerable<T>> GetAllAsync();  // Для переопределения метода-источника выборки в наследниках
 
         public ImplementRepositorySOAP1C()
         {
-            datamanager = new GetAllDelegate(GetAllAsync);
+            source = new GetAllDelegate(GetAllAsync);
         }
 
+        public T GetEntity(dynamic key)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public IQueryable<T> GetList()
         {
-            var ttt = datamanager();
+            var ttt = source();
             return ttt.Result.AsQueryable();
         }
     }

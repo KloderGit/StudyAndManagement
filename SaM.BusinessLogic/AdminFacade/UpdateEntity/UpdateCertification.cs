@@ -120,5 +120,29 @@ namespace SaM.BusinessLogic.AdminFacade.UpdateEntity
 
             return true;
         }
+
+        public bool UpdateFromService(IEnumerable<CertificationDTO> items)
+        {
+            var databaseItems = database.Certifications.GetList().Where(dbIt => items.Select(i => i.Guid).Contains(dbIt.Guid.ToString()));
+
+            foreach (var item in items)
+            {
+                var dbItem = databaseItems.Where(c => c.Guid.ToString() == item.Guid).FirstOrDefault();
+
+                if (dbItem != null)
+                {
+                    dbItem = item.Adapt<CertificationDTO, Certification>(dbItem);
+                    database.Certifications.Update(dbItem);
+                }
+                else
+                {
+                    database.Certifications.Add(item.Adapt<CertificationDTO, Certification>());
+                }
+            }
+
+            database.Save();
+
+            return true;
+        }
     }
 }

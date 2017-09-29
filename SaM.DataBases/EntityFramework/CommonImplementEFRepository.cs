@@ -36,6 +36,11 @@ namespace SaM.DataBases.EntityFramework
             return table.Find(id);
         }
 
+        public T GetEntity(dynamic key)
+        {
+            return GetById(key);
+        }
+
         public virtual void Update(T item)
         {
             db.Entry(item).State = EntityState.Modified;
@@ -51,6 +56,9 @@ namespace SaM.DataBases.EntityFramework
         {
             table.Remove(item);
         }
+
+
+
 
         //public virtual IEnumerable<T> GetLocal()
         //{
