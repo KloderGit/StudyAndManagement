@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using SaM.Common.Infrastructure;
 
 namespace TestDataAccess
 {
@@ -48,15 +49,15 @@ namespace TestDataAccess
             //}
 
 
-            var categ = ddddd.Select( pr => pr.category)
+            var categ = ddddd.Select(pr => pr.category)
                 .Where(s => String.IsNullOrEmpty(s.GUID) == false)
                                 .GroupBy(x => x.GUID)
                                 .ToDictionary(x => x.Key, y => y.FirstOrDefault())
                                 .Select(zx => zx.Value)
                                 .Adapt<IEnumerable<CategoryDTO>>();
 
-            var upd = new UpdateCategory();
-            upd.UpdateFromService(categ);
+            //var upd = new UpdateCategory();
+            //upd.UpdateFromService(categ);
 
 
             var eduType = ddddd.Select(pr => pr.formEducation)
@@ -66,8 +67,8 @@ namespace TestDataAccess
                                 .Select(zx => zx.Value)
                                 .Adapt<IEnumerable<EducationTypeDTO>>();
 
-            var upd2 = new UpdateEducationType();
-            upd2.UpdateFromService(eduType);
+            //var upd2 = new UpdateEducationType();
+            //upd2.UpdateFromService(eduType);
 
 
             var cert = ddddd.SelectMany(p => p.listOfSubjects)
@@ -78,9 +79,9 @@ namespace TestDataAccess
                                 .Select(zx => zx.Value)
                                 .Adapt<IEnumerable<CertificationDTO>>();
 
-            var upd1 = new UpdateCertification();
-            upd1.UpdateFromService(cert);
-                                
+            //var upd1 = new UpdateCertification();
+            //upd1.UpdateFromService(cert);
+
 
             var disc = ddddd.SelectMany(p => p.listOfSubjects)
                             .Where(f => String.IsNullOrEmpty(f.GUIDsubject) == false)
@@ -100,22 +101,66 @@ namespace TestDataAccess
 
 
 
+            //var ucplan = ddddd.SelectMany(r => r.listOfSubjects.Select( s => new { p = r.Adapt<EducationProgramDTO>(), s = s.Adapt<SubjectDTO>() }));
+
+
+            //var ucplan = ddddd.SelectMany(r => r.listOfSubjects
+            //                                    .Select(s => new 
+            //                                    {
+            //                                        EducationProgram = r.Adapt<EducationProgramDTO>(),
+            //                                        Subject = s.Adapt<SubjectDTO>(),
+            //                                        Certification = String.IsNullOrEmpty(s.Attestation.formControl.GUIDFormControl) == false ?
+            //                                                                             s.Attestation.formControl.Adapt<CertificationDTO>() : null,
+            //                                        Duration = s.duration
+            //                                    }
+            //                                    ).Where(d => d.Duration != null)
+            //                             );
+
+            //foreach (var item in ucplan)
+            //{
+            //    Console.WriteLine(item.Duration);
+            //}
+
+
             var ucplan = ddddd.SelectMany(r => r.listOfSubjects
-                                                .Select(s => new EducationalPlanDTO {
+                                                .Select(s => new EducationalPlanDTO
+                                                {
                                                     EducationProgram = r.Adapt<EducationProgramDTO>(),
                                                     Subject = s.Adapt<SubjectDTO>(),
                                                     Certification = String.IsNullOrEmpty(s.Attestation.formControl.GUIDFormControl) == false ?
                                                                                          s.Attestation.formControl.Adapt<CertificationDTO>() : null,
-                                                    Duration = Int32.Parse(s.duration)
-                                                    }
-                                                )
+                                                    Duration = s.duration.ParseIgnoreException()
+                                                })
                                          );
+            var i = 0;
+            foreach (var item in ucplan.Where( d => d.Duration != null && d.Duration > 0))
+            {
+                i++;
+                Console.WriteLine(i);
+                Console.WriteLine(item.Duration.ToString());
+            }
 
             Console.ReadLine();
         }
 
 
-        public static async Task<bool> Ddd() {
+        static int getInt(string str)
+        {
+            try
+            {
+                if (str == null) { str = "0"; }
+                return Int32.Parse(str);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(" -- " + str + " -- ");
+                return 0;
+            }
+        }
+
+
+        public static async Task<bool> Ddd()
+        {
 
             ПФ_ПорталДПОPortTypeClient soap = new ПФ_ПорталДПОPortTypeClient(ПФ_ПорталДПОPortTypeClient.EndpointConfiguration.ПФ_ПорталДПОSoap);
 
