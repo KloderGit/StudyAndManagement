@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using SaM.Common.DTO;
+using SaM.Common.POCO;
 using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core.Education;
 using SaM.Services.Repository1C;
@@ -22,18 +23,22 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
 
         public void Build() {
             builder.GetExistingItems();
-            builder.MarkAsUpdated();
+            builder.GetNewItems();
+            builder.Updated();
         }
     }
 
     public class CertificationTypesBuilder : IEducationBuilder
     {
-        IEnumerable<CertificationTypeDTO> serviceItems;
+        IEnumerable<CertificationTypePOCO> serviceItems;
         List<CertificationType> result = new List<CertificationType>();
+
+        List<CertificationTypePOCO> existItems = new List<CertificationTypePOCO>();
+        List<CertificationTypePOCO> expextItems = new List<CertificationTypePOCO>();
 
         public IUnitOfWorkEF database;
 
-        public CertificationTypesBuilder(IEnumerable<CertificationTypeDTO> serviceItems)
+        public CertificationTypesBuilder(IEnumerable<CertificationTypePOCO> serviceItems)
         {
             database = new DataManagerEF();
             this.serviceItems = serviceItems;
@@ -42,43 +47,49 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
 
         public void GetExistingItems()
         {
-            var databaseItems = database.CertificationTypes.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid.ToString()));
+            var seviceItemsGUIDS = serviceItems.Select(si => si.Guid);
+            var databaseItemsGUIDs = database.CertificationTypes.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select(di => di.Guid);
 
-            result.AddRange(databaseItems);
+            var shareGUIDs = seviceItemsGUIDS.Intersect(databaseItemsGUIDs);
+
+            existItems.AddRange(serviceItems.Where(si => shareGUIDs.Contains(si.Guid)));
         }
 
         public void GetNewItems()
         {
-            var serviceItemsGIUDs = serviceItems.Select(i => i.Guid);
+            var seviceItemsGUIDS = serviceItems.Select(si => si.Guid);
+            var databaseItemsGUIDs = database.CertificationTypes.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select(di => di.Guid);
 
-            var databaseItems = database.CertificationTypes.GetList()
-                                .Where(dbItem => serviceItemsGIUDs.Contains(dbItem.Guid.ToString()));
+            var differentGUIDs = seviceItemsGUIDS.Except(databaseItemsGUIDs);
 
-            var databaseItemsGUIDs = databaseItems.Select(dbi => dbi.Guid.ToString());
+            expextItems.AddRange(serviceItems.Where(si => differentGUIDs.Contains(si.Guid)));
+        }
 
-            var differentGUIDs = serviceItemsGIUDs.Except(databaseItemsGUIDs);
+        public void Updated()
+        {
+            var databaseItems = database.CertificationTypes.GetList().Where(dbItem => existItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList();
 
-            foreach (var item in serviceItems.Where(serI => differentGUIDs.Contains(serI.Guid)))
+            foreach (var item in existItems)
             {
-                database.CertificationTypes.Add(item.Adapt<CertificationTypeDTO, CertificationType>());
+                var databaseItem = databaseItems.FirstOrDefault(sI => sI.Guid == item.Guid);
+
+                if (databaseItem != null)
+                {
+                    databaseItem = item.Adapt(databaseItem);
+
+                    database.CertificationTypes.Update(databaseItem);
+                }
+            }
+
+            foreach (var item in expextItems)
+            {
+                var databaseItem = item.Adapt<CertificationType>();
+                database.CertificationTypes.Add(databaseItem);
             }
 
             database.Save();
 
-            var newItems = database.CertificationTypes.GetList().Where(dbItem => differentGUIDs.Contains(dbItem.Guid.ToString()));
-
-            result.AddRange(newItems);
-        }
-
-        public void MarkAsUpdated()
-        {
-            foreach (var item in serviceItems)
-            {
-                var databaseItem = result.FirstOrDefault( sI => sI.Guid.ToString() == item.Guid );
-                databaseItem = item.Adapt(databaseItem);
-
-                database.CertificationTypes.Update(databaseItem);
-            }
+            result.AddRange(database.CertificationTypes.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)));
         }
 
         public IEnumerable<CertificationType> GetResult()

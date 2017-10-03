@@ -22,6 +22,14 @@ namespace SaM.Common.Infrastructure.Mapster
 
             config.NewConfig<CertificationPOCO, Certification>()
                 .Ignore( it => it.Id);
+
+
+            config.NewConfig<ViewAttestation, CertificationTypePOCO>()
+                .Map(dest => dest.Guid, src => src.GUIDViewAttestation)
+                .Map(dest => dest.Title, src => src.Name);
+
+            config.NewConfig<CertificationTypePOCO, CertificationType>()
+                .Ignore(it => it.Id);
         }
     }
 }

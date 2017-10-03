@@ -22,6 +22,7 @@ namespace SaM.DataBases.EntityFramework
         CommonImplementEFRepository<Subject> Subject;
         CommonImplementEFRepository<Certification> Certification;
         CommonImplementEFRepository<CertificationType> CertificationType;
+        CommonImplementEFRepository<Attestation> Attestation;
 
         CommonImplementEFRepository<User> User;
         CommonImplementEFRepository<UserCard> UserCard;
@@ -49,6 +50,7 @@ namespace SaM.DataBases.EntityFramework
         public IRepository<Subject> Subjects => Subject ?? (Subject = new CommonImplementEFRepository<Subject>(db));
         public IRepository<Certification> Certifications => Certification ?? (Certification = new CommonImplementEFRepository<Certification>(db));
         public IRepository<CertificationType> CertificationTypes => CertificationType ?? (CertificationType = new CommonImplementEFRepository<CertificationType>(db));
+        public IRepository<Attestation> Attestations => Attestation ?? (Attestation = new CommonImplementEFRepository<Attestation>(db));
 
         public IRepository<User> Users => User ?? (User = new CommonImplementEFRepository<User>(db));
         public IRepository<UserCard> UserCards => UserCard ?? (UserCard = new CommonImplementEFRepository<UserCard>(db));

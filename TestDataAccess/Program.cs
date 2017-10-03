@@ -14,6 +14,11 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using SaM.Common.Infrastructure;
+using SaM.BusinessLogic.AdminFacade.Builders;
+using SaM.Common.POCO;
+using SaM.DataBases.EntityFramework;
+using System.Diagnostics;
+using SaM.DataBases.Infrastructure;
 
 namespace TestDataAccess
 {
@@ -23,30 +28,64 @@ namespace TestDataAccess
         {
 
             Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
-            TypeAdapterConfig.GlobalSettings.Scan(assem);
+            Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly;
+            TypeAdapterConfig.GlobalSettings.Scan(assem, assem2);
 
             var dssdd = new DataManager1C();
+            var database = new DataManagerEF();
 
-            //var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 20), DateTime.Today).Adapt<IEnumerable<EducationProgramDTO>>();
 
-            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2006, 9, 20), DateTime.Today);
+            var sw = new Stopwatch();
+            sw.Start();
+            Console.Write("Query to Service - ");
 
-            //foreach (var item in ddddd)
-            //{
-            //    var listt = item.Adapt<EducationProgramDTO>();
+            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 20), DateTime.Today);
 
-            //    foreach (var item2 in item.listOfSubjects)
-            //    {
-            //        var ttt = item2.Adapt<SubjectDTO>();
+            sw.Stop();
+            Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
-            //        var att = item2.Attestation.formControl.Adapt<CertificationDTO>();
+            sw.Reset();
+            sw.Start();
+            Console.Write("Make Attestation Tree - ");
 
-            //        foreach (var item3 in item2.Attestation.SpisokVariantAttestation)
-            //        {
-            //            var ooo = item3.Adapt<CertificationTypeDTO>();
-            //        }
-            //    }
-            //}
+            var attest = ddddd.SelectMany(p => p.listOfSubjects)
+                    .Select(att => att.Attestation)
+                    .Where(att => String.IsNullOrEmpty(att.formControl.GUIDFormControl) == false)
+                                .GroupBy(x => x.formControl.GUIDFormControl)
+                                .ToDictionary(x => x.Key, y => y.FirstOrDefault())
+                                .SelectMany(zx => zx.Value.SpisokVariantAttestation.Select(el => new AttestationPOCO
+                                {
+                                    Certification = zx.Value.formControl.Adapt<CertificationPOCO>(),
+                                    CertificationType = el.Adapt<CertificationTypePOCO>()
+                                }));
+
+            sw.Stop();
+            Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
+
+
+            var attBuild = new AttestationBuilder(attest);
+            var Attdirec = new AttestationDirector(attBuild);
+
+            Attdirec.Build();
+
+            var attRes = attBuild.GetResult();
+
+
+
+            var tr = database.Certifications.GetList().Where( uu => uu.Guid.ToString() == "f4190a1a-4cdc-11e6-a716-c8600054f636");
+
+
+            //var attKey = attest.Select(it => it.Certification.Guid.ToString() + it.CertificationType.Guid.ToString());
+
+            //var databsItems = database.Attestations.GetList()
+            //                    .Where( db => attKey.Contains( db.Certification.Guid.ToString() + db.CertificationType.Guid.ToString() ) );
+
+            //var dbKeys = databsItems.Select( it => it.Certification.Guid.ToString() + it.CertificationType.Guid.ToString());
+
+
+            //var dsdsd = attKey.Except(dbKeys);
+
+
 
 
             var categ = ddddd.Select(pr => pr.category)
@@ -56,9 +95,6 @@ namespace TestDataAccess
                                 .Select(zx => zx.Value)
                                 .Adapt<IEnumerable<CategoryDTO>>();
 
-            //var upd = new UpdateCategory();
-            //upd.UpdateFromService(categ);
-
 
             var eduType = ddddd.Select(pr => pr.formEducation)
                 .Where(s => String.IsNullOrEmpty(s.GUIDFormEducation) == false)
@@ -67,21 +103,6 @@ namespace TestDataAccess
                                 .Select(zx => zx.Value)
                                 .Adapt<IEnumerable<EducationTypeDTO>>();
 
-            //var upd2 = new UpdateEducationType();
-            //upd2.UpdateFromService(eduType);
-
-
-            var cert = ddddd.SelectMany(p => p.listOfSubjects)
-                            .Select(a => a.Attestation.formControl)
-                            .Where(f => String.IsNullOrEmpty(f.GUIDFormControl) == false)
-                                .GroupBy(x => x.GUIDFormControl)
-                                .ToDictionary(x => x.Key, y => y.FirstOrDefault())
-                                .Select(zx => zx.Value)
-                                .Adapt<IEnumerable<CertificationDTO>>();
-
-            //var upd1 = new UpdateCertification();
-            //upd1.UpdateFromService(cert);
-
 
             var disc = ddddd.SelectMany(p => p.listOfSubjects)
                             .Where(f => String.IsNullOrEmpty(f.GUIDsubject) == false)
@@ -89,37 +110,6 @@ namespace TestDataAccess
                                 .ToDictionary(x => x.Key, y => y.FirstOrDefault())
                                 .Select(zx => zx.Value)
                                 .Adapt<IEnumerable<SubjectDTO>>();
-
-
-            var certTypes = ddddd.SelectMany(p => p.listOfSubjects)
-                    .SelectMany(c => c.Attestation.SpisokVariantAttestation)
-                    .Where(s => String.IsNullOrEmpty(s.GUIDViewAttestation) == false)
-                    .GroupBy(x => x.GUIDViewAttestation)
-                    .ToDictionary(x => x.Key, y => y.FirstOrDefault())
-                    .Select(zx => zx.Value)
-                    .Adapt<IEnumerable<CertificationTypeDTO>>();
-
-
-
-            //var ucplan = ddddd.SelectMany(r => r.listOfSubjects.Select( s => new { p = r.Adapt<EducationProgramDTO>(), s = s.Adapt<SubjectDTO>() }));
-
-
-            //var ucplan = ddddd.SelectMany(r => r.listOfSubjects
-            //                                    .Select(s => new 
-            //                                    {
-            //                                        EducationProgram = r.Adapt<EducationProgramDTO>(),
-            //                                        Subject = s.Adapt<SubjectDTO>(),
-            //                                        Certification = String.IsNullOrEmpty(s.Attestation.formControl.GUIDFormControl) == false ?
-            //                                                                             s.Attestation.formControl.Adapt<CertificationDTO>() : null,
-            //                                        Duration = s.duration
-            //                                    }
-            //                                    ).Where(d => d.Duration != null)
-            //                             );
-
-            //foreach (var item in ucplan)
-            //{
-            //    Console.WriteLine(item.Duration);
-            //}
 
 
             var ucplan = ddddd.SelectMany(r => r.listOfSubjects
@@ -133,7 +123,7 @@ namespace TestDataAccess
                                                 })
                                          );
             var i = 0;
-            foreach (var item in ucplan.Where( d => d.Duration != null && d.Duration > 0))
+            foreach (var item in ucplan.Where(d => d.Duration != null && d.Duration > 0))
             {
                 i++;
                 Console.WriteLine(i);

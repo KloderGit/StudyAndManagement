@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SaM.Common.POCO
 {
@@ -12,6 +13,6 @@ namespace SaM.Common.POCO
         public Guid Guid { get; set; }
         public string Title { get; set; }
 
-        public CertificationPOCO Assessment { get; set; }
+        public virtual IEnumerable<AttestationPOCO> Certifications { get; set; }
     }
 }

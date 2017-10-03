@@ -16,6 +16,7 @@ namespace SaM.DataBases.EntityFramework
             public DbSet<Subject> Subjects { get; set; }
             public DbSet<Certification> Certifications { get; set; }
             public DbSet<CertificationType> CertificationTypes { get; set; }
+            public DbSet<Attestation> Attestations { get; set; }
             public DbSet<Exam> Exams { get; set; }
             public DbSet<ExamComment> ExamComments { get; set; }
             public DbSet<Statement> Statements { get; set; }

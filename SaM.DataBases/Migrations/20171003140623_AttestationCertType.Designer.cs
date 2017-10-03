@@ -8,9 +8,10 @@ using SaM.DataBases.EntityFramework;
 namespace SaM.DataBases.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20171003140623_AttestationCertType")]
+    partial class AttestationCertType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -516,12 +517,12 @@ namespace SaM.DataBases.Migrations
             modelBuilder.Entity("SaM.Domain.Core.Education.Attestation", b =>
                 {
                     b.HasOne("SaM.Domain.Core.Education.Certification", "Certification")
-                        .WithMany("CertificationTypes")
+                        .WithMany("Attestations")
                         .HasForeignKey("CertificationId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SaM.Domain.Core.Education.CertificationType", "CertificationType")
-                        .WithMany("Certifications")
+                        .WithMany("Attestations")
                         .HasForeignKey("CertificationTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

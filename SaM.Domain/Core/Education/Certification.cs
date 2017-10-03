@@ -13,14 +13,14 @@ namespace SaM.Domain.Core.Education
     {
         public Certification()
         {
-            CertificationTypeList = new HashSet<CertificationType>();
+            CertificationTypes = new HashSet<Attestation>();
         }
 
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
         public string Title { get; set; }
 
-        public virtual ICollection<CertificationType> CertificationTypeList { get; set; }
+        public virtual ICollection<Attestation> CertificationTypes { get; set; }
 
         private DateTime _updated = DateTime.Today;
         public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }

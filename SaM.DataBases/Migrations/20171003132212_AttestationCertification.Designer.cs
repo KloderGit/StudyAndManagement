@@ -8,9 +8,10 @@ using SaM.DataBases.EntityFramework;
 namespace SaM.DataBases.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20171003132212_AttestationCertification")]
+    partial class AttestationCertification
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -23,15 +24,11 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<int>("CertificationId");
 
-                    b.Property<int>("CertificationTypeId");
-
                     b.Property<DateTime?>("Updated");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CertificationId");
-
-                    b.HasIndex("CertificationTypeId");
 
                     b.ToTable("Attestations");
                 });
@@ -73,7 +70,7 @@ namespace SaM.DataBases.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AssessmentId");
+                    b.Property<int>("AssessmentId");
 
                     b.Property<Guid>("Guid");
 
@@ -516,13 +513,8 @@ namespace SaM.DataBases.Migrations
             modelBuilder.Entity("SaM.Domain.Core.Education.Attestation", b =>
                 {
                     b.HasOne("SaM.Domain.Core.Education.Certification", "Certification")
-                        .WithMany("CertificationTypes")
+                        .WithMany("Attestations")
                         .HasForeignKey("CertificationId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SaM.Domain.Core.Education.CertificationType", "CertificationType")
-                        .WithMany("Certifications")
-                        .HasForeignKey("CertificationTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -530,7 +522,8 @@ namespace SaM.DataBases.Migrations
                 {
                     b.HasOne("SaM.Domain.Core.Education.Certification", "Assessment")
                         .WithMany()
-                        .HasForeignKey("AssessmentId");
+                        .HasForeignKey("AssessmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SaM.Domain.Core.Education.EducationalPlan", b =>

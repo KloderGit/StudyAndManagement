@@ -19,6 +19,7 @@ namespace SaM.DataBases.EntityFramework
         IRepository<Subject> Subjects { get; }
         IRepository<Certification> Certifications { get; }
         IRepository<CertificationType> CertificationTypes { get; }
+        IRepository<Attestation> Attestations { get; }
 
         IRepository<User> Users { get; }
         IRepository<UserCard> UserCards { get; }

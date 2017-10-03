@@ -8,6 +8,6 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
     {
         void GetExistingItems();
         void GetNewItems();
-        void MarkAsUpdated();
+        void Updated();
     }
 }

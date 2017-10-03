@@ -52,6 +52,8 @@ namespace SaM.Common.Infrastructure.Mapster
                 .Map(dest => dest.Guid, src => src.GUIDViewAttestation)
                 .Map(dest => dest.Title, src => src.Name);
 
+            config.NewConfig<CertificationTypeDTO, CertificationType>().Ignore(ss => ss.Id);
+
 
             config.NewConfig<CategoryDTO, Category>().Ignore(ss => ss.Id);
             config.NewConfig<Category, CategoryDTO>();

@@ -14,6 +14,6 @@ namespace SaM.Common.POCO
         public Guid Guid { get; set; }
         public string Title { get; set; }
 
-        public ICollection<CertificationTypePOCO> AssessmentTypeList { get; set; }
+        public virtual IEnumerable<AttestationPOCO> CertificationsTypes { get; set; }
     }
 }
