@@ -1,23 +1,20 @@
 ﻿using Mapster;
-using SaM.Common.DTO;
 using SaM.Common.POCO;
 using SaM.DataBases.EntityFramework;
-using SaM.DataBases.Infrastructure;
 using SaM.Domain.Core.Education;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
 namespace SaM.BusinessLogic.AdminFacade.Builders
 {
 
-    public class CertificationDirector
+    public class EducationTypeDirector
     {
         IEducationBuilder builder;
 
-        public CertificationDirector(IEducationBuilder builder)
+        public EducationTypeDirector(IEducationBuilder builder)
         {
             this.builder = builder;
         }
@@ -30,18 +27,18 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
         }
     }
 
-    public class CertificationBuilder : IEducationBuilder
+    public class EducationTypeBuilder : IEducationBuilder
     {
 
-        IEnumerable<CertificationPOCO> serviceItems;
-        List<Certification> result = new List<Certification>();
+        IEnumerable<EducationTypePOCO> serviceItems;
+        List<EducationType> result = new List<EducationType>();
 
-        List<CertificationPOCO> existItems = new List<CertificationPOCO>();
-        List<CertificationPOCO> expextItems = new List<CertificationPOCO>();
+        List<EducationTypePOCO> existItems = new List<EducationTypePOCO>();
+        List<EducationTypePOCO> expextItems = new List<EducationTypePOCO>();
 
         public IUnitOfWorkEF database;
 
-        public CertificationBuilder(IEnumerable<CertificationPOCO> serviceItems)
+        public EducationTypeBuilder(IEnumerable<EducationTypePOCO> serviceItems)
         {
             database = new DataManagerEF();
             this.serviceItems = serviceItems;
@@ -51,17 +48,17 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
         {
             var seviceItemsGUIDS = serviceItems.Select(si => si.Guid);
 
-            var databaseItemsGUIDs = database.Certifications.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select( di => di.Guid);
+            var databaseItemsGUIDs = database.EducationTypes.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select(di => di.Guid);
 
             var shareGUIDs = seviceItemsGUIDS.Intersect(databaseItemsGUIDs);
 
-            existItems.AddRange( serviceItems.Where( si => shareGUIDs.Contains(si.Guid) ) );
+            existItems.AddRange(serviceItems.Where(si => shareGUIDs.Contains(si.Guid)));
         }
 
         public void GetNewItems()
         {
             var seviceItemsGUIDS = serviceItems.Select(si => si.Guid);
-            var databaseItemsGUIDs = database.Certifications.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select(di => di.Guid);
+            var databaseItemsGUIDs = database.EducationTypes.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select(di => di.Guid);
 
             var differentGUIDs = seviceItemsGUIDS.Except(databaseItemsGUIDs);
 
@@ -70,7 +67,7 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
 
         public void Updated()
         {
-            var databaseItems = database.Certifications.GetList().Where(dbItem => existItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList();
+            var databaseItems = database.EducationTypes.GetList().Where(dbItem => existItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList();
 
             foreach (var item in existItems)
             {
@@ -80,22 +77,22 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
                 {
                     databaseItem = item.Adapt(databaseItem);
 
-                    database.Certifications.Update(databaseItem);
+                    database.EducationTypes.Update(databaseItem);
                 }
             }
 
             foreach (var item in expextItems)
             {
-                var databaseItem = item.Adapt<Certification>();
-                database.Certifications.Add(databaseItem);
+                var databaseItem = item.Adapt<EducationType>();
+                database.EducationTypes.Add(databaseItem);
             }
 
             database.Save();
 
-            result.AddRange(database.Certifications.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)));
+            result.AddRange(database.EducationTypes.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)));
         }
 
-        public IEnumerable<Certification> GetResult()
+        public IEnumerable<EducationType> GetResult()
         {
             return result;
         }

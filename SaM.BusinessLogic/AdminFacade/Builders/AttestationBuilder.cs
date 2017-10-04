@@ -112,19 +112,19 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
 
             database.Save();
 
-            var res = database.Attestations.GetList().IncludeMultiple(c => c.Certification).IncludeMultiple(t => t.CertificationType);
+            //var res = database.Attestations.GetList().IncludeMultiple(c => c.Certification).IncludeMultiple(t => t.CertificationType);
 
-            foreach (var item in expextItems)
-            {
-                res = res.Where(ct => ct.Certification.Guid == item.Certification.Guid).Where(tp => tp.CertificationType.Guid == item.CertificationType.Guid);
-            }
+            //foreach (var item in expextItems)
+            //{
+            //    res = res.Where(ct => ct.Certification.Guid == item.Certification.Guid).Where(tp => tp.CertificationType.Guid == item.CertificationType.Guid);
+            //}
 
-            result.AddRange(res.ToList());
+            //result.AddRange(res.ToList());
         }
 
-        public IEnumerable<Attestation> GetResult()
-        {
-            return result;
-        }
+        //public IEnumerable<Attestation> GetResult()
+        //{
+        //    return result;
+        //}
     }
 }

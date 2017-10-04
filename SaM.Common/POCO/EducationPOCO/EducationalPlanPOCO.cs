@@ -9,5 +9,10 @@ namespace SaM.Common.POCO
         public EducationProgramPOCO EducationProgram { get; set; }
 
         public SubjectPOCO Subject { get; set; }
+
+        public CertificationPOCO Certification { get; set; }
+
+        public Int32? Duration { get; set; }
+
     }
 }

@@ -36,17 +36,13 @@ namespace TestDataAccess
 
 
             var sw = new Stopwatch();
-            sw.Start();
-            Console.Write("Query to Service - ");
 
-            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 20), DateTime.Today);
+            sw.Start(); Console.Write("Query to Service - ");
+            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 20), DateTime.Today).Where(ac => ac.active == "Активный");
+            sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
-            sw.Stop();
-            Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
-            sw.Reset();
-            sw.Start();
-            Console.Write("Make Attestation Tree - ");
+            sw.Reset(); sw.Start(); Console.Write("Make Attestation Tree - ");
 
             var attest = ddddd.SelectMany(p => p.listOfSubjects)
                     .Select(att => att.Attestation)
@@ -59,76 +55,31 @@ namespace TestDataAccess
                                     CertificationType = el.Adapt<CertificationTypePOCO>()
                                 }));
 
-            sw.Stop();
-            Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
-
-
             var attBuild = new AttestationBuilder(attest);
             var Attdirec = new AttestationDirector(attBuild);
-
             Attdirec.Build();
 
-            var attRes = attBuild.GetResult();
+            sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
 
+            sw.Reset(); sw.Start(); Console.Write("Make EducationPlan Tree - ");
 
-            var tr = database.Certifications.GetList().Where( uu => uu.Guid.ToString() == "f4190a1a-4cdc-11e6-a716-c8600054f636");
+            var educationPlanTree = ddddd.SelectMany(r => r.listOfSubjects.Where(f => String.IsNullOrEmpty(f.GUIDsubject) == false)
+                                   .Select(s => new EducationalPlanPOCO
+                                   {
+                                       EducationProgram = r.Adapt<EducationProgramPOCO>(),
+                                       Subject = s.Adapt<SubjectPOCO>(),
+                                       Certification = String.IsNullOrEmpty(s.Attestation.formControl.GUIDFormControl) == false ?
+                                                                            s.Attestation.formControl.Adapt<CertificationPOCO>() : null,
+                                       Duration = s.duration.ParseIgnoreException()
+                                   })
+                             );
 
+            var eduPlanBuild = new EducationPlanBuilder(educationPlanTree);
+            var eduDirector = new EducationPlanDirector(eduPlanBuild);
+            eduDirector.Build();
 
-            //var attKey = attest.Select(it => it.Certification.Guid.ToString() + it.CertificationType.Guid.ToString());
-
-            //var databsItems = database.Attestations.GetList()
-            //                    .Where( db => attKey.Contains( db.Certification.Guid.ToString() + db.CertificationType.Guid.ToString() ) );
-
-            //var dbKeys = databsItems.Select( it => it.Certification.Guid.ToString() + it.CertificationType.Guid.ToString());
-
-
-            //var dsdsd = attKey.Except(dbKeys);
-
-
-
-
-            var categ = ddddd.Select(pr => pr.category)
-                .Where(s => String.IsNullOrEmpty(s.GUID) == false)
-                                .GroupBy(x => x.GUID)
-                                .ToDictionary(x => x.Key, y => y.FirstOrDefault())
-                                .Select(zx => zx.Value)
-                                .Adapt<IEnumerable<CategoryDTO>>();
-
-
-            var eduType = ddddd.Select(pr => pr.formEducation)
-                .Where(s => String.IsNullOrEmpty(s.GUIDFormEducation) == false)
-                                .GroupBy(x => x.GUIDFormEducation)
-                                .ToDictionary(x => x.Key, y => y.FirstOrDefault())
-                                .Select(zx => zx.Value)
-                                .Adapt<IEnumerable<EducationTypeDTO>>();
-
-
-            var disc = ddddd.SelectMany(p => p.listOfSubjects)
-                            .Where(f => String.IsNullOrEmpty(f.GUIDsubject) == false)
-                                .GroupBy(x => x.GUIDsubject)
-                                .ToDictionary(x => x.Key, y => y.FirstOrDefault())
-                                .Select(zx => zx.Value)
-                                .Adapt<IEnumerable<SubjectDTO>>();
-
-
-            var ucplan = ddddd.SelectMany(r => r.listOfSubjects
-                                                .Select(s => new EducationalPlanDTO
-                                                {
-                                                    EducationProgram = r.Adapt<EducationProgramDTO>(),
-                                                    Subject = s.Adapt<SubjectDTO>(),
-                                                    Certification = String.IsNullOrEmpty(s.Attestation.formControl.GUIDFormControl) == false ?
-                                                                                         s.Attestation.formControl.Adapt<CertificationDTO>() : null,
-                                                    Duration = s.duration.ParseIgnoreException()
-                                                })
-                                         );
-            var i = 0;
-            foreach (var item in ucplan.Where(d => d.Duration != null && d.Duration > 0))
-            {
-                i++;
-                Console.WriteLine(i);
-                Console.WriteLine(item.Duration.ToString());
-            }
+            sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
             Console.ReadLine();
         }
@@ -175,6 +126,8 @@ namespace TestDataAccess
 
             return true;
         }
+
+
     }
 
 }

@@ -8,9 +8,6 @@ namespace SaM.Common.POCO
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
         public string Title { get; set; }
-        public Int32? Duration { get; set; }
-
-        public CertificationPOCO Certification { get; set; }
 
         public ICollection<EducationalPlanPOCO> EducationalPlanList { get; set; }
     }
