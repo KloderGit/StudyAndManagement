@@ -10,15 +10,24 @@ namespace SaM.Domain.Core.Education
         public Event()
         {
             EducationPlanList = new HashSet<EducationPlanEvents>();
+            updated = DateTime.Today;
         }
 
         public Int32 Id { get; set; }
         public DateTime Date { get; set; }
+
+        public Int32? UserId { get; set; }
+        public virtual User.User Teacher { get; set; }
+
         public Int32? StudentsCount { get; set; }
 
         public virtual ICollection<EducationPlanEvents> EducationPlanList { get; set; }
 
-        private DateTime _updated = DateTime.Today;
-        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
+        public virtual ICollection<Exam> Exams { get; set; }
+
+        public virtual ICollection<Statement> Statements { get; set; }
+
+        private DateTime updated;
+        public DateTime? Updated { get => updated; }
     }
 }
