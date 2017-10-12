@@ -9,6 +9,7 @@ namespace SaM.Domain.Core.Education
         public Exam()
         {
             Comments = new HashSet<ExamComment>();
+            updated = DateTime.Today;
         }
 
         public Int32 Id { get; set; }
@@ -19,12 +20,12 @@ namespace SaM.Domain.Core.Education
         public Int32? StudentId { get; set; }
         public virtual Core.User.User Student { get; set; }
 
-        public Int32 StatementId { get; set; }
-        public virtual Statement Statement { get; set; }
+        public Int32 EventId { get; set; }
+        public virtual Event Event { get; set; }
 
         public virtual ICollection<ExamComment> Comments { get; set; }
 
-        private DateTime _updated = DateTime.Today;
-        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
+        private DateTime updated;
+        public DateTime? Updated { get => updated; }
     }
 }

@@ -2,7 +2,6 @@
 using SaM.Common.POCO;
 using SaM.DataBases.EntityFramework;
 using SaM.DataBases.Infrastructure;
-using SaM.DataBases.Migrations;
 using SaM.Domain.Core.Education;
 using System;
 using System.Collections.Generic;
@@ -118,7 +117,15 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
 
             var programsDataBase = database.EducationPrograms.GetList()
                                 .Where(p => childProgramGUIDs.Contains( p.Guid ) )
-                                .IncludeMultiple(ep => ep.EducationalPlanList);
+                                .IncludeMultiple(ep => ep.EducationalPlanList).ToList();
+
+            var edPL = programsDataBase.SelectMany(s => s.EducationalPlanList);
+
+            foreach (var item in edPL)
+            {
+                item.Subject = database.Subjects.GetById(item.SubjectId);
+            }
+
 
             var eduList = programsDataBase.SelectMany(l => l.EducationalPlanList);
                                         //.IncludeMultiple(p => p.EducationProgram)

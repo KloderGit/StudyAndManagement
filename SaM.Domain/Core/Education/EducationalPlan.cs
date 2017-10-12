@@ -9,7 +9,6 @@ namespace SaM.Domain.Core.Education
         public EducationalPlan()
         {
             EventList = new HashSet<EducationPlanEvents>();
-            Statements = new HashSet<Statement>();
         }
 
         public Int32 Id { get; set; }
@@ -29,8 +28,6 @@ namespace SaM.Domain.Core.Education
         public virtual User.User Teacher { get; set; }
 
         public virtual ICollection<EducationPlanEvents> EventList { get; set; }
-
-        public virtual ICollection<Statement> Statements { get; set; }
 
         private DateTime _updated = DateTime.Today;
         public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }

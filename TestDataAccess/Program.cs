@@ -19,6 +19,7 @@ using SaM.Common.POCO;
 using SaM.DataBases.EntityFramework;
 using System.Diagnostics;
 using SaM.DataBases.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace TestDataAccess
 {
@@ -38,7 +39,7 @@ namespace TestDataAccess
             var sw = new Stopwatch();
 
             sw.Start(); Console.Write("Query to Service - ");
-            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 20), DateTime.Today).Where(ac => ac.active == "Активный");
+            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 18), DateTime.Today).Where(ac => ac.active == "Активный");
             sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
 
@@ -80,6 +81,15 @@ namespace TestDataAccess
             eduDirector.Build();
 
             sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
+
+
+
+            //var cnt = new ApplicationContext();
+
+            //var progr = cnt.EducationPrograms
+            //                .Include(pl => pl.EducationalPlanList)
+            //                .ThenInclude( s => s.Subject );
+
 
             Console.ReadLine();
         }

@@ -10,11 +10,16 @@ namespace SaM.Domain.Core.Education
     /// </summary>
     public class EducationType : IDBObject, ISharedField
     {
+        public EducationType()
+        {
+            updated = DateTime.Today;
+        }
+
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
         public string Title { get; set; }
 
-        private DateTime _updated = DateTime.Today;
-        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
+        private DateTime updated;
+        public DateTime? Updated { get => updated; }
     }
 }

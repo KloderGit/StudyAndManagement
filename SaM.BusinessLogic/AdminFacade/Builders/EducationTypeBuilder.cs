@@ -48,7 +48,10 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
         {
             var seviceItemsGUIDS = serviceItems.Select(si => si.Guid);
 
-            var databaseItemsGUIDs = database.EducationTypes.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select(di => di.Guid);
+            //var erer = database.EducationTypes.GetList();
+
+            var databaseItemsGUIDs = database.EducationTypes.GetList()
+                .Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select(di => di.Guid);
 
             var shareGUIDs = seviceItemsGUIDS.Intersect(databaseItemsGUIDs);
 

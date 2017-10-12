@@ -8,26 +8,23 @@ namespace SaM.Domain.Core.Education
     {
         public Statement()
         {
-            Exams = new HashSet<Exam>();
+            updated = DateTime.Today;
         }
 
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }
         public string Title { get; set; }
-        public DateTime Date { get; set; }
 
-        public Int32 EducationalPlanId { get; set; }
-        public virtual EducationalPlan EducationalPlan { get; set; }
-
-        public Int32 UserId { get; set; }
-        public virtual Core.User.User User { get; set; }
+        public Int32 EducationProgramId { get; set; }
+        public virtual EducationProgram EducationProgram { get; set; }
 
         public Int32? GroupId { get; set; }
         public virtual Group Group { get; set; }
 
-        public virtual ICollection<Exam> Exams { get; set; }
+        public Int32 EventId { get; set; }
+        public virtual Event Event { get; set; }
 
-        private DateTime _updated = DateTime.Today;
-        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
+        private DateTime updated;
+        public DateTime? Updated { get => updated; }
     }
 }
