@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaM.Domain", "SaM.Domain\SaM.Domain.csproj", "{8339F621-126A-4C03-8FEB-0CC90FBA25CF}"
 EndProject
@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaM.Services", "SaM.Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaM.Common", "SaM.Common\SaM.Common.csproj", "{4F6F0EC3-EC2D-4C42-AEF6-5E0A7C0011E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDataAccess", "TestDataAccess\TestDataAccess.csproj", "{B67D587E-FC7F-473A-9B8A-B360009E5438}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandBox", "TestDataAccess\SandBox.csproj", "{B67D587E-FC7F-473A-9B8A-B360009E5438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaM.ASPApplication", "SaM.ASPApplication\SaM.ASPApplication.csproj", "{6B21675A-390D-44A7-90ED-EFAA7B83F680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaM.ASPApplication", "SaM.ASPApplication\SaM.ASPApplication.csproj", "{6B21675A-390D-44A7-90ED-EFAA7B83F680}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

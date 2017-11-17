@@ -1,0 +1,18 @@
+﻿@model IEnumerable<SaM.ASPApplication.Areas.Admin.Controllers.viewModel>
+
+
+<h1>Админ страница...</h1>
+
+<a asp-action="Index" asp-controller="UpdatePrograms">Онлайн-магазин</a>
+
+<a asp-action="Index">Онлайн-магазин</a>
+
+@foreach (var prog in Model)
+{
+    <h2>@prog.Program</h2>
+
+    foreach (var subj in prog.Subjects)
+    {
+        <p>@subj</p>
+    }
+}

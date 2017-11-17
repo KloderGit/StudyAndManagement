@@ -29,17 +29,60 @@ namespace TestDataAccess
         {
 
             Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
-            Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly;
-            TypeAdapterConfig.GlobalSettings.Scan(assem, assem2);
+            Assembly assem3 = typeof(ConfigEntityToPOCO).GetTypeInfo().Assembly;
+            Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly; 
+            TypeAdapterConfig.GlobalSettings.Scan(assem, assem2, assem3);
 
             var dssdd = new DataManager1C();
             var database = new DataManagerEF();
 
 
+            var db = new ApplicationContext();
+
+
+            var result = db.EducationPrograms
+                .Include(cat => cat.Category)
+                .Include(pt => pt.EducationType)
+                .Include(pl => pl.EducationalPlanList)
+                    .ThenInclude(p => p.Subject)
+                .Include(pl => pl.EducationalPlanList)
+                    .ThenInclude(p => p.Certification)
+                .Adapt<IEnumerable<EducationProgram>, IEnumerable<EducationProgramPOCO>>()
+                .GroupBy(gr => gr.Category.Title);
+
+
+
+            foreach (var group in result)
+            {
+                Console.WriteLine( group.Key );
+
+                foreach (var prog in group)
+                {
+                    Console.WriteLine("   ---" + prog.Title);
+                }
+            }
+
+
+
+
+            //foreach (var prog in result.OrderBy( o=>o.Title ))
+            //{
+            //    Console.WriteLine(prog.Title + "  " + prog.Category?.Title);
+
+            //    foreach (var item in prog.EducationalPlanList)
+            //    {
+            //        Console.WriteLine("  -----   " + item.Subject.Title + " --- " + item.Certification?.Title);
+            //    }
+            //}
+
+
+
             var sw = new Stopwatch();
 
             sw.Start(); Console.Write("Query to Service - ");
+
             var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 18), DateTime.Today).Where(ac => ac.active == "Активный");
+
             sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
 
@@ -56,9 +99,9 @@ namespace TestDataAccess
                                     CertificationType = el.Adapt<CertificationTypePOCO>()
                                 }));
 
-            var attBuild = new AttestationBuilder(attest);
-            var Attdirec = new AttestationDirector(attBuild);
-            Attdirec.Build();
+            //var attBuild = new AttestationBuilder(attest);
+            //var Attdirec = new AttestationDirector(attBuild);
+            //Attdirec.Build();
 
             sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
@@ -76,9 +119,9 @@ namespace TestDataAccess
                                    })
                              );
 
-            var eduPlanBuild = new EducationPlanBuilder(educationPlanTree);
-            var eduDirector = new EducationPlanDirector(eduPlanBuild);
-            eduDirector.Build();
+            //var eduPlanBuild = new EducationPlanBuilder(educationPlanTree);
+            //var eduDirector = new EducationPlanDirector(eduPlanBuild);
+            //eduDirector.Build();
 
             sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
 
