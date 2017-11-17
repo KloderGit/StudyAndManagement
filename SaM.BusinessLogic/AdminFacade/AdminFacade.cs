@@ -20,14 +20,7 @@ namespace SaM.BusinessLogic.AdminFacade
 {
     public class AdminFacade
     {
-        public AdminFacade()
-        {
-            Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
-            Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly;
-            TypeAdapterConfig.GlobalSettings.Scan(assem, assem2);
-        }
-
-        public IEnumerable<EducationProgramPOCO> GetProgramTree() {
+        public IEnumerable<EducationProgramPOCO> GetPrograms() {
 
             var db = new ApplicationContext();
 
@@ -39,6 +32,23 @@ namespace SaM.BusinessLogic.AdminFacade
                 .Include(pl => pl.EducationalPlanList)
                     .ThenInclude(p => p.Certification)
                 .Adapt<IEnumerable<EducationProgram>, IEnumerable<EducationProgramPOCO>>();
+
+            return result;
+        }
+
+        public EducationProgramPOCO GetProgram(Guid guid) {
+
+            var db = new ApplicationContext();
+
+            var result = db.EducationPrograms
+                .Include(cat => cat.Category)
+                .Include(pt => pt.EducationType)
+                .Include(pl => pl.EducationalPlanList)
+                    .ThenInclude(p => p.Subject)
+                .Include(pl => pl.EducationalPlanList)
+                    .ThenInclude(p => p.Certification)
+                .First(p => p.Guid == guid)
+                .Adapt<EducationProgram, EducationProgramPOCO>();
 
             return result;
         }

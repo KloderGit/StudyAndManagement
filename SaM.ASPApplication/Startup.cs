@@ -37,6 +37,9 @@ namespace SaM.ASPApplication
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            new Common.Infrastructure.Mapster.RegisterMapsterConfig();
+            new Infrastructure.Mapster.RegisterMapsterConfig();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

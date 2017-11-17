@@ -28,10 +28,10 @@ namespace TestDataAccess
         static void Main(string[] args)
         {
 
-            Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
-            Assembly assem3 = typeof(ConfigEntityToPOCO).GetTypeInfo().Assembly;
-            Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly; 
-            TypeAdapterConfig.GlobalSettings.Scan(assem, assem2, assem3);
+            //Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
+            //Assembly assem3 = typeof(ConfigEntityToPOCO).GetTypeInfo().Assembly;
+            //Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly; 
+            //TypeAdapterConfig.GlobalSettings.Scan(assem, assem2, assem3);
 
             var dssdd = new DataManager1C();
             var database = new DataManagerEF();

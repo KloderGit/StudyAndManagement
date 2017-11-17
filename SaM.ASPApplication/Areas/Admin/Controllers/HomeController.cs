@@ -23,7 +23,7 @@ namespace SaM.ASPApplication.Areas.Admin.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var result = logic.GetProgramTree()
+            var result = logic.GetPrograms()
                 .Where( p => p.EducationType.Title == "Очная" )
                     .Select(p => new viewModel { Program = p.Title, Subjects = p.EducationalPlanList.Where(l => l.Certification != null).Select(i => i.Subject.Title) })
                     .Where(vw => vw.Subjects.Count() > 0);

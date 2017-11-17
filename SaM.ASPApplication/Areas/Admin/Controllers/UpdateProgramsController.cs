@@ -18,7 +18,7 @@ namespace SaM.ASPApplication.Areas.Admin.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {            
-            var result = logic.GetProgramTree();
+            var result = logic.GetPrograms();
 
             return View(result);
         }
