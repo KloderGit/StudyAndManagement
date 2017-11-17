@@ -1,0 +1,20 @@
+﻿@model IEnumerable<SaM.Common.POCO.EducationProgramPOCO>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Обновления программ...</h1>
+
+@foreach (var group in Model.GroupBy(g=>g.Category.Title))
+{
+    <h2>@group.Key</h2>
+
+    foreach (var prog in group)
+    {
+        <p>@prog.Title</p>
+    }
+}
+
+<a asp-action="Update"> Обновить </a>
