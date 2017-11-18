@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SaM.ASPApplication.ViewModels
+namespace SaM.ASPApplication.Areas.Admin.ViewModels
 {
-    public class CertificationViewModel
+    public class CertificationTypeViewModel
     {
         public Guid Guid { get; set; }
         public string Title { get; set; }
-
-        public virtual IEnumerable<CertificationTypeViewModel> CertificationsTypes { get; set; }
     }
 }

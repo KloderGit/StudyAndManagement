@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SaM.ASPApplication\SaM.ASPApplication.csproj" />
     <ProjectReference Include="..\SaM.BusinessLogic\SaM.BusinessLogic.csproj" />
     <ProjectReference Include="..\SaM.Services\SaM.Services.csproj" />
   </ItemGroup>

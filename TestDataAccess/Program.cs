@@ -1,25 +1,15 @@
 ﻿using Mapster;
-using SaM.BusinessLogic.AdminFacade;
-using SaM.BusinessLogic.AdminFacade.UpdateEntity;
-using SaM.Common.DTO;
-using SaM.Common.Infrastructure.Mapster;
 using SaM.Domain.Core.Education;
-using SaM.Services.Repository1C;
 using SoapService1full;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-using SaM.Common.Infrastructure;
-using SaM.BusinessLogic.AdminFacade.Builders;
-using SaM.Common.POCO;
 using SaM.DataBases.EntityFramework;
-using System.Diagnostics;
-using SaM.DataBases.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using SaM.ASPApplication.Areas.Admin.ViewModels;
+using SaM.Common.POCO;
+using SaM.BusinessLogic.AdminFacade;
+using System.Linq;
+using System;
 
 namespace TestDataAccess
 {
@@ -28,127 +18,21 @@ namespace TestDataAccess
         static void Main(string[] args)
         {
 
-            //Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
-            //Assembly assem3 = typeof(ConfigEntityToPOCO).GetTypeInfo().Assembly;
-            //Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly; 
-            //TypeAdapterConfig.GlobalSettings.Scan(assem, assem2, assem3);
+            new SaM.Common.Infrastructure.Mapster.RegisterMapsterConfig();
+            new SaM.ASPApplication.Infrastructure.Mapster.RegisterMapsterConfig();
 
-            var dssdd = new DataManager1C();
-            var database = new DataManagerEF();
+            var result = new AdminFacade().GetPrograms().Where( p => p.Title.Contains("Персональный"));
 
+                var rrr = result.Adapt<IEnumerable<EducationProgramPOCO>, IEnumerable<ProgramViewModel>>();
 
-            var db = new ApplicationContext();
-
-
-            var result = db.EducationPrograms
-                .Include(cat => cat.Category)
-                .Include(pt => pt.EducationType)
-                .Include(pl => pl.EducationalPlanList)
-                    .ThenInclude(p => p.Subject)
-                .Include(pl => pl.EducationalPlanList)
-                    .ThenInclude(p => p.Certification)
-                .Adapt<IEnumerable<EducationProgram>, IEnumerable<EducationProgramPOCO>>()
-                .GroupBy(gr => gr.Category.Title);
-
-
-
-            foreach (var group in result)
+            foreach (var a in rrr)
             {
-                Console.WriteLine( group.Key );
+                Console.WriteLine(a.Title);
 
-                foreach (var prog in group)
+                foreach (var item in a.SubjectList)
                 {
-                    Console.WriteLine("   ---" + prog.Title);
+                    Console.WriteLine("----- " + item.Title + "  { " + item.Certification + " }"  );
                 }
-            }
-
-
-
-
-            //foreach (var prog in result.OrderBy( o=>o.Title ))
-            //{
-            //    Console.WriteLine(prog.Title + "  " + prog.Category?.Title);
-
-            //    foreach (var item in prog.EducationalPlanList)
-            //    {
-            //        Console.WriteLine("  -----   " + item.Subject.Title + " --- " + item.Certification?.Title);
-            //    }
-            //}
-
-
-
-            var sw = new Stopwatch();
-
-            sw.Start(); Console.Write("Query to Service - ");
-
-            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 18), DateTime.Today).Where(ac => ac.active == "Активный");
-
-            sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
-
-
-            sw.Reset(); sw.Start(); Console.Write("Make Attestation Tree - ");
-
-            var attest = ddddd.SelectMany(p => p.listOfSubjects)
-                    .Select(att => att.Attestation)
-                    .Where(att => String.IsNullOrEmpty(att.formControl.GUIDFormControl) == false)
-                                .GroupBy(x => x.formControl.GUIDFormControl)
-                                .ToDictionary(x => x.Key, y => y.FirstOrDefault())
-                                .SelectMany(zx => zx.Value.SpisokVariantAttestation.Select(el => new AttestationPOCO
-                                {
-                                    Certification = zx.Value.formControl.Adapt<CertificationPOCO>(),
-                                    CertificationType = el.Adapt<CertificationTypePOCO>()
-                                }));
-
-            //var attBuild = new AttestationBuilder(attest);
-            //var Attdirec = new AttestationDirector(attBuild);
-            //Attdirec.Build();
-
-            sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
-
-
-            sw.Reset(); sw.Start(); Console.Write("Make EducationPlan Tree - ");
-
-            var educationPlanTree = ddddd.SelectMany(r => r.listOfSubjects.Where(f => String.IsNullOrEmpty(f.GUIDsubject) == false)
-                                   .Select(s => new EducationalPlanPOCO
-                                   {
-                                       EducationProgram = r.Adapt<EducationProgramPOCO>(),
-                                       Subject = s.Adapt<SubjectPOCO>(),
-                                       Certification = String.IsNullOrEmpty(s.Attestation.formControl.GUIDFormControl) == false ?
-                                                                            s.Attestation.formControl.Adapt<CertificationPOCO>() : null,
-                                       Duration = s.duration.ParseIgnoreException()
-                                   })
-                             );
-
-            //var eduPlanBuild = new EducationPlanBuilder(educationPlanTree);
-            //var eduDirector = new EducationPlanDirector(eduPlanBuild);
-            //eduDirector.Build();
-
-            sw.Stop(); Console.WriteLine((sw.ElapsedMilliseconds / 100.0).ToString());
-
-
-
-            //var cnt = new ApplicationContext();
-
-            //var progr = cnt.EducationPrograms
-            //                .Include(pl => pl.EducationalPlanList)
-            //                .ThenInclude( s => s.Subject );
-
-
-            Console.ReadLine();
-        }
-
-
-        static int getInt(string str)
-        {
-            try
-            {
-                if (str == null) { str = "0"; }
-                return Int32.Parse(str);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(" -- " + str + " -- ");
-                return 0;
             }
         }
 

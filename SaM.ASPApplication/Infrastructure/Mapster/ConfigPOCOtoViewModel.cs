@@ -1,8 +1,9 @@
 ﻿using Mapster;
-using SaM.ASPApplication.ViewModels;
+using SaM.ASPApplication.Areas.Admin.ViewModels;
 using SaM.Common.POCO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SaM.ASPApplication.Infrastructure.Mapster
@@ -26,8 +27,18 @@ namespace SaM.ASPApplication.Infrastructure.Mapster
             config.NewConfig<CategoryPOCO, CategoryViewModel>();
             config.NewConfig<CategoryViewModel, CategoryPOCO>().Ignore(ss => ss.Id);
 
-            config.NewConfig<EducationProgramPOCO, EducationProgramViewModel>();
-            config.NewConfig<EducationProgramViewModel, EducationProgramPOCO>().Ignore(ss => ss.Id);
+            config.NewConfig<EducationProgramPOCO, ProgramViewModel>()
+                .Map(cat => cat.Category, src => src.Category.Title ?? "")
+                .Map(typ => typ.EducationType, src => src.EducationType.Title ?? "")
+                .Map(sbj => sbj.SubjectList, src => src.EducationalPlanList );
+
+            config.NewConfig<EducationalPlanPOCO, SubjectViewModel>()
+                .Map(sb => sb.Certification, ds => ds.Certification != null ? ds.Certification.Title : "")
+                .Map(sb => sb.Duration, ds => ds.Duration)
+                .Map(sb => sb.Guid, ds => ds.Subject.Guid)
+                .Map(sb => sb.Title, ds => ds.Subject.Title);
+
+            config.NewConfig<ProgramViewModel, EducationProgramPOCO>().Ignore(ss => ss.Id);
         }
     }
 }

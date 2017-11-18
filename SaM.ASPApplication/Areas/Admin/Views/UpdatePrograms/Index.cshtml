@@ -13,7 +13,7 @@
 
     foreach (var prog in group)
     {
-        <p>@prog.Title</p>
+        <p>@prog.Title  <a asp-action="ProgramInfo" asp-route-guid="@prog.Guid" asp-controller="Home">View</a> </p>
     }
 }
 
