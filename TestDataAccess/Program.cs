@@ -1,11 +1,11 @@
 ﻿using Mapster;
 using SaM.Domain.Core.Education;
 using SoapService1full;
+using SaM.Services.Repository1C;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SaM.DataBases.EntityFramework;
 using Microsoft.EntityFrameworkCore;
-using SaM.ASPApplication.Areas.Admin.ViewModels;
 using SaM.Common.POCO;
 using SaM.BusinessLogic.AdminFacade;
 using System.Linq;
@@ -18,22 +18,27 @@ namespace TestDataAccess
         static void Main(string[] args)
         {
 
-            new SaM.Common.Infrastructure.Mapster.RegisterMapsterConfig();
-            new SaM.ASPApplication.Infrastructure.Mapster.RegisterMapsterConfig();
+            //new SaM.Common.Infrastructure.Mapster.RegisterMapsterConfig();
+            //new SaM.ASPApplication.Infrastructure.Mapster.RegisterMapsterConfig();
 
-            var result = new AdminFacade().GetPrograms().Where( p => p.Title.Contains("Персональный"));
+            //var result = new AdminFacade().GetPrograms().Where( p => p.Title.Contains("Персональный"));
 
-                var rrr = result.Adapt<IEnumerable<EducationProgramPOCO>, IEnumerable<ProgramViewModel>>();
+            //    var rrr = result.Adapt<IEnumerable<EducationProgramPOCO>, IEnumerable<ProgramViewModel>>();
 
-            foreach (var a in rrr)
-            {
-                Console.WriteLine(a.Title);
+            //foreach (var a in rrr)
+            //{
+            //    Console.WriteLine(a.Title);
 
-                foreach (var item in a.SubjectList)
-                {
-                    Console.WriteLine("----- " + item.Title + "  { " + item.Certification + " }"  );
-                }
-            }
+            //    foreach (var item in a.SubjectList)
+            //    {
+            //        Console.WriteLine("----- " + item.Title + "  { " + item.Certification + " }"  );
+            //    }
+            //}
+
+
+            var ttt = new DataManager1C();
+
+            var mmm = ttt.Users.GetList(new DateTime(2017, 10, 18), DateTime.Today);
         }
 
 
@@ -57,9 +62,12 @@ namespace TestDataAccess
 
             //var sdff = await soap.ПолучитьВидыПрограммAsync();
 
-            var query = await soap.ПолучитьПрограммыОбученияAsync();
+            //var query = await soap.ПолучитьПрограммыОбученияAsync();
+
+            var query = await soap.ПолучитьИзмененныеДанныеОФЛЗаПериодAsync(new DateTime(2017, 11, 20), DateTime.Today);
 
 
+            var mmm = query.@return;
 
             return true;
         }

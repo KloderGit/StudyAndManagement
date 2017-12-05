@@ -1121,7 +1121,7 @@
       <xs:element name="ПолучитьИзмененныеДанныеОФЛЗаПериодResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="return" type="xs:string"/>
+            <xs:element name="return" type="tns:СписокДанныхПоФизЛицам"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>

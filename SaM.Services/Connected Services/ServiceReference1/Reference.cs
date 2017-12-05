@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ServiceModel;
-
 namespace SoapService1full
 {
     
@@ -5582,13 +5580,14 @@ namespace SoapService1full
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
-        public string @return;
+        [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
+        public SoapService1full.ДанныеПоФизЛицу[] @return;
         
         public ПолучитьИзмененныеДанныеОФЛЗаПериодResponse()
         {
         }
         
-        public ПолучитьИзмененныеДанныеОФЛЗаПериодResponse(string @return)
+        public ПолучитьИзмененныеДанныеОФЛЗаПериодResponse(SoapService1full.ДанныеПоФизЛицу[] @return)
         {
             this.@return = @return;
         }
@@ -6170,8 +6169,8 @@ namespace SoapService1full
         {
             if ((endpointConfiguration == EndpointConfiguration.ПФ_ПорталДПОSoap))
             {
-                BasicHttpBinding result = new BasicHttpBinding(BasicHttpSecurityMode.TransportCredentialOnly);
-                result.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
+                System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding(System.ServiceModel.BasicHttpSecurityMode.TransportCredentialOnly);
+                result.Security.Transport.ClientCredentialType = System.ServiceModel.HttpClientCredentialType.Basic;
 
                 result.MaxBufferSize = int.MaxValue;
                 result.ReaderQuotas = System.Xml.XmlDictionaryReaderQuotas.Max;
