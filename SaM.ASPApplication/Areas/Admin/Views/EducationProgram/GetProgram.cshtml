@@ -1,0 +1,18 @@
+﻿@model SaM.ASPApplication.Areas.Admin.ViewModels.ProgramViewModel
+
+<h1>Program страница...</h1>
+
+<a asp-action="Index" asp-controller="UpdatePrograms">Онлайн-магазин</a>
+
+<a asp-action="Index">Онлайн-магазин</a>
+
+
+<h2>@Model.Title</h2>
+
+@foreach (var subj in Model.SubjectList)
+{
+    <p>
+        @subj.Title <br />
+        @subj.Certification  |  <a asp-action="DeleteSubject" asp-route-guid="@subj.Guid">Удалить</a>
+    </p>
+}

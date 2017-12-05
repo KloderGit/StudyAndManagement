@@ -53,6 +53,39 @@ namespace SaM.BusinessLogic.AdminFacade
             return result;
         }
 
+        public void DeleteSubject(Guid guid)
+        {
+            var db = new ApplicationContext();
+
+            var elem = db.Subjects.FirstOrDefault(el => el.Guid == guid);
+
+            db.Subjects.Remove(elem);
+
+            db.SaveChangesAsync();
+        }
+
+        public void DeleteProgram(Guid guid)
+        {
+            var db = new ApplicationContext();
+
+            var elem = db.EducationPrograms.FirstOrDefault(el => el.Guid == guid);
+
+            db.EducationPrograms.Remove(elem);
+
+            db.SaveChangesAsync();
+        }
+
+        public void ProgramActive(Guid guid, bool isActive)
+        {
+            var db = new ApplicationContext();
+
+            var elem = db.EducationPrograms.FirstOrDefault(el => el.Guid == guid);
+
+            elem.Active = isActive;
+
+            db.SaveChangesAsync();
+        }
+
         public void UpdateEducation()
         {
             var dssdd = new DataManager1C();

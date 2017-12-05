@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SaM.ASPApplication.Areas.Admin.ViewModels.ProgramViewModel>
+
+<h1>Программы обучения!</h1>
+
+@foreach (var group in Model.GroupBy(g => g.Category))
+{
+    <h2>@group.Key</h2>
+
+    foreach (var prog in group)
+    {
+        <p>@prog.Title  <a asp-action="GetProgram" asp-route-guid="@prog.Guid" >View</a> | <a asp-action="DeleteProgram" asp-route-guid="@prog.Guid">Remove</a> | <a asp-action="ProgramActive" asp-route-guid="@prog.Guid" asp-route-isActive="@prog.Active">@prog.Active</a></p>
+    }
+}
