@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace SoapService1full
 {
     
@@ -180,8 +182,7 @@ namespace SoapService1full
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьДанныеОСлушателяхФЛ", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(НайденныйСлушатель[]))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        System.Threading.Tasks.Task<string> ПолучитьДанныеОСлушателяхФЛAsync(string GUIDФизЛица);
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьДанныеОСлушателяхФЛResponse> ПолучитьДанныеОСлушателяхФЛAsync(SoapService1full.ПолучитьДанныеОСлушателяхФЛRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/dposervices#ПФ_ПорталДПО:ПолучитьДанныеПоАттестациямФЛ", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -5549,6 +5550,47 @@ namespace SoapService1full
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ПолучитьДанныеОСлушателяхФЛ", WrapperNamespace="http://localhost/dposervices", IsWrapped=true)]
+    public partial class ПолучитьДанныеОСлушателяхФЛRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
+        public string GUIDФизЛица;
+        
+        public ПолучитьДанныеОСлушателяхФЛRequest()
+        {
+        }
+        
+        public ПолучитьДанныеОСлушателяхФЛRequest(string GUIDФизЛица)
+        {
+            this.GUIDФизЛица = GUIDФизЛица;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ПолучитьДанныеОСлушателяхФЛResponse", WrapperNamespace="http://localhost/dposervices", IsWrapped=true)]
+    public partial class ПолучитьДанныеОСлушателяхФЛResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://localhost/dposervices", Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("Состав", IsNullable=false)]
+        public SoapService1full.ДанныеОСлушателеФЛ[] @return;
+        
+        public ПолучитьДанныеОСлушателяхФЛResponse()
+        {
+        }
+        
+        public ПолучитьДанныеОСлушателяхФЛResponse(SoapService1full.ДанныеОСлушателеФЛ[] @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "0.5.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ПолучитьИзмененныеДанныеОФЛЗаПериод", WrapperNamespace="http://localhost/dposervices", IsWrapped=true)]
     public partial class ПолучитьИзмененныеДанныеОФЛЗаПериодRequest
     {
@@ -6107,9 +6149,17 @@ namespace SoapService1full
             return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ДобавитьСтудентаВВедомостьПосещаемостиAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task<string> ПолучитьДанныеОСлушателяхФЛAsync(string GUIDФизЛица)
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoapService1full.ПолучитьДанныеОСлушателяхФЛResponse> SoapService1full.ПФ_ПорталДПОPortType.ПолучитьДанныеОСлушателяхФЛAsync(SoapService1full.ПолучитьДанныеОСлушателяхФЛRequest request)
         {
-            return base.Channel.ПолучитьДанныеОСлушателяхФЛAsync(GUIDФизЛица);
+            return base.Channel.ПолучитьДанныеОСлушателяхФЛAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoapService1full.ПолучитьДанныеОСлушателяхФЛResponse> ПолучитьДанныеОСлушателяхФЛAsync(string GUIDФизЛица)
+        {
+            SoapService1full.ПолучитьДанныеОСлушателяхФЛRequest inValue = new SoapService1full.ПолучитьДанныеОСлушателяхФЛRequest();
+            inValue.GUIDФизЛица = GUIDФизЛица;
+            return ((SoapService1full.ПФ_ПорталДПОPortType)(this)).ПолучитьДанныеОСлушателяхФЛAsync(inValue);
         }
         
         public System.Threading.Tasks.Task<SoapService1full.ФизЛицо> ПолучитьДанныеПоАттестациямФЛAsync(string GUIDФизЛица)

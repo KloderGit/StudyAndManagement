@@ -1078,7 +1078,7 @@
       <xs:element name="ПолучитьДанныеОСлушателяхФЛResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="return" type="xs:string"/>
+            <xs:element name="return" type="tns:СписокСлушателейФЛ"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
