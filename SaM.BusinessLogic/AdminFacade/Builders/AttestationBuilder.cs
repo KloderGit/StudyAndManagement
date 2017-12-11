@@ -1,6 +1,7 @@
 ﻿using SaM.Common.POCO;
 using SaM.DataBases.EntityFramework;
 using SaM.DataBases.Infrastructure;
+using SaM.DataBases.Interfaces;
 using SaM.Domain.Core.Education;
 using System;
 using System.Collections.Generic;

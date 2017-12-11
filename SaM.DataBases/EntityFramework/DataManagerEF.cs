@@ -2,6 +2,7 @@
 using SaM.Domain.Core.Education;
 using SaM.Domain.Core.User;
 using System.Reflection;
+using SaM.DataBases.Interfaces;
 
 namespace SaM.DataBases.EntityFramework
 {

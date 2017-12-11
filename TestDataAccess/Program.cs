@@ -11,17 +11,24 @@ using SaM.BusinessLogic.AdminFacade;
 using System.Linq;
 using System;
 using SaM.Domain.Core.User;
+using System.Globalization;
+using System.Threading;
+using System.Reflection;
 
 namespace TestDataAccess
 {
     class Program
     {
+
+
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             new SaM.Common.Infrastructure.Mapster.RegisterMapsterConfig();
 
+
+            #region sdf
             //new SaM.Common.Infrastructure.Mapster.RegisterMapsterConfig();
             //new SaM.ASPApplication.Infrastructure.Mapster.RegisterMapsterConfig();
 
@@ -56,32 +63,55 @@ namespace TestDataAccess
 
             //ПФ_ПорталДПОPortTypeClient soap = new ПФ_ПорталДПОPortTypeClient(ПФ_ПорталДПОPortTypeClient.EndpointConfiguration.ПФ_ПорталДПОSoap);
 
-
-
             //var tttt = soap.ПолучитьДанныеОСлушателяхФЛAsync("e28c7922-e2fd-11e6-80ee-0cc47a4b75cc").Result;
             //var mmm = tttt.@return;
+#endregion
 
-            Console.WriteLine("-----------");
-            var ttttttt = Dsdsd();
-            Console.WriteLine("-----------");
+            //var properties = typeof(EducationProgram).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            //foreach (var property in properties)
+            //{
+            //    if (property.GetAccessors()[0].IsVirtual && !property.GetAccessors()[0].IsFinal)
+            //    {
+            //        Console.WriteLine(property.Name + " -  Yes");
+            //    }
+            //}
+
+
+
+            var ttttttt = GetUsers();
             ttttttt.Wait();
 
         }
 
 
-        public static async Task<IEnumerable<ДанныеПоФизЛицу>> Dsdsd() {
+
+
+        public static async Task<IEnumerable<ДанныеПоФизЛицу>> GetUsers() {
+
+            List<UserPOCO> users = new List<UserPOCO>();
+
             ПФ_ПорталДПОPortTypeClient soap = new ПФ_ПорталДПОPortTypeClient(ПФ_ПорталДПОPortTypeClient.EndpointConfiguration.ПФ_ПорталДПОSoap);
             var query = await soap.ПолучитьИзмененныеДанныеОФЛЗаПериодAsync(new DateTime(2017, 10, 20), DateTime.Today);
 
             foreach (var item in query.@return)
             {
-                Console.WriteLine(item);
+                var usr = item.Adapt<UserPOCO>();
+
+                var sdf = await GetStudents(item.XML_ID);
+
+                foreach (var erer in sdf)
+                {
+                    Console.WriteLine(erer.Program);
+                }
+
+                users.Add(usr);
             }
 
             return query.@return;
         }
 
-        public static async Task<IEnumerable<ДанныеОСлушателеФЛ>> Dseeee(string it)
+        public static async Task<IEnumerable<ДанныеОСлушателеФЛ>> GetStudents(string it)
         {
             ПФ_ПорталДПОPortTypeClient soap = new ПФ_ПорталДПОPortTypeClient(ПФ_ПорталДПОPortTypeClient.EndpointConfiguration.ПФ_ПорталДПОSoap);
             var tttt = await soap.ПолучитьДанныеОСлушателяхФЛAsync(it);
@@ -123,5 +153,6 @@ namespace TestDataAccess
 
 
     }
+
 
 }

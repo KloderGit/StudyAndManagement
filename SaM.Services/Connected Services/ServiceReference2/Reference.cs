@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 
 namespace SoapService1full
 {
@@ -1541,9 +1542,9 @@ namespace SoapService1full
                 this.nameField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
         public System.DateTime DataStart
         {
             get
@@ -1557,7 +1558,7 @@ namespace SoapService1full
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public System.DateTime DataFinish
         {
             get

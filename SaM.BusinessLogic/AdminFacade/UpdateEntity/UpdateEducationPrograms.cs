@@ -1,4 +1,5 @@
 ﻿using SaM.DataBases.EntityFramework;
+using SaM.DataBases.Interfaces;
 using SaM.Services.Repository1C;
 using System;
 using System.Collections.Generic;

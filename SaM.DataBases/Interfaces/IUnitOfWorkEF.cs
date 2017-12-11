@@ -2,7 +2,7 @@
 using SaM.Domain.Core.User;
 using SaM.Domain.Interfaces.Repositories;
 
-namespace SaM.DataBases.EntityFramework
+namespace SaM.DataBases.Interfaces
 {
     public interface IUnitOfWorkEF
     {

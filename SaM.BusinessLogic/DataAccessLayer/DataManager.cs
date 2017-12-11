@@ -1,4 +1,5 @@
 ﻿using SaM.DataBases.EntityFramework;
+using SaM.DataBases.Interfaces;
 using SaM.Services.Repository1C;
 
 namespace SaM.BusinessLogic.DataAccessLayer

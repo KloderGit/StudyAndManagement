@@ -18,7 +18,7 @@ using System.Reflection;
 
 namespace SaM.BusinessLogic.AdminFacade
 {
-    public class AdminFacade
+    public class EducationProgramFacade
     {
         public IEnumerable<EducationProgramPOCO> GetPrograms() {
 

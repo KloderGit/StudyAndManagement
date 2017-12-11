@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using SaM.Common.DTO;
 using SaM.DataBases.EntityFramework;
+using SaM.DataBases.Interfaces;
 using SaM.Domain.Core.Education;
 using SaM.Services.Repository1C;
 using System;

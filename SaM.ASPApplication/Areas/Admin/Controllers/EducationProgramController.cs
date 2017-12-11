@@ -14,11 +14,11 @@ namespace SaM.ASPApplication.Areas.Admin.Controllers
     [Area("Admin")]
     public class EducationProgramController : Controller
     {
-        AdminFacade logic;        
+        EducationProgramFacade logic;        
 
         public EducationProgramController()
         {
-            logic = new AdminFacade();
+            logic = new EducationProgramFacade();
         }
 
         public IActionResult Index()

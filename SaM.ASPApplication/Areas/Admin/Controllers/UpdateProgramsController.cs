@@ -8,11 +8,11 @@ namespace SaM.ASPApplication.Areas.Admin.Controllers
     [Area("Admin")]
     public class UpdateProgramsController : Controller
     {
-        AdminFacade logic;
+        EducationProgramFacade logic;
 
         public UpdateProgramsController()
         {
-            logic = new AdminFacade();
+            logic = new EducationProgramFacade();
         }
 
         // GET: /<controller>/

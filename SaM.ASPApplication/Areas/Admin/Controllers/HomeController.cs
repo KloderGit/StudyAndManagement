@@ -16,11 +16,11 @@ namespace SaM.ASPApplication.Areas.Admin.Controllers
     public class HomeController : Controller
     {
 
-        AdminFacade logic;
+        EducationProgramFacade logic;
 
         public HomeController()
         {
-            logic = new AdminFacade();
+            logic = new EducationProgramFacade();
         }
 
         // GET: /<controller>/
