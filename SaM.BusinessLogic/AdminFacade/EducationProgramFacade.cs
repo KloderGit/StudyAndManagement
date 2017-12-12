@@ -91,7 +91,7 @@ namespace SaM.BusinessLogic.AdminFacade
             var dssdd = new DataManager1C();
             var database = new DataManagerEF();
 
-            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 18), DateTime.Today).Where(ac => ac.active == "Активный");
+            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 18), DateTime.Today);
 
 
             var attest = ddddd.SelectMany(p => p.listOfSubjects)

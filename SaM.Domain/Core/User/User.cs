@@ -22,6 +22,7 @@ namespace SaM.Domain.Core.User
         public string LastName { get; set; }
         public Guid Guid { get; set; }
         public string Email { get; set; }
+        public Int32 Order { get; set; }
 
         public virtual UserPhoto Photo { get; set; }
         public virtual UserProfile Profile { get; set; }

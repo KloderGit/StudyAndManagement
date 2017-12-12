@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SaM.DataBases.Migrations
 {
-    public partial class Init : Migration
+    public partial class AddOrdersAndStudentIntoContract : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,6 +16,7 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
+                    Order = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Updated = table.Column<DateTime>(nullable: true)
                 },
@@ -31,6 +32,7 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
+                    Order = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Updated = table.Column<DateTime>(nullable: true)
                 },
@@ -46,6 +48,7 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
+                    Order = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Updated = table.Column<DateTime>(nullable: true)
                 },
@@ -61,6 +64,7 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
+                    Order = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -93,6 +97,7 @@ namespace SaM.DataBases.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     Guid = table.Column<Guid>(nullable: false),
                     LastName = table.Column<string>(nullable: true),
+                    Order = table.Column<int>(nullable: false),
                     ParentMidleName = table.Column<string>(nullable: true),
                     Updated = table.Column<DateTime>(nullable: true)
                 },
@@ -139,6 +144,7 @@ namespace SaM.DataBases.Migrations
                     CategoryId = table.Column<int>(nullable: true),
                     EducationTypeId = table.Column<int>(nullable: true),
                     Guid = table.Column<Guid>(nullable: false),
+                    Order = table.Column<int>(nullable: false),
                     ProgramType = table.Column<string>(nullable: true),
                     StudyType = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
@@ -307,7 +313,9 @@ namespace SaM.DataBases.Migrations
                     Duration = table.Column<int>(nullable: true),
                     EducationProgramId = table.Column<int>(nullable: false),
                     SubjectId = table.Column<int>(nullable: false),
+                    SubjectOrder = table.Column<int>(nullable: false),
                     TeacherId = table.Column<int>(nullable: true),
+                    TeacherOrder = table.Column<int>(nullable: false),
                     Updated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
@@ -346,6 +354,7 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
+                    Order = table.Column<int>(nullable: false),
                     ProgramId = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Updated = table.Column<DateTime>(nullable: true)
@@ -397,6 +406,7 @@ namespace SaM.DataBases.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EducationalPlanId = table.Column<int>(nullable: false),
+                    EducationalPlanOrder = table.Column<int>(nullable: false),
                     EventId = table.Column<int>(nullable: false),
                     Updated = table.Column<DateTime>(nullable: true)
                 },
@@ -460,6 +470,7 @@ namespace SaM.DataBases.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     GroupId = table.Column<int>(nullable: false),
                     Guid = table.Column<Guid>(nullable: false),
+                    Order = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Updated = table.Column<DateTime>(nullable: true)
                 },
@@ -517,6 +528,7 @@ namespace SaM.DataBases.Migrations
                     OpenDate = table.Column<DateTime>(nullable: false),
                     Pay = table.Column<double>(nullable: true),
                     Result = table.Column<string>(nullable: true),
+                    StudentGUID = table.Column<Guid>(nullable: false),
                     SubGroupId = table.Column<int>(nullable: true),
                     Updated = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false)

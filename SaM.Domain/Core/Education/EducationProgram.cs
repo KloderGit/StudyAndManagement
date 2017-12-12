@@ -19,6 +19,7 @@ namespace SaM.Domain.Core.Education
         public DateTime AcceptDate { get; set; }
         public string ProgramType { get; set; }
         public string StudyType { get; set; }
+        public Int32 Order { get; set; }
 
         public Int32? CategoryId { get; set; }
         public virtual Category Category { get; set; }

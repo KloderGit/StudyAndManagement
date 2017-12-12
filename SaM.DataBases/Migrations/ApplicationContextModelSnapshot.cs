@@ -43,6 +43,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<Guid>("Guid");
 
+                    b.Property<int>("Order");
+
                     b.Property<string>("Title");
 
                     b.Property<DateTime?>("Updated");
@@ -59,6 +61,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<Guid>("Guid");
 
+                    b.Property<int>("Order");
+
                     b.Property<string>("Title");
 
                     b.Property<DateTime?>("Updated");
@@ -74,6 +78,8 @@ namespace SaM.DataBases.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<Guid>("Guid");
+
+                    b.Property<int>("Order");
 
                     b.Property<string>("Title");
 
@@ -97,7 +103,11 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<int>("SubjectId");
 
+                    b.Property<int>("SubjectOrder");
+
                     b.Property<int?>("TeacherId");
+
+                    b.Property<int>("TeacherOrder");
 
                     b.Property<DateTime?>("Updated");
 
@@ -120,6 +130,8 @@ namespace SaM.DataBases.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("EducationalPlanId");
+
+                    b.Property<int>("EducationalPlanOrder");
 
                     b.Property<int>("EventId");
 
@@ -149,6 +161,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<Guid>("Guid");
 
+                    b.Property<int>("Order");
+
                     b.Property<string>("ProgramType");
 
                     b.Property<string>("StudyType");
@@ -172,6 +186,8 @@ namespace SaM.DataBases.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<Guid>("Guid");
+
+                    b.Property<int>("Order");
 
                     b.Property<string>("Title");
 
@@ -251,6 +267,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<Guid>("Guid");
 
+                    b.Property<int>("Order");
+
                     b.Property<int>("ProgramId");
 
                     b.Property<string>("Title");
@@ -299,6 +317,8 @@ namespace SaM.DataBases.Migrations
 
                     b.Property<Guid>("Guid");
 
+                    b.Property<int>("Order");
+
                     b.Property<string>("Title");
 
                     b.Property<DateTime?>("Updated");
@@ -338,6 +358,8 @@ namespace SaM.DataBases.Migrations
                     b.Property<Guid>("Guid");
 
                     b.Property<string>("LastName");
+
+                    b.Property<int>("Order");
 
                     b.Property<string>("ParentMidleName");
 
@@ -410,6 +432,8 @@ namespace SaM.DataBases.Migrations
                     b.Property<double?>("Pay");
 
                     b.Property<string>("Result");
+
+                    b.Property<Guid>("StudentGUID");
 
                     b.Property<int?>("SubGroupId");
 
@@ -545,7 +569,7 @@ namespace SaM.DataBases.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SaM.Domain.Core.Education.Event", "Event")
-                        .WithMany("EducationPlanList")
+                        .WithMany("EducationPlanEvents")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

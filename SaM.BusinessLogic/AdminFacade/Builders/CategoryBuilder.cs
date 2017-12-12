@@ -11,7 +11,6 @@ using System.Text;
 namespace SaM.BusinessLogic.AdminFacade.Builders
 {
 
-
     public class CategoryDirector
     {
         IEducationBuilder builder;
@@ -60,7 +59,8 @@ namespace SaM.BusinessLogic.AdminFacade.Builders
         public void GetNewItems()
         {
             var seviceItemsGUIDS = serviceItems.Select(si => si.Guid);
-            var databaseItemsGUIDs = database.Categories.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid)).ToList().Select(di => di.Guid);
+            var databaseItemsGUIDs = database.Categories.GetList().Where(dbItem => serviceItems.Select(gd => gd.Guid).Contains(dbItem.Guid))
+                                                                  .ToList().Select(di => di.Guid);
 
             var differentGUIDs = seviceItemsGUIDS.Except(databaseItemsGUIDs);
 

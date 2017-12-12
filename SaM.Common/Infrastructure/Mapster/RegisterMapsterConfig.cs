@@ -12,9 +12,10 @@ namespace SaM.Common.Infrastructure.Mapster
         {
             Assembly assem = typeof(Config1CtoDTO).GetTypeInfo().Assembly;
             Assembly assem3 = typeof(ConfigEntityToPOCO).GetTypeInfo().Assembly;
-            Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly;
+            Assembly assem2 = typeof(Config1CtoPOCO).GetTypeInfo().Assembly; 
+            Assembly assem4 = typeof(Config1CtoEntity).GetTypeInfo().Assembly;
 
-            TypeAdapterConfig.GlobalSettings.Scan(assem, assem2, assem3);
+            TypeAdapterConfig.GlobalSettings.Scan(assem, assem2, assem3, assem4);
         }
     }
 }

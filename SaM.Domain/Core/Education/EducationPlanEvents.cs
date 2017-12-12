@@ -12,6 +12,8 @@ namespace SaM.Domain.Core.Education
         public Int32 EducationalPlanId { get; set; }
         public virtual EducationalPlan EducationalPlan { get; set; }
 
+        public Int32 EducationalPlanOrder { get; set; }
+
         public Int32 EventId { get; set; }
         public virtual Event Event { get; set; }
 
