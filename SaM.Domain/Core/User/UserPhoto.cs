@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.User
 {
-    public class UserPhoto : IDBObject
+    public class UserPhoto
     {
         public Int32 Id { get; set; }
         public string Url { get; set; }

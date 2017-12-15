@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.User
 {
-    public class UserCard : IDBObject
+    public class UserCard : IServiceItem
     {
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.Education
 {
-    public class Event : IDBObject
+    public class Event
     {
         public Event()
         {

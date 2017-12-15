@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.Education
 {
-    public class SubGroup : IDBObject
+    public class SubGroup : IServiceItem
     {
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }

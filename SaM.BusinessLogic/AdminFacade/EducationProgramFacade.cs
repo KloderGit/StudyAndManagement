@@ -91,7 +91,7 @@ namespace SaM.BusinessLogic.AdminFacade
             var dssdd = new DataManager1C();
             var database = new DataManagerEF();
 
-            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 18), DateTime.Today);
+            var ddddd = dssdd.EducationPrograms.GetList(new DateTime(2017, 9, 18), DateTime.Today).Result;
 
 
             var attest = ddddd.SelectMany(p => p.listOfSubjects)
@@ -108,7 +108,6 @@ namespace SaM.BusinessLogic.AdminFacade
             var attBuild = new AttestationBuilder(attest);
             var Attdirec = new AttestationDirector(attBuild);
             Attdirec.Build();
-
 
             var educationPlanTree = ddddd.SelectMany(r => r.listOfSubjects.Where(f => String.IsNullOrEmpty(f.GUIDsubject) == false)
                        .Select(s => new EducationalPlanPOCO

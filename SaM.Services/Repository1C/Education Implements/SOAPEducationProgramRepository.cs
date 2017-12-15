@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPEducationProgramRepository : ICommonRepository<ProgramEdu>
+    public class SOAPEducationProgramRepository
     {
         ПФ_ПорталДПОPortTypeClient service;
 
@@ -17,28 +17,30 @@ namespace SaM.Services.Repository1C
             service = source;
         }
 
-        public ProgramEdu GetEntity(dynamic key)
+        public async Task<ProgramEdu> GetEntity(dynamic key)
         {
             var itemKey = (string)key;
-            return GetProgramAsync(itemKey).Result;
+            return await GetProgramAsync(itemKey);
         }
 
         /// <summary>
         /// Получить все программы
         /// </summary>
         /// <returns></returns>
-        public IQueryable<ProgramEdu> GetList()
+        public async Task<IQueryable<ProgramEdu>> GetList()
         {
-            return GetAllAsync(new DateTime(2006, 1, 1), DateTime.Today).Result.AsQueryable();
+            var query = await GetAllAsync(new DateTime(2006, 1, 1), DateTime.Today);
+            return query.AsQueryable();
         }
 
         /// <summary>
         /// Получить программы за период
         /// </summary>
         /// <returns></returns>
-        public IQueryable<ProgramEdu> GetList(DateTime startDate, DateTime endDate)
+        public async Task<IQueryable<ProgramEdu>> GetList(DateTime startDate, DateTime endDate)
         {
-            return GetAllAsync(startDate, endDate).Result.AsQueryable();
+            var query = await GetAllAsync(startDate, endDate);
+            return query.AsQueryable();
         }
 
         protected async Task<IEnumerable<ProgramEdu>> GetAllAsync(DateTime startDate, DateTime endDate)

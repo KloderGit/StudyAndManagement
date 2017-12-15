@@ -4,7 +4,7 @@ using SaM.Domain.Interfaces;
 
 namespace SaM.Domain.Core.User
 {
-    public class UserContract : IDBObject
+    public class UserContract : IServiceItem
     {
         public Int32 Id { get; set; }
         public Guid Guid { get; set; }

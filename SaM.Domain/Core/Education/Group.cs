@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.Education
 {
-    public class Group : IDBObject
+    public class Group : IServiceItem
     {
         public Group()
         {

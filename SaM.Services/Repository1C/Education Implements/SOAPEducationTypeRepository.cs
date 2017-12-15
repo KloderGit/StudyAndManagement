@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPEducationTypeRepository : ICommonRepository<ФормаОбучения>
+    public class SOAPEducationTypeRepository
     {
         ПФ_ПорталДПОPortTypeClient service;
 
@@ -15,22 +15,23 @@ namespace SaM.Services.Repository1C
             service = source;
         }
 
+        public async Task<ФормаОбучения> GetEntity(dynamic key)
+        {
+            var itemKey = (string)key;
+            var query = await GetList();
+            return query.Where( item => item.ГУИД == itemKey).FirstOrDefault();
+        }
+
+        public async Task<IQueryable<ФормаОбучения>> GetList()
+        {
+            var array = await GetAllAsync();
+            return array.AsQueryable();
+        }
+
         protected async Task<IEnumerable<ФормаОбучения>> GetAllAsync()
         {
             var query = await service.ПолучитьФормыОбученияAsync();
             return query.@return as IEnumerable<ФормаОбучения>;
-        }
-
-        public IQueryable<ФормаОбучения> GetList()
-        {
-            var array = GetAllAsync();
-            return array.Result.AsQueryable();
-        }
-
-        public ФормаОбучения GetEntity(dynamic key)
-        {
-            var itemKey = (string)key;
-            return GetList().Where( item => item.ГУИД == itemKey).FirstOrDefault();
         }
     }
 }

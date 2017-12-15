@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.User
 {
-    public class UserProfile : IDBObject
+    public class UserProfile
     {
         public Int32 Id { get; set; }
         public DateTime Birthday { get; set; }

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPCategoryRepository : ICommonRepository<ГруппаПрограммыОбучения>
+    public class SOAPCategoryRepository
     {
         ПФ_ПорталДПОPortTypeClient service;
 
@@ -16,16 +16,17 @@ namespace SaM.Services.Repository1C
             service = source;
         }
 
-        public ГруппаПрограммыОбучения GetEntity(dynamic key)
+        public async Task<ГруппаПрограммыОбучения> GetEntity(dynamic key)
         {
             var itemKey = (string)key;
-            return GetList().Where(item => item.ГУИД == itemKey).FirstOrDefault();
+            var query = await GetList();
+            return query.Where(item => item.ГУИД == itemKey).FirstOrDefault();
         }
 
-        public IQueryable<ГруппаПрограммыОбучения> GetList()
+        public async Task<IQueryable<ГруппаПрограммыОбучения>> GetList()
         {
-            var array = GetAllAsync();
-            return array.Result.AsQueryable();
+            var array = await GetAllAsync();
+            return array.AsQueryable();
         }
 
         protected async Task<IEnumerable<ГруппаПрограммыОбучения>> GetAllAsync() {

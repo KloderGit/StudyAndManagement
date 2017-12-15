@@ -15,6 +15,7 @@ using System.Globalization;
 using System.Threading;
 using System.Reflection;
 using SaM.BusinessLogic;
+using SaM.Domain.Core;
 
 namespace TestDataAccess
 {
@@ -41,7 +42,27 @@ namespace TestDataAccess
 
 
 
-            var rrrrr = new CategoryFacade();
+            //var c1 = new Category();
+            //var c2 = new Category();
+
+            //c1.Title = "asdasd";
+            //c2.Title = "asdasd";
+
+            //var sdfsdf = c1.Equals(c2);
+            //var dfsf = c1.EqualService(c2);
+
+
+            //var cntx = new ApplicationContext();
+            //var serv = new DataManager1C();
+
+            //var dbItems = cntx.Categories;
+            //var servItems = serv.Categories.GetList().Adapt<IEnumerable<Category>>();
+
+
+            //var tttt = servItems.Intersect(dbItems, new GuidComparer());
+
+
+            var rrrrr = new CertificationFacade();
 
             Console.WriteLine("Cfnt");
 

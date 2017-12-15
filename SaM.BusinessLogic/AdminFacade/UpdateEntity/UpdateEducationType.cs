@@ -36,7 +36,7 @@ namespace SaM.BusinessLogic.AdminFacade.UpdateEntity
 
             foreach (var item in serviceItems)
             {
-                var dbItem = query.Where(c => c.Guid.ToString() == item.Guid).FirstOrDefault();
+                var dbItem = query.Where(c => c.Guid == item.Guid).FirstOrDefault();
 
                 if (dbItem != null)
                 {
@@ -61,8 +61,9 @@ namespace SaM.BusinessLogic.AdminFacade.UpdateEntity
         /// <returns></returns>
         public bool UpdateFromService(string guid)
         {
+            var gd = new Guid(guid);
             var serviceItem = service.EducationTypes.GetList().Adapt<IEnumerable<EducationTypeDTO>>()
-                                .Where(itm => itm.Guid == guid).FirstOrDefault();
+                                .Where(itm => itm.Guid == gd).FirstOrDefault();
             if (serviceItem == null) { return false; }
 
             var databaseItem = database.EducationTypes.GetList().Where(itm => itm.Guid.ToString() == guid)
@@ -103,8 +104,10 @@ namespace SaM.BusinessLogic.AdminFacade.UpdateEntity
 
             foreach (var guid in guids)
             {
+                var gd = new Guid(guid);
+
                 var dbItem = query.Where(c => c.Guid.ToString() == guid).FirstOrDefault();
-                var serviceItem = serviceItems.Where(si => si.Guid == guid).FirstOrDefault();
+                var serviceItem = serviceItems.Where(si => si.Guid == gd).FirstOrDefault();
                 if (serviceItem == null) { return false; }
  
                 if (dbItem != null)
@@ -125,11 +128,11 @@ namespace SaM.BusinessLogic.AdminFacade.UpdateEntity
 
         public bool UpdateFromService( IEnumerable<EducationTypeDTO> items )
         {
-            var databaseItems = database.EducationTypes.GetList().Where(dbIt => items.Select(i => i.Guid).Contains(dbIt.Guid.ToString()));
+            var databaseItems = database.EducationTypes.GetList().Where(dbIt => items.Select(i => i.Guid).Contains(dbIt.Guid));
 
             foreach (var item in items)
             {
-                var dbItem = databaseItems.Where(c => c.Guid.ToString() == item.Guid).FirstOrDefault();
+                var dbItem = databaseItems.Where(c => c.Guid == item.Guid).FirstOrDefault();
 
                 if (dbItem != null)
                 {

@@ -5,9 +5,9 @@ namespace SaM.Services.Repository1C
 {
     public interface IUnitOfWork1C
     {
-        ICommonRepository<ГруппаПрограммыОбучения> Categories { get; }
-        ICommonRepository<ФормаКонтроля> Certifications { get; }
-        ICommonRepository<ФормаОбучения> EducationTypes { get; }
+        SOAPCategoryRepository Categories { get; }
+        SOAPCertificationRepository Certifications { get; }
+        SOAPEducationTypeRepository EducationTypes { get; }
         SOAPEducationProgramRepository EducationPrograms { get; }
 
         ICommonRepository<T> Repository<T>();

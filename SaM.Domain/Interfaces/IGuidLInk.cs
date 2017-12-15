@@ -4,8 +4,8 @@ using System.Text;
 
 namespace SaM.Domain.Interfaces
 {
-    public interface IDBObject
+    public interface IServiceItem
     {
-        Int32 Id { get; set; }
+        Guid Guid { get; set; }
     }
 }

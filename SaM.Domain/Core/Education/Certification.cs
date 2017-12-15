@@ -9,7 +9,7 @@ namespace SaM.Domain.Core.Education
     /// <summary>
     /// Вид Проверки \ Аттестации - [ Экзамен \ Тест \ Зачет ]
     /// </summary>
-    public class Certification : IDBObject, ISharedField
+    public class Certification : ServiceItem<Certification>
     {
         public Certification()
         {
@@ -17,7 +17,7 @@ namespace SaM.Domain.Core.Education
         }
 
         public Int32 Id { get; set; }
-        public Guid Guid { get; set; }
+        //public Guid Guid { get; set; }
         public string Title { get; set; }
         public Int32 Order { get; set; }
 
@@ -25,5 +25,11 @@ namespace SaM.Domain.Core.Education
 
         private DateTime _updated = DateTime.Today;
         public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
+
+        public override bool EqualService(Certification item)
+        {
+            var result = Guid == item.Guid && Title == item.Title ? true : false;
+            return result;
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SaM.Domain.Core.Education
 {
-    public class EducationalPlan : IDBObject
+    public class EducationalPlan
     {
         public EducationalPlan()
         {

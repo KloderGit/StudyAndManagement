@@ -17,6 +17,40 @@ namespace SaM.Common.Infrastructure.Mapster
                 .Map(d => d.Guid, s => s.ГУИД)
                 .Map(d => d.Title, s => s.Наименование);
 
+            config.NewConfig<Category, Category>()
+                .Ignore(it => it.Id);
+
+
+            config.NewConfig<formControl, Certification>()
+                .Map(dest => dest.Guid, src => src.GUIDFormControl)
+                .Map(dest => dest.Title, src => src.Name);
+
+            config.NewConfig<ФормаКонтроля, Certification>()
+                .Map(dest => dest.Guid, src => src.ГУИД)
+                .Map(dest => dest.Title, src => src.Наименование);
+
+            config.NewConfig<Certification, Certification>()
+                .Ignore(it => it.Id);
+
+
+            config.NewConfig<formEdu, EducationType>()
+                .Map(dest => dest.Guid, src => src.GUIDFormEducation)
+                .Map(dest => dest.Title, src => src.Name);
+
+            config.NewConfig<ФормаОбучения, EducationType>()
+                .Map(dest => dest.Guid, src => src.ГУИД)
+                .Map(dest => dest.Title, src => src.Наименование);
+
+            config.NewConfig<EducationType, EducationType>()
+                .Ignore(it => it.Id);
+
+
+            config.NewConfig<ViewAttestation, CertificationType>()
+                .Map(dest => dest.Guid, src => src.GUIDViewAttestation)
+                .Map(dest => dest.Title, src => src.Name);
+
+            config.NewConfig<CertificationType, CertificationType>()
+                .Ignore(it => it.Id);
 
 
             //   Маппинг пользователя

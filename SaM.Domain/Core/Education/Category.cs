@@ -8,7 +8,7 @@ namespace SaM.Domain.Core.Education
     /// <summary>
     /// Раздел -  Учебный центр \ Школа управления | Программы \ Семинары
     /// </summary>
-    public class Category : IDBObject, ISharedField
+    public class Category : ServiceItem<Category>
     {
         public Category()
         {
@@ -16,7 +16,7 @@ namespace SaM.Domain.Core.Education
         }
 
         public Int32 Id { get; set; }
-        public Guid Guid { get; set; }
+        //public Guid Guid { get; set; }
         public string Title { get; set; }
         public Int32 Order { get; set; }
 
@@ -24,5 +24,11 @@ namespace SaM.Domain.Core.Education
 
         private DateTime _updated = DateTime.Today;
         public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
+
+        public override bool EqualService(Category item)
+        {
+            var result = Guid == item.Guid && Title == item.Title ? true : false;
+            return result;
+        }
     }
 }

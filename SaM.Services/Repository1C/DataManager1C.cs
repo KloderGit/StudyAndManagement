@@ -20,9 +20,9 @@ namespace SaM.Services.Repository1C
         SOAPUsersRepository SOAPUsersRepositories;
 
 
-        public ICommonRepository<ГруппаПрограммыОбучения> Categories => CategoriesRepository ?? (CategoriesRepository = new SOAPCategoryRepository(soap));
-        public ICommonRepository<ФормаКонтроля> Certifications => CertificationsRepository ?? (CertificationsRepository = new SOAPCertificationRepository(soap));
-        public ICommonRepository<ФормаОбучения> EducationTypes => EducationTypesRepositories ?? (EducationTypesRepositories = new SOAPEducationTypeRepository(soap));
+        public SOAPCategoryRepository Categories => CategoriesRepository ?? (CategoriesRepository = new SOAPCategoryRepository(soap));
+        public SOAPCertificationRepository Certifications => CertificationsRepository ?? (CertificationsRepository = new SOAPCertificationRepository(soap));
+        public SOAPEducationTypeRepository EducationTypes => EducationTypesRepositories ?? (EducationTypesRepositories = new SOAPEducationTypeRepository(soap));
         public SOAPEducationProgramRepository EducationPrograms => SOAPEducationProgramRepositories ?? (SOAPEducationProgramRepositories = new SOAPEducationProgramRepository(soap));
         public SOAPUsersRepository Users => SOAPUsersRepositories ?? (SOAPUsersRepositories = new SOAPUsersRepository(soap));
 

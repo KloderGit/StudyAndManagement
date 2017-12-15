@@ -14,53 +14,53 @@ using System.Threading.Tasks;
 
 namespace SaM.BusinessLogic
 {
-    public class CategoryFacade
+    public class EducationTypeFacade
     {
         ApplicationContext db = new ApplicationContext();
         DataManager1C service = new DataManager1C();
 
-        public async Task<IEnumerable<Category>> GetPOCO()
+        public async Task<IEnumerable<EducationType>> GetPOCO()
         {
-            return await db.Categories.ToListAsync(); 
+            return await db.EducationTypes.ToListAsync();
         }
 
-        public async Task<IEnumerable<CategoryDTO>> GetDTO()
+        public async Task<IEnumerable<EducationTypeDTO>> GetDTO()
         {
             var query = await GetPOCO();
-            return query.Adapt<IEnumerable<CategoryDTO>>();
+            return query.Adapt<IEnumerable<EducationTypeDTO>>();
         }
 
-        public async Task<IEnumerable<Category>> GetFromService()
+        public async Task<IEnumerable<EducationType>> GetFromService()
         {
-            var query = await service.Categories.GetList();
-            return query.Adapt<IEnumerable<Category>>();
+            var query = await service.EducationTypes.GetList();
+            return query.Adapt<IEnumerable<EducationType>>();
         }
 
-        public async Task<int> RemoveItem( Guid guid )
+        public async Task<int> RemoveItem(Guid guid)
         {
-            var elem = db.Categories.FirstOrDefault(el => el.Guid == guid);
+            var elem = db.EducationTypes.FirstOrDefault(el => el.Guid == guid);
 
             if (elem == null) { new Exception(" Элемент Не найден в БД "); }
 
-            db.Categories.Remove(elem);
+            db.EducationTypes.Remove(elem);
 
             return await db.SaveChangesAsync();
         }
 
         public async Task<int> RemoveItems(IEnumerable<Guid> guids)
         {
-            var toRemove = new List<Category>();
+            var toRemove = new List<EducationType>();
 
             foreach (var item in guids)
             {
-                var elem = db.Categories.FirstOrDefault(el => el.Guid == item);
+                var elem = db.EducationTypes.FirstOrDefault(el => el.Guid == item);
 
                 if (elem != null) { toRemove.Add(elem); }
             }
 
             if (toRemove.Count == 0) { new Exception(" Элементы Не найдены в БД "); }
 
-            db.Categories.RemoveRange(toRemove);
+            db.EducationTypes.RemoveRange(toRemove);
 
             return await db.SaveChangesAsync();
         }
@@ -70,24 +70,24 @@ namespace SaM.BusinessLogic
             var dbItems = await GetPOCO();
             var serviceItems = await GetFromService();
 
-            var updateItems = serviceItems.Intersect<Category>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<Category>(updateItems, new GuidComparer());
+            var updateItems = serviceItems.Intersect<EducationType>(dbItems, new GuidComparer());
+            var newItems = serviceItems.Except<EducationType>(updateItems, new GuidComparer());
 
             foreach (var item in updateItems)
             {
-                var databaseItem = db.Categories.FirstOrDefault(sI => sI.Guid == item.Guid);
+                var databaseItem = db.EducationTypes.FirstOrDefault(sI => sI.Guid == item.Guid);
 
                 if (databaseItem != null && !item.EqualService(databaseItem))
                 {
                     databaseItem = item.Adapt(databaseItem);
-                    db.Categories.Update(databaseItem);
+                    db.EducationTypes.Update(databaseItem);
                 }
             }
 
             foreach (var item in newItems)
             {
-                var databaseItem = item.Adapt<Category>();
-                db.Categories.Add(databaseItem);
+                var databaseItem = item.Adapt<EducationType>();
+                db.EducationTypes.Add(databaseItem);
             }
 
             var cnt = await db.SaveChangesAsync();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.Education
 {
-    public class EducationPlanEvents : IDBObject
+    public class EducationPlanEvents
     {
         public Int32 Id { get; set; }
 

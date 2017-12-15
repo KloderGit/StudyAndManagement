@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPCertificationRepository : ICommonRepository<ФормаКонтроля>
+    public class SOAPCertificationRepository
     {
         ПФ_ПорталДПОPortTypeClient service;
 
@@ -15,16 +15,17 @@ namespace SaM.Services.Repository1C
             service = source;
         }
 
-        public ФормаКонтроля GetEntity(dynamic key)
+        public async Task<ФормаКонтроля> GetEntity(dynamic key)
         {
             var itemKey = (string)key;
-            return GetList().Where(item => item.ГУИД == itemKey).FirstOrDefault();
+            var query = await GetList();
+            return query.Where(item => item.ГУИД == itemKey).FirstOrDefault();
         }
 
-        public IQueryable<ФормаКонтроля> GetList()
+        public async Task<IQueryable<ФормаКонтроля>> GetList()
         {
-            var array = GetAllAsync();
-            return array.Result.AsQueryable();
+            var query = await GetAllAsync();
+            return query.AsQueryable();
         }
 
         public async Task<IEnumerable<ФормаКонтроля>> GetAllAsync()
