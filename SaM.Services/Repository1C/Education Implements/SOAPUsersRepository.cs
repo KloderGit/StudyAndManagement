@@ -23,7 +23,7 @@ namespace SaM.Services.Repository1C
 
         public IQueryable<ДанныеПоФизЛицу> GetList()
         {
-            throw new NotImplementedException();
+            return GetList(new DateTime(2006, 1, 1), DateTime.Today);
         }
 
         /// <summary>

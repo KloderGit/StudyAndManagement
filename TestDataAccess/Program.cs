@@ -40,29 +40,17 @@ namespace TestDataAccess
             //    }
             //}
 
+            //ПФ_ПорталДПОPortTypeClient soap = new ПФ_ПорталДПОPortTypeClient(ПФ_ПорталДПОPortTypeClient.EndpointConfiguration.ПФ_ПорталДПОSoap);
+
+            //var query = soap.ПолучитьИзмененныеДанныеОПрограммахДПОЗаПериодAsync( new DateTime(2006,1,1), DateTime.Today).Result;
+            //var tertert = query.@return;
 
 
-            //var c1 = new Category();
-            //var c2 = new Category();
-
-            //c1.Title = "asdasd";
-            //c2.Title = "asdasd";
-
-            //var sdfsdf = c1.Equals(c2);
-            //var dfsf = c1.EqualService(c2);
+            //var werwe = new DataManager1C().Users.GetList();
 
 
-            //var cntx = new ApplicationContext();
-            //var serv = new DataManager1C();
 
-            //var dbItems = cntx.Categories;
-            //var servItems = serv.Categories.GetList().Adapt<IEnumerable<Category>>();
-
-
-            //var tttt = servItems.Intersect(dbItems, new GuidComparer());
-
-
-            var rrrrr = new CertificationFacade();
+            var rrrrr = new ProgramFacade();
 
             Console.WriteLine("Cfnt");
 
@@ -72,7 +60,7 @@ namespace TestDataAccess
 
             count.Wait();
         }
-        
+
 
 
     }

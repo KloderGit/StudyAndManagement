@@ -18,6 +18,9 @@ namespace SaM.Services.Repository1C
         SOAPEducationTypeRepository EducationTypesRepositories;
         SOAPEducationProgramRepository SOAPEducationProgramRepositories;
         SOAPUsersRepository SOAPUsersRepositories;
+        SOAPGroupRepository SOAPGroupsRepository;
+
+        SOAPSubjectRepository SOAPSubjectsRepository;
 
 
         public SOAPCategoryRepository Categories => CategoriesRepository ?? (CategoriesRepository = new SOAPCategoryRepository(soap));
@@ -25,6 +28,9 @@ namespace SaM.Services.Repository1C
         public SOAPEducationTypeRepository EducationTypes => EducationTypesRepositories ?? (EducationTypesRepositories = new SOAPEducationTypeRepository(soap));
         public SOAPEducationProgramRepository EducationPrograms => SOAPEducationProgramRepositories ?? (SOAPEducationProgramRepositories = new SOAPEducationProgramRepository(soap));
         public SOAPUsersRepository Users => SOAPUsersRepositories ?? (SOAPUsersRepositories = new SOAPUsersRepository(soap));
+        public SOAPGroupRepository Groups => SOAPGroupsRepository ?? (SOAPGroupsRepository = new SOAPGroupRepository(soap));
+        public SOAPSubjectRepository Subjects => SOAPSubjectsRepository ?? (SOAPSubjectsRepository = new SOAPSubjectRepository(soap));
+
 
 
         public ICommonRepository<T> Repository<T>()

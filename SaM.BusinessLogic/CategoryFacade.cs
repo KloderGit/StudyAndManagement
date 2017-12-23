@@ -21,7 +21,7 @@ namespace SaM.BusinessLogic
 
         public async Task<IEnumerable<Category>> GetPOCO()
         {
-            return await db.Categories.ToListAsync(); 
+            return await db.Categories.ToListAsync();
         }
 
         public async Task<IEnumerable<CategoryDTO>> GetDTO()
@@ -36,7 +36,7 @@ namespace SaM.BusinessLogic
             return query.Adapt<IEnumerable<Category>>();
         }
 
-        public async Task<int> RemoveItem( Guid guid )
+        public async Task<int> RemoveItem(Guid guid)
         {
             var elem = db.Categories.FirstOrDefault(el => el.Guid == guid);
 
@@ -65,15 +65,42 @@ namespace SaM.BusinessLogic
             return await db.SaveChangesAsync();
         }
 
-        public async Task<int> Update()
+        public async Task<int> Add(Category item)
         {
-            var dbItems = await GetPOCO();
-            var serviceItems = await GetFromService();
+            var databaseItem = item.Adapt<Category>();
+            db.Categories.Add(databaseItem);
 
-            var updateItems = serviceItems.Intersect<Category>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<Category>(updateItems, new GuidComparer());
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
 
-            foreach (var item in updateItems)
+        public async Task<int> Add(IEnumerable<Category> items)
+        {
+            foreach (var item in items)
+            {
+                var databaseItem = item.Adapt<Category>();
+                db.Categories.Add(databaseItem);
+            }
+
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<int> Update(Category item)
+        {
+            var databaseItem = db.Categories.FirstOrDefault(sI => sI.Guid == item.Guid);
+            if (databaseItem != null && !item.EqualService(databaseItem))
+            {
+                databaseItem = item.Adapt(databaseItem);
+                db.Categories.Update(databaseItem);
+            }
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<int> Update(IEnumerable<Category> incoming)
+        {
+            foreach (var item in incoming)
             {
                 var databaseItem = db.Categories.FirstOrDefault(sI => sI.Guid == item.Guid);
 
@@ -83,16 +110,40 @@ namespace SaM.BusinessLogic
                     db.Categories.Update(databaseItem);
                 }
             }
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
 
-            foreach (var item in newItems)
-            {
-                var databaseItem = item.Adapt<Category>();
-                db.Categories.Add(databaseItem);
-            }
+        public async Task<int> UpdateFromService()
+        {
+            var dbItems = await GetPOCO();
+            var serviceItems = await GetFromService();
 
-            var cnt = await db.SaveChangesAsync();
+            var updateItems = serviceItems.Intersect<Category>(dbItems, new GuidComparer());
+            var newItems = serviceItems.Except<Category>(updateItems, new GuidComparer());
+
+            var cnt = await Update(updateItems);
+            cnt += await Add(newItems);
 
             return cnt;
         }
+
+        public async Task<int> UpdateFromService(IEnumerable<Category> incoming)
+        {
+            Console.WriteLine("Обновление Категорий из полученных данных");
+
+            var dbItems = await GetPOCO();
+            var serviceItems = incoming;
+
+            var updateItems = serviceItems.Intersect<Category>(dbItems, new GuidComparer());
+            var newItems = serviceItems.Except<Category>(updateItems, new GuidComparer());
+
+            var cnt = await Update(updateItems);
+            cnt += await Add(newItems);
+
+            return cnt;
+        }
+
+
     }
 }

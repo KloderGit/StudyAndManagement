@@ -94,5 +94,36 @@ namespace SaM.BusinessLogic
 
             return cnt;
         }
+
+        public async Task<int> Update(IEnumerable<EducationType> incoming)
+        {
+            var dbItems = await GetPOCO();
+            var serviceItems = incoming;
+
+            var updateItems = serviceItems.Intersect<EducationType>(dbItems, new GuidComparer());
+            var newItems = serviceItems.Except<EducationType>(updateItems, new GuidComparer());
+
+            foreach (var item in updateItems)
+            {
+                var databaseItem = db.EducationTypes.FirstOrDefault(sI => sI.Guid == item.Guid);
+
+                if (databaseItem != null && !item.EqualService(databaseItem))
+                {
+                    databaseItem = item.Adapt(databaseItem);
+                    db.EducationTypes.Update(databaseItem);
+                }
+            }
+
+            foreach (var item in newItems)
+            {
+                var databaseItem = item.Adapt<EducationType>();
+                db.EducationTypes.Add(databaseItem);
+            }
+
+            var cnt = await db.SaveChangesAsync();
+
+            return cnt;
+        }        
+
     }
 }

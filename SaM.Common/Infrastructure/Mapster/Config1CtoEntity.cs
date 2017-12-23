@@ -17,6 +17,10 @@ namespace SaM.Common.Infrastructure.Mapster
                 .Map(d => d.Guid, s => s.ГУИД)
                 .Map(d => d.Title, s => s.Наименование);
 
+            config.NewConfig<category, Category>()
+                .Map(dest => dest.Guid, src => src.GUID)
+                .Map(dest => dest.Title, src => src.Name);
+
             config.NewConfig<Category, Category>()
                 .Ignore(it => it.Id);
 
@@ -51,6 +55,38 @@ namespace SaM.Common.Infrastructure.Mapster
 
             config.NewConfig<CertificationType, CertificationType>()
                 .Ignore(it => it.Id);
+
+
+            config.NewConfig<Группа, Group>()
+                .Map(dest => dest.Guid, src => src.ГУИД)
+                .Map(dest => dest.Title, src => src.Наименование);
+
+            config.NewConfig<Group, Group>()
+                .Ignore(it => it.Id);
+
+
+            config.NewConfig<Дисциплина, Subject>()
+                .Map(dest => dest.Guid, src => src.ГУИД)
+                .Map(dest => dest.Title, src => src.Наименование);
+
+            config.NewConfig<Subject, Subject>()
+                .Ignore(it => it.Id);
+
+
+            config.NewConfig<ProgramEdu, EducationProgram>()
+                .Map(dest => dest.Guid, src => src.XML_ID)
+                .Map(dest => dest.Title, src => src.name)
+                .Map(dest => dest.Active, src => src.active == "Активный" ? true : false)
+                .Map(dest => dest.AcceptDate, src => src.acceptDate)
+                .Map(dest => dest.ProgramType, src => src.typeProgram)
+                .Map(dest => dest.Category, src => src.category.Adapt<Category>())
+                .Map(dest => dest.EducationType, src => src.formEducation.Adapt<EducationType>())
+                .Map(dest => dest.StudyType, src => src.viewProgram);
+
+            config.NewConfig<EducationProgram, EducationProgram>()
+                .Ignore(it => it.Id);
+
+
 
 
             //   Маппинг пользователя

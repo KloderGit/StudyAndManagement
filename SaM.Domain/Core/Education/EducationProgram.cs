@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SaM.Domain.Core.Education
 {
-    public class EducationProgram
+    public class EducationProgram : ServiceItem<EducationProgram>
     {
         public EducationProgram()
         {
@@ -13,7 +13,7 @@ namespace SaM.Domain.Core.Education
         }
 
         public Int32 Id { get; set; }
-        public Guid Guid { get; set; }
+        //public Guid Guid { get; set; }
         public string Title { get; set; }
         public bool Active { get; set; }
         public DateTime AcceptDate { get; set; }
@@ -31,5 +31,15 @@ namespace SaM.Domain.Core.Education
 
         private DateTime _updated = DateTime.Today;
         public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
+
+        public override bool EqualService(EducationProgram item)
+        {
+            var result = Guid == item.Guid && 
+                         Title == item.Title &&
+                         AcceptDate == item.AcceptDate &&
+                         ProgramType == item.ProgramType &&
+                         StudyType == item.StudyType ? true : false;
+            return result;
+        }
     }
 }

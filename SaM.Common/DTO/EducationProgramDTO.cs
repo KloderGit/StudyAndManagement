@@ -8,10 +8,10 @@ namespace SaM.Common.DTO
 {
     public class EducationProgramDTO
     {
-        public string Guid { get; set; }
+        public Guid Guid { get; set; }
         public string Title { get; set; }
         public bool Active { get; set; }
-        public string AcceptDate { get; set; }
+        public DateTime AcceptDate { get; set; }
         public string ProgramType { get; set; }
         public string StudyType { get; set; }
 
