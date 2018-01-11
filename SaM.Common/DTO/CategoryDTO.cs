@@ -1,8 +1,11 @@
-﻿using SaM.Domain.Interfaces;
+﻿using SaM.Common.Infrastructure;
+using SaM.Domain.Core.Education;
+using SaM.Domain.Interfaces;
 using System;
 
 namespace SaM.Common.DTO
 {
+    [ParentAttribute(typeof(Category))]
     public class CategoryDTO
     {
         public Guid Guid { get; set; }

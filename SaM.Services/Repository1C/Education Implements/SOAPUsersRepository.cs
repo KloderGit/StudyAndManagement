@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SaM.Services.Repository1C
 {
-    public class SOAPUsersRepository : ICommonRepository<ДанныеПоФизЛицу>
+    public class SOAPUsersRepository 
     {
         ПФ_ПорталДПОPortTypeClient service;
 
@@ -16,23 +16,28 @@ namespace SaM.Services.Repository1C
             service = source;
         }
 
-        public ДанныеПоФизЛицу GetEntity(dynamic key)
+        public async Task<ДанныеПоФизЛицу> GetEntity(dynamic key)
         {
-            throw new NotImplementedException();
+
+            var itemKey = (string)key;
+            var query = await service.ПолучитьДанныеОФЛAsync(key);
+
+            return query.@return as ДанныеПоФизЛицу;
         }
 
-        public IQueryable<ДанныеПоФизЛицу> GetList()
+        public async Task<IQueryable<ДанныеПоФизЛицу>> GetList()
         {
-            return GetList(new DateTime(2006, 1, 1), DateTime.Today);
+            return await GetList(new DateTime(2006, 1, 1), DateTime.Today);
         }
 
         /// <summary>
         /// Получить пользователей за период
         /// </summary>
         /// <returns></returns>
-        public IQueryable<ДанныеПоФизЛицу> GetList(DateTime startDate, DateTime endDate)
+        public async Task<IQueryable<ДанныеПоФизЛицу>> GetList(DateTime startDate, DateTime endDate)
         {
-            return GetAllAsync(startDate, endDate).Result.AsQueryable();
+            var result = await GetAllAsync(startDate, endDate);
+            return result.AsQueryable();
         }
 
         protected async Task<IEnumerable<ДанныеПоФизЛицу>> GetAllAsync(DateTime startDate, DateTime endDate)

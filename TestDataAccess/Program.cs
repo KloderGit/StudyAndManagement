@@ -16,6 +16,8 @@ using System.Threading;
 using System.Reflection;
 using SaM.BusinessLogic;
 using SaM.Domain.Core;
+using System.Collections;
+using SaM.Common.Infrastructure;
 
 namespace TestDataAccess
 {
@@ -29,16 +31,19 @@ namespace TestDataAccess
 
             new SaM.Common.Infrastructure.Mapster.RegisterMapsterConfig();
 
-
             //var properties = typeof(EducationProgram).GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
             //foreach (var property in properties)
             //{
-            //    if (property.GetAccessors()[0].IsVirtual && !property.GetAccessors()[0].IsFinal)
+            //    if (property.GetAccessors()[0].IsVirtual && !property.GetAccessors()[0].IsFinal )
             //    {
-            //        Console.WriteLine(property.Name + " -  Yes");
+            //        Console.WriteLine(property.Name + " -  Yes" + " | " + typeof(IEnumerable).IsAssignableFrom(property.PropertyType));
             //    }
             //}
+
+
+
+            //Console.WriteLine(" : " + sdf.GetDTO());
 
             //ПФ_ПорталДПОPortTypeClient soap = new ПФ_ПорталДПОPortTypeClient(ПФ_ПорталДПОPortTypeClient.EndpointConfiguration.ПФ_ПорталДПОSoap);
 
@@ -50,15 +55,51 @@ namespace TestDataAccess
 
 
 
-            var rrrrr = new ProgramFacade();
+            var pr1 = new EducationProgram
+            {
+                Id = 1000,
+                AcceptDate = DateTime.Today,
+                Active = true,
+                CategoryId = 1200,
+                EducationTypeId = 1300,
+                Guid = new Guid(),
+                Order = 5,
+                ProgramType = "UUUU",
+                StudyType = "PPPPPPPPPPPPPPP",
+                Title = "----------------------",
+                Category = new Category { Id = 100 }
+            };
 
-            Console.WriteLine("Cfnt");
+            var pr2 = new EducationProgram
+            {
+                Id = 1000,
+                AcceptDate = DateTime.Today,
+                Active = true,
+                CategoryId = 1200,
+                EducationTypeId = 1300,
+                Guid = new Guid(),
+                Order = 5,
+                ProgramType = "UUUU",
+                StudyType = "PPPPPPPPPPPPPPP",
+                Title = "----------------------",
+                Category = new Category { Id = 101 }
+            };
 
-            var count = rrrrr.Update();
 
-            Console.WriteLine("Cfnt");
+            Console.WriteLine(pr1.Equals(pr2));
 
-            count.Wait();
+
+
+
+            //var rrrrr = new ProgramFacade();
+
+            //Console.WriteLine("Cfnt");
+
+            //var count = rrrrr.UpdateFromService();
+
+            //Console.WriteLine("Cfnt");
+
+            //count.Wait();
         }
 
 

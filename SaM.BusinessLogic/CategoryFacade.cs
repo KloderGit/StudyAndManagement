@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
 using SaM.Common.DTO;
+using SaM.Common.Infrastructure;
 using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core;
 using SaM.Domain.Core.Education;
@@ -11,22 +12,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using SaM.BusinessLogic.Interfaces;
 
 namespace SaM.BusinessLogic
 {
-    public class CategoryFacade
+    public class CategoryFacade : IEducationFacade<Category>
     {
-        ApplicationContext db = new ApplicationContext();
-        DataManager1C service = new DataManager1C();
+        ApplicationContext db;
+        DataManager1C service;
 
-        public async Task<IEnumerable<Category>> GetPOCO()
+        public CategoryFacade()
+        {
+            db = new ApplicationContext();
+            service = new DataManager1C();
+        }
+
+        public CategoryFacade(ApplicationContext db)
+        {
+            this.db = db;
+            service = new DataManager1C();
+        }
+
+        public async Task<IEnumerable<Category>> Get()
         {
             return await db.Categories.ToListAsync();
         }
 
         public async Task<IEnumerable<CategoryDTO>> GetDTO()
         {
-            var query = await GetPOCO();
+            var query = await Get();
             return query.Adapt<IEnumerable<CategoryDTO>>();
         }
 
@@ -36,7 +51,7 @@ namespace SaM.BusinessLogic
             return query.Adapt<IEnumerable<Category>>();
         }
 
-        public async Task<int> RemoveItem(Guid guid)
+        public async Task<int> Remove(Guid guid)
         {
             var elem = db.Categories.FirstOrDefault(el => el.Guid == guid);
 
@@ -47,7 +62,7 @@ namespace SaM.BusinessLogic
             return await db.SaveChangesAsync();
         }
 
-        public async Task<int> RemoveItems(IEnumerable<Guid> guids)
+        public async Task<int> Remove(IEnumerable<Guid> guids)
         {
             var toRemove = new List<Category>();
 
@@ -98,9 +113,9 @@ namespace SaM.BusinessLogic
             return count;
         }
 
-        public async Task<int> Update(IEnumerable<Category> incoming)
+        public async Task<int> Update(IEnumerable<Category> items)
         {
-            foreach (var item in incoming)
+            foreach (var item in items)
             {
                 var databaseItem = db.Categories.FirstOrDefault(sI => sI.Guid == item.Guid);
 
@@ -116,7 +131,7 @@ namespace SaM.BusinessLogic
 
         public async Task<int> UpdateFromService()
         {
-            var dbItems = await GetPOCO();
+            var dbItems = await Get();
             var serviceItems = await GetFromService();
 
             var updateItems = serviceItems.Intersect<Category>(dbItems, new GuidComparer());
@@ -128,12 +143,10 @@ namespace SaM.BusinessLogic
             return cnt;
         }
 
-        public async Task<int> UpdateFromService(IEnumerable<Category> incoming)
+        public async Task<int> UpdateFromService(IEnumerable<Category> items)
         {
-            Console.WriteLine("Обновление Категорий из полученных данных");
-
-            var dbItems = await GetPOCO();
-            var serviceItems = incoming;
+            var dbItems = await Get();
+            var serviceItems = items.Distinct<Category>(new GuidComparer());
 
             var updateItems = serviceItems.Intersect<Category>(dbItems, new GuidComparer());
             var newItems = serviceItems.Except<Category>(updateItems, new GuidComparer());
@@ -143,7 +156,6 @@ namespace SaM.BusinessLogic
 
             return cnt;
         }
-
 
     }
 }

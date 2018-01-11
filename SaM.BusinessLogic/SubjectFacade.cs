@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
+using SaM.BusinessLogic.Interfaces;
 using SaM.Common.DTO;
 using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core;
@@ -14,19 +15,52 @@ using System.Threading.Tasks;
 
 namespace SaM.BusinessLogic
 {
-    public class SubjectFacade
+    public class SubjectFacade : IEducationFacade<Subject>
     {
-        ApplicationContext db = new ApplicationContext();
-        DataManager1C service = new DataManager1C();
+        ApplicationContext db;
+        DataManager1C service;
 
-        public async Task<IEnumerable<Subject>> GetPOCO()
+        public SubjectFacade()
         {
-            return await db.Subjects.ToListAsync(); 
+            db = new ApplicationContext();
+            service = new DataManager1C();
+        }
+
+        public SubjectFacade(ApplicationContext db)
+        {
+            this.db = db;
+            service = new DataManager1C();
+        }
+
+        public async Task<int> Add(Subject item)
+        {
+            var databaseItem = item.Adapt<Subject>();
+            db.Subjects.Add(databaseItem);
+
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<int> Add(IEnumerable<Subject> items)
+        {
+            foreach (var item in items)
+            {
+                var databaseItem = item.Adapt<Subject>();
+                db.Subjects.Add(databaseItem);
+            }
+
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<IEnumerable<Subject>> Get()
+        {
+            return await db.Subjects.ToListAsync();
         }
 
         public async Task<IEnumerable<SubjectDTO>> GetDTO()
         {
-            var query = await GetPOCO();
+            var query = await Get();
             return query.Adapt<IEnumerable<SubjectDTO>>();
         }
 
@@ -36,7 +70,7 @@ namespace SaM.BusinessLogic
             return query.Adapt<IEnumerable<Subject>>();
         }
 
-        public async Task<int> RemoveItem( Guid guid )
+        public async Task<int> Remove(Guid guid)
         {
             var elem = db.Subjects.FirstOrDefault(el => el.Guid == guid);
 
@@ -47,7 +81,7 @@ namespace SaM.BusinessLogic
             return await db.SaveChangesAsync();
         }
 
-        public async Task<int> RemoveItems(IEnumerable<Guid> guids)
+        public async Task<int> Remove(IEnumerable<Guid> guids)
         {
             var toRemove = new List<Subject>();
 
@@ -65,15 +99,21 @@ namespace SaM.BusinessLogic
             return await db.SaveChangesAsync();
         }
 
-        public async Task<int> Update()
+        public async Task<int> Update(Subject item)
         {
-            var dbItems = await GetPOCO();
-            var serviceItems = await GetFromService();
+            var databaseItem = db.Subjects.FirstOrDefault(sI => sI.Guid == item.Guid);
+            if (databaseItem != null && !item.EqualService(databaseItem))
+            {
+                databaseItem = item.Adapt(databaseItem);
+                db.Subjects.Update(databaseItem);
+            }
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
 
-            var updateItems = serviceItems.Intersect<Subject>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<Subject>(updateItems, new GuidComparer());
-
-            foreach (var item in updateItems)
+        public async Task<int> Update(IEnumerable<Subject> items)
+        {
+            foreach (var item in items)
             {
                 var databaseItem = db.Subjects.FirstOrDefault(sI => sI.Guid == item.Guid);
 
@@ -83,14 +123,34 @@ namespace SaM.BusinessLogic
                     db.Subjects.Update(databaseItem);
                 }
             }
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
 
-            foreach (var item in newItems)
-            {
-                var databaseItem = item.Adapt<Subject>();
-                db.Subjects.Add(databaseItem);
-            }
+        public async Task<int> UpdateFromService()
+        {
+            var dbItems = await Get();
+            var serviceItems = await GetFromService();
 
-            var cnt = await db.SaveChangesAsync();
+            var updateItems = serviceItems.Intersect<Subject>(dbItems, new GuidComparer());
+            var newItems = serviceItems.Except<Subject>(updateItems, new GuidComparer());
+
+            var cnt = await Update(updateItems);
+            cnt += await Add(newItems);
+
+            return cnt;
+        }
+
+        public async Task<int> UpdateFromService(IEnumerable<Subject> items)
+        {
+            var dbItems = await Get();
+            var serviceItems = items.Distinct<Subject>(new GuidComparer());
+
+            var updateItems = serviceItems.Intersect<Subject>(dbItems, new GuidComparer());
+            var newItems = serviceItems.Except<Subject>(updateItems, new GuidComparer());
+
+            var cnt = await Update(updateItems);
+            cnt += await Add(newItems);
 
             return cnt;
         }

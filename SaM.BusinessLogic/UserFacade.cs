@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
-using SaM.BusinessLogic.Interfaces;
 using SaM.Common.DTO;
+using SaM.Common.Infrastructure;
 using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core;
 using SaM.Domain.Core.Education;
@@ -12,115 +12,118 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using SaM.BusinessLogic.Interfaces;
+using SaM.Domain.Core.User;
 
 namespace SaM.BusinessLogic
 {
-    public class GroupFacade : IEducationFacade<Group>
+    public class UserFacade : IEducationFacade<User>
     {
         ApplicationContext db;
         DataManager1C service;
 
-        public GroupFacade()
+        public UserFacade()
         {
             db = new ApplicationContext();
             service = new DataManager1C();
         }
 
-        public GroupFacade(ApplicationContext db)
+        public UserFacade(ApplicationContext db)
         {
             this.db = db;
             service = new DataManager1C();
         }
 
-        public async Task<IEnumerable<Group>> Get()
+        public async Task<IEnumerable<User>> Get()
         {
-            return await db.Groups.ToListAsync();
+            return await db.Users.ToListAsync();
         }
 
-        public async Task<IEnumerable<GroupDTO>> GetDTO()
-        {
-            var query = await Get();
-            return query.Adapt<IEnumerable<GroupDTO>>();
-        }
+        //public async Task<IEnumerable<UserDTO>> GetDTO()
+        //{
+        //    var query = await Get();
+        //    return query.Adapt<IEnumerable<UserDTO>>();
+        //}
 
-        public async Task<IEnumerable<Group>> GetFromService()
+        public async Task<IEnumerable<User>> GetFromService()
         {
-            var query = await service.Groups.GetList();
-            return query.Adapt<IEnumerable<Group>>();
+            var query = await service.Users.GetList();
+            return query.Adapt<IEnumerable<User>>();
         }
 
         public async Task<int> Remove(Guid guid)
         {
-            var elem = db.Groups.FirstOrDefault(el => el.Guid == guid);
+            var elem = db.Users.FirstOrDefault(el => el.Guid == guid);
 
             if (elem == null) { new Exception(" Элемент Не найден в БД "); }
 
-            db.Groups.Remove(elem);
+            db.Users.Remove(elem);
 
             return await db.SaveChangesAsync();
         }
 
         public async Task<int> Remove(IEnumerable<Guid> guids)
         {
-            var toRemove = new List<Group>();
+            var toRemove = new List<User>();
 
             foreach (var item in guids)
             {
-                var elem = db.Groups.FirstOrDefault(el => el.Guid == item);
+                var elem = db.Users.FirstOrDefault(el => el.Guid == item);
 
                 if (elem != null) { toRemove.Add(elem); }
             }
 
             if (toRemove.Count == 0) { new Exception(" Элементы Не найдены в БД "); }
 
-            db.Groups.RemoveRange(toRemove);
+            db.Users.RemoveRange(toRemove);
 
             return await db.SaveChangesAsync();
         }
 
-        public async Task<int> Add(Group item)
+        public async Task<int> Add(User item)
         {
-            var databaseItem = item.Adapt<Group>();
-            db.Groups.Add(databaseItem);
+            var databaseItem = item.Adapt<User>();
+            db.Users.Add(databaseItem);
 
             var count = await db.SaveChangesAsync();
             return count;
         }
 
-        public async Task<int> Add(IEnumerable<Group> items)
+        public async Task<int> Add(IEnumerable<User> items)
         {
             foreach (var item in items)
             {
-                var databaseItem = item.Adapt<Group>();
-                db.Groups.Add(databaseItem);
+                var databaseItem = item.Adapt<User>();
+                db.Users.Add(databaseItem);
             }
 
             var count = await db.SaveChangesAsync();
             return count;
         }
 
-        public async Task<int> Update(Group item)
+        public async Task<int> Update(User item)
         {
-            var databaseItem = db.Groups.FirstOrDefault(sI => sI.Guid == item.Guid);
-            if (databaseItem != null && !item.EqualService(databaseItem))
+            var databaseItem = db.Users.FirstOrDefault(sI => sI.Guid == item.Guid);
+            if (databaseItem != null)
             {
                 databaseItem = item.Adapt(databaseItem);
-                db.Groups.Update(databaseItem);
+                db.Users.Update(databaseItem);
             }
             var count = await db.SaveChangesAsync();
             return count;
         }
 
-        public async Task<int> Update(IEnumerable<Group> items)
+        public async Task<int> Update(IEnumerable<User> items)
         {
             foreach (var item in items)
             {
-                var databaseItem = db.Groups.FirstOrDefault(sI => sI.Guid == item.Guid);
+                var databaseItem = db.Users.FirstOrDefault(sI => sI.Guid == item.Guid);
 
-                if (databaseItem != null && !item.EqualService(databaseItem))
+                if (databaseItem != null)
                 {
                     databaseItem = item.Adapt(databaseItem);
-                    db.Groups.Update(databaseItem);
+                    db.Users.Update(databaseItem);
                 }
             }
             var count = await db.SaveChangesAsync();
@@ -132,8 +135,8 @@ namespace SaM.BusinessLogic
             var dbItems = await Get();
             var serviceItems = await GetFromService();
 
-            var updateItems = serviceItems.Intersect<Group>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<Group>(updateItems, new GuidComparer());
+            var updateItems = serviceItems.Intersect<User>(dbItems, new GuidComparer());
+            var newItems = serviceItems.Except<User>(updateItems, new GuidComparer());
 
             var cnt = await Update(updateItems);
             cnt += await Add(newItems);
@@ -141,13 +144,13 @@ namespace SaM.BusinessLogic
             return cnt;
         }
 
-        public async Task<int> UpdateFromService(IEnumerable<Group> items)
+        public async Task<int> UpdateFromService(IEnumerable<User> items)
         {
             var dbItems = await Get();
-            var serviceItems = items.Distinct<Group>(new GuidComparer());
+            var serviceItems = items.Distinct<User>(new GuidComparer());
 
-            var updateItems = serviceItems.Intersect<Group>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<Group>(updateItems, new GuidComparer());
+            var updateItems = serviceItems.Intersect<User>(dbItems, new GuidComparer());
+            var newItems = serviceItems.Except<User>(updateItems, new GuidComparer());
 
             var cnt = await Update(updateItems);
             cnt += await Add(newItems);

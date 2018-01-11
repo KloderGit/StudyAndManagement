@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
+using SaM.BusinessLogic.Interfaces;
 using SaM.Common.DTO;
 using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core;
@@ -11,22 +12,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace SaM.BusinessLogic
 {
-    public class EducationTypeFacade
+    public class EducationTypeFacade : IEducationFacade<EducationType>
     {
-        ApplicationContext db = new ApplicationContext();
-        DataManager1C service = new DataManager1C();
+        ApplicationContext db;
+        DataManager1C service;
 
-        public async Task<IEnumerable<EducationType>> GetPOCO()
+        public EducationTypeFacade()
+        {
+            db = new ApplicationContext();
+            service = new DataManager1C();
+        }
+
+        public EducationTypeFacade(ApplicationContext db)
+        {
+            this.db = db;
+            service = new DataManager1C();
+        }
+
+        public async Task<int> Add(EducationType item)
+        {
+            var databaseItem = item.Adapt<EducationType>();
+            db.EducationTypes.Add(databaseItem);
+
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<int> Add(IEnumerable<EducationType> items)
+        {
+            foreach (var item in items)
+            {
+                var databaseItem = item.Adapt<EducationType>();
+                db.EducationTypes.Add(databaseItem);
+            }
+
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<IEnumerable<EducationType>> Get()
         {
             return await db.EducationTypes.ToListAsync();
         }
 
         public async Task<IEnumerable<EducationTypeDTO>> GetDTO()
         {
-            var query = await GetPOCO();
+            var query = await Get();
             return query.Adapt<IEnumerable<EducationTypeDTO>>();
         }
 
@@ -36,7 +71,7 @@ namespace SaM.BusinessLogic
             return query.Adapt<IEnumerable<EducationType>>();
         }
 
-        public async Task<int> RemoveItem(Guid guid)
+        public async Task<int> Remove(Guid guid)
         {
             var elem = db.EducationTypes.FirstOrDefault(el => el.Guid == guid);
 
@@ -47,7 +82,7 @@ namespace SaM.BusinessLogic
             return await db.SaveChangesAsync();
         }
 
-        public async Task<int> RemoveItems(IEnumerable<Guid> guids)
+        public async Task<int> Remove(IEnumerable<Guid> guids)
         {
             var toRemove = new List<EducationType>();
 
@@ -65,65 +100,60 @@ namespace SaM.BusinessLogic
             return await db.SaveChangesAsync();
         }
 
-        public async Task<int> Update()
+        public async Task<int> Update(EducationType item)
         {
-            var dbItems = await GetPOCO();
+            var databaseItem = db.EducationTypes.FirstOrDefault(sI => sI.Guid == item.Guid);
+            if (databaseItem != null && !item.EqualService(databaseItem))
+            {
+                databaseItem = item.Adapt(databaseItem);
+                db.EducationTypes.Update(databaseItem);
+            }
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<int> Update(IEnumerable<EducationType> items)
+        {
+            foreach (var item in items)
+            {
+                var databaseItem = db.EducationTypes.FirstOrDefault(sI => sI.Guid == item.Guid);
+
+                if (databaseItem != null && !item.EqualService(databaseItem))
+                {
+                    databaseItem = item.Adapt(databaseItem);
+                    db.EducationTypes.Update(databaseItem);
+                }
+            }
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<int> UpdateFromService()
+        {
+            var dbItems = await Get();
             var serviceItems = await GetFromService();
 
             var updateItems = serviceItems.Intersect<EducationType>(dbItems, new GuidComparer());
             var newItems = serviceItems.Except<EducationType>(updateItems, new GuidComparer());
 
-            foreach (var item in updateItems)
-            {
-                var databaseItem = db.EducationTypes.FirstOrDefault(sI => sI.Guid == item.Guid);
-
-                if (databaseItem != null && !item.EqualService(databaseItem))
-                {
-                    databaseItem = item.Adapt(databaseItem);
-                    db.EducationTypes.Update(databaseItem);
-                }
-            }
-
-            foreach (var item in newItems)
-            {
-                var databaseItem = item.Adapt<EducationType>();
-                db.EducationTypes.Add(databaseItem);
-            }
-
-            var cnt = await db.SaveChangesAsync();
+            var cnt = await Update(updateItems);
+            cnt += await Add(newItems);
 
             return cnt;
         }
 
-        public async Task<int> Update(IEnumerable<EducationType> incoming)
+        public async Task<int> UpdateFromService(IEnumerable<EducationType> items)
         {
-            var dbItems = await GetPOCO();
-            var serviceItems = incoming;
+            var dbItems = await Get();
+            var serviceItems = items.Distinct<EducationType>(new GuidComparer());
 
             var updateItems = serviceItems.Intersect<EducationType>(dbItems, new GuidComparer());
             var newItems = serviceItems.Except<EducationType>(updateItems, new GuidComparer());
 
-            foreach (var item in updateItems)
-            {
-                var databaseItem = db.EducationTypes.FirstOrDefault(sI => sI.Guid == item.Guid);
-
-                if (databaseItem != null && !item.EqualService(databaseItem))
-                {
-                    databaseItem = item.Adapt(databaseItem);
-                    db.EducationTypes.Update(databaseItem);
-                }
-            }
-
-            foreach (var item in newItems)
-            {
-                var databaseItem = item.Adapt<EducationType>();
-                db.EducationTypes.Add(databaseItem);
-            }
-
-            var cnt = await db.SaveChangesAsync();
+            var cnt = await Update(updateItems);
+            cnt += await Add(newItems);
 
             return cnt;
-        }        
-
+        }
     }
 }
