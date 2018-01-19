@@ -7,81 +7,35 @@ using System.Collections.Generic;
 
 namespace SaM.Common.Infrastructure.Mapster
 {
-    class Config1CtoEntity : IRegister
+    class ConfigEntity : IRegister
     {
         public void Register(TypeAdapterConfig config)
         {
             //  Маппинг Программы обучения
 
-            config.NewConfig<ГруппаПрограммыОбучения, Category>()
-                .Map(d => d.Guid, s => s.ГУИД)
-                .Map(d => d.Title, s => s.Наименование);
-
-            config.NewConfig<category, Category>()
-                .Map(dest => dest.Guid, src => src.GUID)
-                .Map(dest => dest.Title, src => src.Name);
-
             config.NewConfig<Category, Category>()
                 .Ignore(it => it.Id);
 
-
-            config.NewConfig<formControl, Certification>()
-                .Map(dest => dest.Guid, src => src.GUIDFormControl)
-                .Map(dest => dest.Title, src => src.Name);
-
-            config.NewConfig<ФормаКонтроля, Certification>()
-                .Map(dest => dest.Guid, src => src.ГУИД)
-                .Map(dest => dest.Title, src => src.Наименование);
 
             config.NewConfig<Certification, Certification>()
                 .Ignore(it => it.Id);
 
 
-            config.NewConfig<formEdu, EducationType>()
-                .Map(dest => dest.Guid, src => src.GUIDFormEducation)
-                .Map(dest => dest.Title, src => src.Name);
-
-            config.NewConfig<ФормаОбучения, EducationType>()
-                .Map(dest => dest.Guid, src => src.ГУИД)
-                .Map(dest => dest.Title, src => src.Наименование);
-
             config.NewConfig<EducationType, EducationType>()
                 .Ignore(it => it.Id);
 
-
-            config.NewConfig<ViewAttestation, CertificationType>()
-                .Map(dest => dest.Guid, src => src.GUIDViewAttestation)
-                .Map(dest => dest.Title, src => src.Name);
 
             config.NewConfig<CertificationType, CertificationType>()
                 .Ignore(it => it.Id);
 
 
-            config.NewConfig<Группа, Group>()
-                .Map(dest => dest.Guid, src => src.ГУИД)
-                .Map(dest => dest.Title, src => src.Наименование);
-
             config.NewConfig<Group, Group>()
                 .Ignore(it => it.Id);
 
 
-            config.NewConfig<Дисциплина, Subject>()
-                .Map(dest => dest.Guid, src => src.ГУИД)
-                .Map(dest => dest.Title, src => src.Наименование);
-
             config.NewConfig<Subject, Subject>()
                 .Ignore(it => it.Id);
 
-
-            config.NewConfig<ProgramEdu, EducationProgram>()
-                .Map(dest => dest.Guid, src => src.XML_ID)
-                .Map(dest => dest.Title, src => src.name)
-                .Map(dest => dest.Active, src => src.active == "Активный" ? true : false)
-                .Map(dest => dest.AcceptDate, src => src.acceptDate)
-                .Map(dest => dest.ProgramType, src => src.typeProgram)
-                .Map(dest => dest.Category, src => src.category.Adapt<Category>())
-                .Map(dest => dest.EducationType, src => src.formEducation.Adapt<EducationType>())
-                .Map(dest => dest.StudyType, src => src.viewProgram);
 
             config.NewConfig<EducationProgram, EducationProgram>()
                 .Ignore(it => it.Id);

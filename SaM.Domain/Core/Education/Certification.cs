@@ -21,11 +21,5 @@ namespace SaM.Domain.Core.Education
         public Int32 Order { get; set; }
 
         public virtual ICollection<Attestation> CertificationTypes { get; set; }
-
-        public override bool EqualService(Certification item)
-        {
-            var result = Guid == item.Guid && Title == item.Title ? true : false;
-            return result;
-        }
     }
 }

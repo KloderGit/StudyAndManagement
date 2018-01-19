@@ -23,10 +23,10 @@ namespace SaM.Domain.Core.Education
         private DateTime updated;
         public DateTime? Updated { get => updated; }
 
-        public override bool EqualService(EducationType item)
-        {
-            var result = Guid == item.Guid && Title == item.Title ? true : false;
-            return result;
-        }
+        //public override bool EqualService(EducationType item)
+        //{
+        //    var result = Guid == item.Guid && Title == item.Title ? true : false;
+        //    return result;
+        //}
     }
 }

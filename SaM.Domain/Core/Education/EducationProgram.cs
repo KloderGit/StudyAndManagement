@@ -29,19 +29,5 @@ namespace SaM.Domain.Core.Education
         public virtual EducationType EducationType { get; set; }
 
         public virtual ICollection<EducationalPlan> EducationalPlanList { get; set; }
-
-        public override bool EqualService(EducationProgram item)
-        {
-            var result = Guid == item.Guid &&
-                         Title == item.Title &&
-                         AcceptDate == item.AcceptDate &&
-                         ProgramType == item.ProgramType &&
-                         StudyType == item.StudyType ? true : false;
-            return result;
-        }
-
-
-
-
     }
 }

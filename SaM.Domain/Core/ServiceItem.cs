@@ -11,21 +11,23 @@ namespace SaM.Domain.Core
     public abstract class ServiceItem : IServiceItem
     {
         public Guid Guid { get; set; }
-
-        private DateTime _updated = DateTime.Today;
-        [PropertyNotForEqual]
-        public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
     }
 
-    public abstract class ServiceItem<T> : ServiceItem
+    public abstract class ServiceItem<T> : ServiceItem 
+                                 where T: class
     {
-        private static IEnumerable<PropertyInfo> properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-        public abstract bool EqualService(T item);
+        protected static IEnumerable<PropertyInfo> properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
         public bool Equals(T obj)
         {
             return this.GetHashCode() == obj.GetHashCode();
+        }
+
+
+
+        public bool Equals(ServiceItem obj)
+        {
+            return this.GetHashCode() == GetHashCode(obj);
         }
 
         public override int GetHashCode()
@@ -40,6 +42,24 @@ namespace SaM.Domain.Core
 
             return hash;
         }
+
+        protected int GetHashCode(ServiceItem obj)
+        {
+            var hash = 19;
+
+            var fields = ServiceItem<T>.GetValueObjectProperties();
+
+            foreach (var item in fields)
+            {
+                var value = obj.GetType().GetProperty(item.Name).GetValue(obj, null);
+
+                if (value != null) hash = hash * 37 + value.GetHashCode();
+            }
+
+            return hash;
+        }
+
+
 
         protected static IEnumerable<PropertyInfo> GetValueObjectProperties()
         {

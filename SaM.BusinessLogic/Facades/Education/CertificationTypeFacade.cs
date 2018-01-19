@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
-using SaM.BusinessLogic.Interfaces;
 using SaM.Common.DTO;
+using SaM.Common.Infrastructure;
 using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core;
 using SaM.Domain.Core.Education;
@@ -12,10 +12,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using SaM.BusinessLogic.Interfaces;
+using SaM.Common.ServiceEntity;
 
-namespace SaM.BusinessLogic
+namespace SaM.BusinessLogic.Facades.Education
 {
-    public class CertificationTypeFacade : IEducationFacade<CertificationType>
+    public class CertificationTypeFacade : IFacade<CertificationType>, IServiceFacade<CertificationTypeService>
     {
         ApplicationContext db;
         DataManager1C service;
@@ -37,22 +40,20 @@ namespace SaM.BusinessLogic
             return await db.CertificationTypes.ToListAsync();
         }
 
-        public async Task<IEnumerable<CertificationTypeDTO>> GetDTO()
+        public async Task<CertificationType> Get(Guid guid)
         {
-            var query = await Get();
-            return query.Adapt<IEnumerable<CertificationTypeDTO>>();
+            return await db.CertificationTypes.FirstOrDefaultAsync(sI => sI.Guid == guid);
         }
 
-        public async Task<IEnumerable<CertificationType>> GetFromService()
+        public async Task<IEnumerable<CertificationTypeService>> GetFromService()
         {
             var query = await service.EducationPrograms.GetList();
 
             var types = query.SelectMany(ii => ii.listOfSubjects
                                                  .SelectMany(kk => kk.Attestation.SpisokVariantAttestation)
                                                  .Where(iii => iii.GUIDViewAttestation != ""))
-                             .Adapt<IEnumerable<CertificationType>>()
-                             .Distinct<CertificationType>(new GuidComparer());
-
+                             .Adapt<IEnumerable<CertificationTypeService>>()
+                             .Distinct<CertificationTypeService>(new GuidComparer());
 
             return types;
         }
@@ -107,13 +108,31 @@ namespace SaM.BusinessLogic
             return count;
         }
 
+        private async void ToSave(CertificationType dbItem, CertificationType updItem)
+        {
+            var databaseItem = updItem.Adapt(await Get(updItem.Guid));
+            db.CertificationTypes.Update(databaseItem);
+        }
+
         public async Task<int> Update(CertificationType item)
         {
-            var databaseItem = db.CertificationTypes.FirstOrDefault(sI => sI.Guid == item.Guid);
-            if (databaseItem != null && !item.EqualService(databaseItem))
+            var databaseItem = Get(item.Guid).Result;
+
+            if (databaseItem != null && !item.Equals(databaseItem))
             {
-                databaseItem = item.Adapt(databaseItem);
-                db.CertificationTypes.Update(databaseItem);
+                ToSave(databaseItem, item);
+            }
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<int> Update(CertificationTypeService item)
+        {
+            var databaseItem = Get(item.Guid).Result;
+
+            if (databaseItem != null && !item.Equals(databaseItem))
+            {
+                ToSave(databaseItem, item.Adapt<CertificationType>());
             }
             var count = await db.SaveChangesAsync();
             return count;
@@ -121,46 +140,43 @@ namespace SaM.BusinessLogic
 
         public async Task<int> Update(IEnumerable<CertificationType> items)
         {
+            var count = 0;
+
             foreach (var item in items)
             {
-                var databaseItem = db.CertificationTypes.FirstOrDefault(sI => sI.Guid == item.Guid);
-
-                if (databaseItem != null && !item.EqualService(databaseItem))
-                {
-                    databaseItem = item.Adapt(databaseItem);
-                    db.CertificationTypes.Update(databaseItem);
-                }
+                count += await Update(item);
             }
-            var count = await db.SaveChangesAsync();
+
             return count;
         }
 
-        public async Task<int> UpdateFromService()
+        public async Task<int> Update()
         {
-            var dbItems = await Get();
-            var serviceItems = await GetFromService();
-
-            var updateItems = serviceItems.Intersect<CertificationType>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<CertificationType>(updateItems, new GuidComparer());
-
-            var cnt = await Update(updateItems);
-            cnt += await Add(newItems);
-
-            return cnt;
+            return await Update(await GetFromService());
         }
 
-        public async Task<int> UpdateFromService(IEnumerable<CertificationType> items)
+        public async Task<int> Update(IEnumerable<CertificationTypeService> items)
         {
             var dbItems = await Get();
-            var serviceItems = items.Distinct<CertificationType>(new GuidComparer());
+            var serviceItems = items.Distinct<CertificationTypeService>(new GuidComparer());
 
-            var updateItems = serviceItems.Intersect<CertificationType>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<CertificationType>(updateItems, new GuidComparer());
+            var updateItems = serviceItems.Intersect(dbItems, new GuidComparer());
 
-            var cnt = await Update(updateItems);
-            cnt += await Add(newItems);
+            var newItems = serviceItems.Except(updateItems, new GuidComparer());
 
-            return cnt;
+            var count = 0;
+
+            foreach (var item in updateItems.Cast<CertificationTypeService>())
+            {
+                count += await Update(item);
+            }
+
+            foreach (var item in newItems.Cast<CertificationTypeService>())
+            {
+                count += await Add(item.Adapt<CertificationType>());
+            }
+
+            return count;
         }
 
     }

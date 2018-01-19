@@ -55,22 +55,22 @@ namespace SaM.Domain.Core.User
         [PropertyNotForEqual]
         public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
 
-        public override bool EqualService(User item)
-        {
-            var result = Guid == item.Guid 
-                && FirstName == item.FirstName
-                && ParentMidleName == item.ParentMidleName
-                && LastName == item.LastName
-                && Email == item.Email
-                ? true : false;
-            return result;
-        }
+        //public override bool EqualService(User item)
+        //{
+        //    var result = Guid == item.Guid 
+        //        && FirstName == item.FirstName
+        //        && ParentMidleName == item.ParentMidleName
+        //        && LastName == item.LastName
+        //        && Email == item.Email
+        //        ? true : false;
+        //    return result;
+        //}
 
-        public static IEnumerable<PropertyInfo> GetValueObjectProperties()
-        {
-            var properties = typeof(User).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            return properties.Where(prop => prop.GetCustomAttribute(typeof(PropertyNotForEqualAttribute)) == null);
-        }
+        //public static IEnumerable<PropertyInfo> GetValueObjectProperties()
+        //{
+        //    var properties = typeof(User).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        //    return properties.Where(prop => prop.GetCustomAttribute(typeof(PropertyNotForEqualAttribute)) == null);
+        //}
 
     }
 }

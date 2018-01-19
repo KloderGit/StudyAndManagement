@@ -25,10 +25,10 @@ namespace SaM.Domain.Core.Education
         private DateTime _updated = DateTime.Today;
         public DateTime? Updated { get => _updated; set => _updated = DateTime.Today; }
 
-        public override bool EqualService(Group item)
-        {
-            var result = Guid == item.Guid && Title == item.Title ? true : false;
-            return result;
-        }
+        //public override bool EqualService(Group item)
+        //{
+        //    var result = Guid == item.Guid && Title == item.Title ? true : false;
+        //    return result;
+        //}
     }
 }

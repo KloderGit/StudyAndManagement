@@ -23,11 +23,11 @@ namespace SaM.Domain.Core.Education
 
         public virtual ICollection<EducationProgram> Programs { get; set; }
 
-        public override bool EqualService(Category item)
-        {
-            var result = Guid == item.Guid && Title == item.Title ? true : false;
-            return result;
-        }
+        //public override bool EqualService(Category item)
+        //{
+        //    var result = Guid == item.Guid && Title == item.Title ? true : false;
+        //    return result;
+        //}
 
     }
 }

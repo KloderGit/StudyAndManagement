@@ -16,11 +16,5 @@ namespace SaM.Domain.Core.Education
         public string Title { get; set; }
 
         public virtual ICollection<EducationalPlan> EducationalPlanList { get; set; }
-
-        public override bool EqualService(Subject item)
-        {
-            var result = Guid == item.Guid && Title == item.Title ? true : false;
-            return result;
-        }
     }
 }

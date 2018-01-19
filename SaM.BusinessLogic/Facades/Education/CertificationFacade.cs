@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
-using SaM.BusinessLogic.Interfaces;
 using SaM.Common.DTO;
+using SaM.Common.Infrastructure;
 using SaM.DataBases.EntityFramework;
 using SaM.Domain.Core;
 using SaM.Domain.Core.Education;
@@ -12,10 +12,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using SaM.BusinessLogic.Interfaces;
+using SaM.Common.ServiceEntity;
 
-namespace SaM.BusinessLogic
+namespace SaM.BusinessLogic.Facades.Education
 {
-    public class CertificationFacade : IEducationFacade<Certification>
+    public class CertificationFacade : IFacade<Certification>, IServiceFacade<CertificationService>
     {
         ApplicationContext db;
         DataManager1C service;
@@ -37,16 +40,15 @@ namespace SaM.BusinessLogic
             return await db.Certifications.ToListAsync();
         }
 
-        public async Task<IEnumerable<CertificationDTO>> GetDTO()
+        public async Task<Certification> Get(Guid guid)
         {
-            var query = await Get();
-            return query.Adapt<IEnumerable<CertificationDTO>>();
+            return await db.Certifications.FirstOrDefaultAsync(sI => sI.Guid == guid);
         }
 
-        public async Task<IEnumerable<Certification>> GetFromService()
+        public async Task<IEnumerable<CertificationService>> GetFromService()
         {
             var query = await service.Certifications.GetList();
-            return query.Adapt<IEnumerable<Certification>>();
+            return query.Adapt<IEnumerable<CertificationService>>();
         }
 
         public async Task<int> Remove(Guid guid)
@@ -99,13 +101,31 @@ namespace SaM.BusinessLogic
             return count;
         }
 
+        private async void ToSave(Certification dbItem, Certification updItem)
+        {
+            var databaseItem = updItem.Adapt(await Get(updItem.Guid));
+            db.Certifications.Update(databaseItem);
+        }
+
         public async Task<int> Update(Certification item)
         {
-            var databaseItem = db.Certifications.FirstOrDefault(sI => sI.Guid == item.Guid);
-            if (databaseItem != null && !item.EqualService(databaseItem))
+            var databaseItem = Get(item.Guid).Result;
+
+            if (databaseItem != null && !item.Equals(databaseItem))
             {
-                databaseItem = item.Adapt(databaseItem);
-                db.Certifications.Update(databaseItem);
+                ToSave(databaseItem, item);
+            }
+            var count = await db.SaveChangesAsync();
+            return count;
+        }
+
+        public async Task<int> Update(CertificationService item)
+        {
+            var databaseItem = Get(item.Guid).Result;
+
+            if (databaseItem != null && !item.Equals(databaseItem))
+            {
+                ToSave(databaseItem, item.Adapt<Certification>());
             }
             var count = await db.SaveChangesAsync();
             return count;
@@ -113,46 +133,43 @@ namespace SaM.BusinessLogic
 
         public async Task<int> Update(IEnumerable<Certification> items)
         {
+            var count = 0;
+
             foreach (var item in items)
             {
-                var databaseItem = db.Certifications.FirstOrDefault(sI => sI.Guid == item.Guid);
-
-                if (databaseItem != null && !item.EqualService(databaseItem))
-                {
-                    databaseItem = item.Adapt(databaseItem);
-                    db.Certifications.Update(databaseItem);
-                }
+                count += await Update(item);
             }
-            var count = await db.SaveChangesAsync();
+
             return count;
         }
 
-        public async Task<int> UpdateFromService()
+        public async Task<int> Update()
         {
-            var dbItems = await Get();
-            var serviceItems = await GetFromService();
-
-            var updateItems = serviceItems.Intersect<Certification>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<Certification>(updateItems, new GuidComparer());
-
-            var cnt = await Update(updateItems);
-            cnt += await Add(newItems);
-
-            return cnt;
+            return await Update(await GetFromService());
         }
 
-        public async Task<int> UpdateFromService(IEnumerable<Certification> items)
+        public async Task<int> Update(IEnumerable<CertificationService> items)
         {
             var dbItems = await Get();
-            var serviceItems = items.Distinct<Certification>(new GuidComparer());
+            var serviceItems = items.Distinct<CertificationService>(new GuidComparer());
 
-            var updateItems = serviceItems.Intersect<Certification>(dbItems, new GuidComparer());
-            var newItems = serviceItems.Except<Certification>(updateItems, new GuidComparer());
+            var updateItems = serviceItems.Intersect(dbItems, new GuidComparer());
 
-            var cnt = await Update(updateItems);
-            cnt += await Add(newItems);
+            var newItems = serviceItems.Except(updateItems, new GuidComparer());
 
-            return cnt;
+            var count = 0;
+
+            foreach (var item in updateItems.Cast<CertificationService>())
+            {
+                count += await Update(item);
+            }
+
+            foreach (var item in newItems.Cast<CertificationService>())
+            {
+                count += await Add(item.Adapt<Certification>());
+            }
+
+            return count;
         }
 
     }

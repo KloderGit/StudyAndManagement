@@ -102,11 +102,11 @@ namespace SaM.BusinessLogic
         public async Task<int> Update(Group item)
         {
             var databaseItem = db.Groups.FirstOrDefault(sI => sI.Guid == item.Guid);
-            if (databaseItem != null && !item.EqualService(databaseItem))
-            {
-                databaseItem = item.Adapt(databaseItem);
-                db.Groups.Update(databaseItem);
-            }
+            //if (databaseItem != null && !item.EqualService(databaseItem))
+            //{
+            //    databaseItem = item.Adapt(databaseItem);
+            //    db.Groups.Update(databaseItem);
+            //}
             var count = await db.SaveChangesAsync();
             return count;
         }
@@ -117,11 +117,11 @@ namespace SaM.BusinessLogic
             {
                 var databaseItem = db.Groups.FirstOrDefault(sI => sI.Guid == item.Guid);
 
-                if (databaseItem != null && !item.EqualService(databaseItem))
-                {
-                    databaseItem = item.Adapt(databaseItem);
-                    db.Groups.Update(databaseItem);
-                }
+                //if (databaseItem != null && !item.EqualService(databaseItem))
+                //{
+                //    databaseItem = item.Adapt(databaseItem);
+                //    db.Groups.Update(databaseItem);
+                //}
             }
             var count = await db.SaveChangesAsync();
             return count;
